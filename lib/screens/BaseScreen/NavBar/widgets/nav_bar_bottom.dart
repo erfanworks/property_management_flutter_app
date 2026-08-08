@@ -1,35 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../constant/const_color.dart';
-import '../../../../utils/app_role.dart'; // ─── This import is needed to check role
 
 class NavBarBottom extends StatelessWidget {
   final Function(int) onTap;
   final List<String> icons;
+  final List<String> labels;
   final int selectedIndex;
 
   const NavBarBottom({
     super.key,
     required this.onTap,
     required this.icons,
+    required this.labels,
     required this.selectedIndex,
   });
 
   @override
   Widget build(BuildContext context) {
-    // ─── LOGIC FIXED: Check actual role instead of icon length ───
-    final bool isUser = selectedUserRole == AppUserType.user;
-
-    final List<String> labels = isUser
-        ? ['Home', 'Saved', 'Enquires', 'Profile'] // User Labels
-        : ['Overview', 'Listing', 'Leads', 'Profile']; // Agent Labels
-
     return Container(
       height: 64.h + MediaQuery.of(context).padding.bottom,
       decoration: BoxDecoration(
-        color: ConstColor.primaryColor,
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withAlpha(30),
@@ -56,9 +49,7 @@ class NavBarBottom extends StatelessWidget {
                       width: 24.w,
                       height: 24.h,
                       colorFilter: ColorFilter.mode(
-                        isSelected
-                            ? ConstColor.bodyColor
-                            : Colors.white.withAlpha(153),
+                        isSelected ? ConstColor.primaryColor : ConstColor.bodyColor,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -66,9 +57,7 @@ class NavBarBottom extends StatelessWidget {
                     Text(
                       labels.length > index ? labels[index] : '',
                       style: TextStyle(
-                        color: isSelected
-                            ? ConstColor.bodyColor
-                            : Colors.white.withAlpha(153),
+                        color: isSelected ? ConstColor.primaryColor : ConstColor.bodyColor,
                         fontSize: 12.sp,
                         fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
                         fontFamily: 'Poppins',

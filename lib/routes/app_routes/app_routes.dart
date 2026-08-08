@@ -3,6 +3,7 @@ class AppRoutes {
   AppRoutes._();
   //////////////// Auth Part ///////////////////////
   static const splashScreen = '/splashScreen';
+  static const navBar = '/navBar';
   static const onboardingScreen = '/onboardingScreen';
   static const signInScreen = '/signInScreen';
   static const forgotPasswordScreen = '/forgotPasswordScreen';

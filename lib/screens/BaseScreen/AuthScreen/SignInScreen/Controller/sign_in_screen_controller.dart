@@ -17,7 +17,7 @@ class SignInScreenController extends GetxController {
     isLoading.value = false;
 
     // TODO: navigate to role-based home once backend/nav ready
-    // Get.offAllNamed(AppRoutes.navBar);
+    Get.offAllNamed(AppRoutes.navBar);
   }
 
   void onGoogleSignIn() {

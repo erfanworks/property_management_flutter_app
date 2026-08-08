@@ -1,14 +1,8 @@
 class ConstIcons {
-  static const String homeTabIcon = 'assets/icons/home_icon.svg';
-  static const String savedTabIcon = 'assets/icons/favourite_icon.svg';
-  static const String enquiresTabIcon = 'assets/icons/enquires_icon.svg';
-  static const String profileTabIcon = 'assets/icons/profile_icon.svg';
-  static const String overviewTabIcon = 'assets/icons/overview_icon.svg';
-  static const String listingTabIcon = 'assets/icons/listing_icon.svg';
-  static const String dashBoardTabIcon = 'assets/icons/dashboard_icon.svg';
-
-
-
-
-  static const String messageIcon = 'assets/icons/message_icon.svg';
+  static const homeTabIcon = 'assets/icons/home_icon.svg';
+  static const propertiesTabIcon = 'assets/icons/properties.svg';
+  static const issuesTabIcon = 'assets/icons/issues_icon.svg';
+  static const jobsTabIcon = 'assets/icons/jobs_icon.svg';
+  static const messagesTabIcon = 'assets/icons/messages.svg';
+  static const profileTabIcon = 'assets/icons/profile.svg';
 }

@@ -1,3 +1,4 @@
-enum AppUserType { user, agent }
+enum AppUserType { landlord, tenant, contractor }
 
-AppUserType selectedUserRole = AppUserType.user;
+// TODO: set this dynamically once Role-Select / Sign-In sets the real logged-in role
+AppUserType selectedUserRole = AppUserType.landlord;

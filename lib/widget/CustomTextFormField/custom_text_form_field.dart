@@ -142,7 +142,7 @@ class CustomTextFormField extends StatelessWidget {
               ),
               contentPadding: EdgeInsets.symmetric(
                 vertical: 14.h,
-                horizontal: 16.w,
+                horizontal: 12.w,
               ),
 
               // --- Borders ---
