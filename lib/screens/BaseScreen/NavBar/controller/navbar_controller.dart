@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../../constant/const_icons.dart';
 import '../../../../utils/app_role.dart';
 import '../../../../utils/log_print.dart';
+import '../../MessagesScreen/MessagesListScreen/messages_screen.dart';
 import '../../ProfileAllScreen/profile_screen.dart';
 import '../widgets/coming_soon_placeholder.dart';
 
@@ -35,7 +36,7 @@ class NavbarController extends GetxController {
         pages = const [
           ComingSoonPlaceholder(label: 'Home'),
           ComingSoonPlaceholder(label: 'Properties'),
-          ComingSoonPlaceholder(label: 'Messages'),
+          MessagesListScreen(),
           ProfileScreen(),
         ];
         break;
@@ -51,7 +52,7 @@ class NavbarController extends GetxController {
         pages = const [
           ComingSoonPlaceholder(label: 'Home'),
           ComingSoonPlaceholder(label: 'Issues'),
-          ComingSoonPlaceholder(label: 'Messages'),
+          MessagesListScreen(),
           ProfileScreen(),
         ];
         break;
@@ -67,7 +68,7 @@ class NavbarController extends GetxController {
         pages = const [
           ComingSoonPlaceholder(label: 'Home'),
           ComingSoonPlaceholder(label: 'Jobs'),
-          ComingSoonPlaceholder(label: 'Messages'),
+          MessagesListScreen(),
           ProfileScreen(),
         ];
         break;

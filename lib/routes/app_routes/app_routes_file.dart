@@ -6,6 +6,7 @@ import '../../screens/BaseScreen/AuthScreen/OtpVerificationScreen/otp_verificati
 import '../../screens/BaseScreen/AuthScreen/PasswordUpdatedScreen/password_updated_screen.dart';
 import '../../screens/BaseScreen/AuthScreen/SignInScreen/sign_in_screen.dart';
 import '../../screens/BaseScreen/AuthScreen/SignUpScreen/sign_up_screen.dart';
+import '../../screens/BaseScreen/MessagesScreen/ChatDetailScreen/chat_detail_screen.dart';
 import '../../screens/BaseScreen/OnboardScreen/onboarding_screen.dart';
 import '../../screens/BaseScreen/RoleSelectScreen/role_select_screen.dart';
 import '../../screens/BaseScreen/SplashScreen/splash_screen.dart';
@@ -26,4 +27,5 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.createNewPasswordScreen,  page: () => const CreateNewPasswordScreen()),
   GetPage(name: AppRoutes.passwordUpdatedScreen,    page: () => const PasswordUpdatedScreen()),
   GetPage(name: AppRoutes.signUpScreen,             page: () => const SignUpScreen()),
+  GetPage(name: AppRoutes.chatDetailScreen, page: () => const ChatDetailScreen()),
 ];

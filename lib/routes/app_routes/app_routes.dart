@@ -12,4 +12,5 @@ class AppRoutes {
   static const createNewPasswordScreen = '/createNewPasswordScreen';
   static const passwordUpdatedScreen = '/passwordUpdatedScreen';
   static const signUpScreen = '/signUpScreen';
+  static const chatDetailScreen = '/chatDetailScreen';
 }
