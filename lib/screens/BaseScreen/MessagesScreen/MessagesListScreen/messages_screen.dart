@@ -26,11 +26,20 @@ class MessagesListScreen extends StatelessWidget {
                       ? _ContractorHeader(onCompose: controller.onComposeNewMessage)
                       : Padding(
                     padding: EdgeInsets.only(top: 12.h, bottom: 4.h),
-                    child: CustomText(
-                      title: 'Messages',
-                      textSize: 24.sp,
-                      fontWeight: FontWeight.w700,
-                      textColor: ConstColor.titleColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText(
+                          title: 'Messages',
+                          textSize: 24.sp,
+                          fontWeight: FontWeight.w700,
+                          textColor: ConstColor.titleColor,
+                        ),
+                        InkWell(
+                          onTap: controller.onComposeNewMessage,
+                          child: Icon(Icons.edit_square, size: 22.sp, color: ConstColor.titleColor),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 12.h),
