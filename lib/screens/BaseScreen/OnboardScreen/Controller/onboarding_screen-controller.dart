@@ -21,17 +21,17 @@ class OnboardingScreenController extends GetxController {
 
   final List<OnboardingModel> pages = const [
     OnboardingModel(
-      image: "assets/images/onboarding_img.png", // TODO: add asset
+      image: "assets/images/onboarding_img.png",
       title: ConstString.onboardingTitle1,
       subTitle: ConstString.onboardingSubTitle1,
     ),
     OnboardingModel(
-      image: "assets/images/onboarding_img_2.png", // TODO: add asset
+      image: "assets/images/onboarding_img_2.png",
       title: ConstString.onboardingTitle2,
       subTitle: ConstString.onboardingSubTitle2,
     ),
     OnboardingModel(
-      image: "assets/images/onboarding_img_3.png", // TODO: add asset
+      image: "assets/images/onboarding_img_3.png",
       title: ConstString.onboardingTitle3,
       subTitle: ConstString.onboardingSubTitle3,
     ),

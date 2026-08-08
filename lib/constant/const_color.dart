@@ -9,6 +9,7 @@ class ConstColor {
   static const tenantIconColor = Color(0xFF16A34A);
   static const contractorIconBg = Color(0xFFFFE4CC);
   static const contractorIconColor = Color(0xFFEA580C);
+  static const screenBackground = Color(0xFFF8FAFC);
 }
 
 
