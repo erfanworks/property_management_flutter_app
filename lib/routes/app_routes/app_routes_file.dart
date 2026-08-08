@@ -7,7 +7,9 @@ import '../../screens/BaseScreen/AuthScreen/PasswordUpdatedScreen/password_updat
 import '../../screens/BaseScreen/AuthScreen/SignInScreen/sign_in_screen.dart';
 import '../../screens/BaseScreen/AuthScreen/SignUpScreen/sign_up_screen.dart';
 import '../../screens/BaseScreen/OnboardScreen/onboarding_screen.dart';
+import '../../screens/BaseScreen/RoleSelectScreen/role_select_screen.dart';
 import '../../screens/BaseScreen/SplashScreen/splash_screen.dart';
+import '../bindings/authBindings.dart';
 import 'app_routes.dart';
 
 List<GetPage> appRouteFile = <GetPage>[
@@ -15,7 +17,8 @@ List<GetPage> appRouteFile = <GetPage>[
 
   ////////////Auth Part////////////
   GetPage(name: AppRoutes.splashScreen,        page: () => const SplashScreen()),
-  GetPage(name: AppRoutes.navBar,        page: () => const NavBar()),
+  GetPage(name: AppRoutes.roleSelectScreen, page: () => RoleSelectScreen()),
+  GetPage(name: AppRoutes.navBar, page: () => NavBar(), binding: AuthBindings()),
   GetPage(name: AppRoutes.onboardingScreen,    page: () => const OnboardingScreen()),
   GetPage(name: AppRoutes.signInScreen, page: () => const SignInScreen()),
   GetPage(name: AppRoutes.forgotPasswordScreen,     page: () => const ForgotPasswordScreen()),

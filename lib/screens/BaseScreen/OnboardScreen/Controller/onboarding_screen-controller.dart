@@ -21,17 +21,17 @@ class OnboardingScreenController extends GetxController {
 
   final List<OnboardingModel> pages = const [
     OnboardingModel(
-      image: "assets/images/onboarding_img.png",
+      image: "assets/images/onboarding_img.png", // TODO: add asset
       title: ConstString.onboardingTitle1,
       subTitle: ConstString.onboardingSubTitle1,
     ),
     OnboardingModel(
-      image: "assets/images/onboarding_img_2.png",
+      image: "assets/images/onboarding_img_2.png", // TODO: add asset
       title: ConstString.onboardingTitle2,
       subTitle: ConstString.onboardingSubTitle2,
     ),
     OnboardingModel(
-      image: "assets/images/onboarding_img_3.png",
+      image: "assets/images/onboarding_img_3.png", // TODO: add asset
       title: ConstString.onboardingTitle3,
       subTitle: ConstString.onboardingSubTitle3,
     ),
@@ -54,11 +54,7 @@ class OnboardingScreenController extends GetxController {
 
   void onSkip() => _goToRoleSelect();
 
-  void _goToRoleSelect() {
-    // TODO: Role Select / Signup screen not built yet.
-    // Get.offAllNamed(AppRoutes.roleSelectScreen);
-    Get.offAllNamed(AppRoutes.signInScreen);
-  }
+  void _goToRoleSelect() => Get.offAllNamed(AppRoutes.roleSelectScreen);
 
   @override
   void onClose() {

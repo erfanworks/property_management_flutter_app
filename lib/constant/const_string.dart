@@ -52,4 +52,13 @@ class ConstString {
   static const emailAddress = 'Email address';
   static const createAccount = 'Create Account';
   static const alreadyHaveAccount = 'Already have an account? ';
+  static const roleSelectTitle = 'Choose Your Role';
+  static const roleSelectSubtitle = 'Select the role that best describes you to get started.';
+  static const landlordRole = 'Landlord';
+  static const landlordRoleSubtitle = 'Manage properties & tenants';
+  static const tenantRole = 'Tenant';
+  static const tenantRoleSubtitle = 'Pay rent & report issues';
+  static const contractorRole = 'Contractor';
+  static const contractorRoleSubtitle = 'Receive & complete jobs';
+  static const enterAs = 'Enter as';
 }

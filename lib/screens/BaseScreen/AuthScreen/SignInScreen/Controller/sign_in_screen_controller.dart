@@ -16,7 +16,7 @@ class SignInScreenController extends GetxController {
     await Future.delayed(const Duration(seconds: 2)); // TODO: replace with Dio API call
     isLoading.value = false;
 
-    // TODO: navigate to role-based home once backend/nav ready
+    // Role was set on Role Select screen (selectedUserRole) -> NavBar reads it to build correct tabs
     Get.offAllNamed(AppRoutes.navBar);
   }
 
