@@ -44,7 +44,7 @@ class ProfileSectionCard extends StatelessWidget {
               title: section.header!,
               textSize: 12.sp,
               fontWeight: FontWeight.w700,
-              textColor: ConstColor.bodyColor,
+              textColor: ConstColor.titleColor,
             ),
             if (section.subtitle != null) ...[
               SizedBox(height: 2.h),
