@@ -6,4 +6,6 @@ class ConstIcons {
   static const messagesTabIcon = 'assets/icons/messages.svg';
   static const profileTabIcon = 'assets/icons/profile.svg';
   static const notificationIcon = 'assets/icons/notification_icon.svg';
+  static const announcementIcon = 'assets/icons/announcement_icon.svg';
+  static const financeIcon = 'assets/icons/finance_icon.svg';
 }

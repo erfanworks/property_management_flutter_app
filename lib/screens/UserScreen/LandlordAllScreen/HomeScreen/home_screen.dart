@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../constant/const_color.dart';
+import '../../../../constant/const_icons.dart';
 import '../../../../constant/const_string.dart';
 import '../../../../routes/app_routes/app_routes.dart';
 import '../../../../widget/BrandHeader/brand_header.dart';
@@ -80,45 +81,76 @@ class _IncomeOverviewCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(20.r),
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [ConstColor.primaryColor, ConstColor.cardGradientEnd],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
-        borderRadius: BorderRadius.circular(16.r),
+        borderRadius: BorderRadius.circular(24.r),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Stack(
         children: [
-          CustomText(
-            title: ConstString.monthlyIncome,
-            textSize: 11.sp,
-            fontWeight: FontWeight.w600,
-            textColor: Colors.white.withAlpha(200),
-            letterSpacing: 0.5,
+          Positioned(
+            top: -45.r,
+            right: -30.r,
+            child: Container(
+              width: 110.r,
+              height: 110.r,
+              decoration: BoxDecoration(color: Colors.white.withAlpha(20), shape: BoxShape.circle),
+            ),
           ),
-          SizedBox(height: 6.h),
-          CustomText(
-            title: '£${data.monthlyIncome.toStringAsFixed(0)}',
-            textSize: 30.sp,
-            fontWeight: FontWeight.w800,
-            textColor: Colors.white,
+          Positioned(
+            right: 18.w,
+            bottom: 67.h,
+            child: Image.asset(
+              'assets/images/home_screen_property.png',
+              height: 70.h,
+              fit: BoxFit.contain,
+            ),
           ),
-          SizedBox(height: 4.h),
-          CustomText(
-            title: 'From ${data.occupiedPropertiesCount} ${ConstString.occupiedPropertiesSuffix}',
-            textSize: 12.sp,
-            textColor: Colors.white.withAlpha(200),
-          ),
-          SizedBox(height: 16.h),
-          Row(
-            children: [
-              _StatColumn(value: '${data.totalProperties}', label: ConstString.properties),
-              _StatColumn(value: '${data.totalTenants}', label: ConstString.tenants),
-              _StatColumn(value: '${data.occupiedPercentage}%', label: ConstString.occupied),
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomText(
+                  title: ConstString.monthlyIncome,
+                  textSize: 11.sp,
+                  fontWeight: FontWeight.w600,
+                  textColor: Colors.white.withAlpha(200),
+                  letterSpacing: 0.6,
+                ),
+                SizedBox(height: 6.h),
+                CustomText(
+                  title: '£${data.monthlyIncome.toStringAsFixed(0).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]},")}',
+                  textSize: 30.sp,
+                  fontWeight: FontWeight.w800,
+                  textColor: Colors.white,
+                ),
+                SizedBox(height: 4.h),
+                CustomText(
+                  title: 'From ${data.occupiedPropertiesCount} ${ConstString.occupiedPropertiesSuffix}',
+                  textSize: 12.sp,
+                  textColor: Colors.white.withAlpha(200),
+                ),
+                SizedBox(height: 14.h),
+                Divider(color: Colors.white.withAlpha(40), thickness: 1),
+                // SizedBox(height: 10.h),
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      _StatColumn(value: '${data.totalProperties}', label: ConstString.properties),
+                      VerticalDivider(color: Colors.white.withAlpha(40), thickness: 1.w, indent: 4.h, endIndent: 4.h),
+                      _StatColumn(value: '${data.totalTenants}', label: ConstString.tenants),
+                      VerticalDivider(color: Colors.white.withAlpha(40), thickness: 1.w, indent: 4.h, endIndent: 4.h),
+                      _StatColumn(value: '${data.occupiedPercentage}%', label: ConstString.occupied),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -137,7 +169,7 @@ class _StatColumn extends StatelessWidget {
       child: Column(
         children: [
           CustomText(title: value, textSize: 16.sp, fontWeight: FontWeight.w700, textColor: Colors.white),
-          SizedBox(height: 2.h),
+          SizedBox(height: 3.h),
           CustomText(title: label, textSize: 11.sp, textColor: Colors.white.withAlpha(200)),
         ],
       ),
@@ -247,9 +279,9 @@ class _QuickActionsRow extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _QuickActionItem(icon: Icons.campaign_rounded, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, label: ConstString.announcement, onTap: () {}),
-          _QuickActionItem(icon: Icons.build_rounded, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, label: ConstString.maintenance, onTap: () {}),
-          _QuickActionItem(icon: Icons.account_balance_wallet_rounded, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, label: ConstString.finance, onTap: () {}),
+          _QuickActionItem(svgPath: ConstIcons.announcementIcon, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, label: ConstString.announcement, onTap: () {}),
+          _QuickActionItem(svgPath: ConstIcons.issuesTabIcon, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, label: ConstString.maintenance, onTap: () {}),
+          _QuickActionItem(svgPath: ConstIcons.financeIcon, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, label: ConstString.finance, onTap: () {}),
         ],
       ),
     );
@@ -257,8 +289,8 @@ class _QuickActionsRow extends StatelessWidget {
 }
 
 class _QuickActionItem extends StatelessWidget {
-  const _QuickActionItem({required this.icon, required this.iconColor, required this.iconBg, required this.label, required this.onTap});
-  final IconData icon;
+  const _QuickActionItem({required this.svgPath, required this.iconColor, required this.iconBg, required this.label, required this.onTap});
+  final String svgPath;
   final Color iconColor;
   final Color iconBg;
   final String label;
@@ -270,7 +302,7 @@ class _QuickActionItem extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          CustomIconBadge(icon: icon, iconColor: iconColor, backgroundColor: iconBg, size: 52, isCircle: false, borderRadius: 14),
+          CustomIconBadge(svgPath: svgPath, iconColor: iconColor, backgroundColor: iconBg, size: 52, isCircle: false, borderRadius: 14),
           SizedBox(height: 6.h),
           CustomText(title: label, textSize: 12.sp, fontWeight: FontWeight.w500, textColor: ConstColor.titleColor),
         ],
