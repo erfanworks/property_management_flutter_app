@@ -1,7 +1,7 @@
 
 class AppRoutes {
   AppRoutes._();
-  //////////////// Auth Part ///////////////////////
+
   static const splashScreen = '/splashScreen';
   static const roleSelectScreen = '/roleSelectScreen';
   static const navBar = '/navBar';
@@ -13,4 +13,6 @@ class AppRoutes {
   static const passwordUpdatedScreen = '/passwordUpdatedScreen';
   static const signUpScreen = '/signUpScreen';
   static const chatDetailScreen = '/chatDetailScreen';
+  static const notificationScreen = '/notificationScreen';
+
 }
