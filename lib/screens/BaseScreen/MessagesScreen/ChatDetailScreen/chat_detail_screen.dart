@@ -28,39 +28,54 @@ class ChatDetailScreen extends StatelessWidget {
               children: [
                 ChatAvatar(isOnline: conversation.isOnline, isGroup: conversation.isGroup, size: 36),
                 SizedBox(width: 8.w),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomText(
-                      title: conversation.title,
-                      textSize: 14.sp,
-                      fontWeight: FontWeight.w700,
-                      textColor: ConstColor.titleColor,
-                    ),
-                    Row(
-                      children: [
-                        if (conversation.isOnline) ...[
-                          Container(
-                            width: 6.w,
-                            height: 6.w,
-                            decoration: const BoxDecoration(color: Color(0xFF22C55E), shape: BoxShape.circle),
-                          ),
-                          SizedBox(width: 4.w),
-                          CustomText(title: 'Online', textSize: 11.sp, textColor: const Color(0xFF22C55E)),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CustomText(
+                        title: conversation.title,
+                        textSize: 14.sp,
+                        fontWeight: FontWeight.w700,
+                        textColor: ConstColor.titleColor,
+                      ),
+                      Row(
+                        children: [
+                          if (conversation.isOnline) ...[
+                            Container(
+                              width: 6.w,
+                              height: 6.w,
+                              decoration: const BoxDecoration(color: Color(0xFF22C55E), shape: BoxShape.circle),
+                            ),
+                            SizedBox(width: 4.w),
+                            CustomText(title: 'Online', textSize: 11.sp, textColor: const Color(0xFF22C55E)),
+                            if (addressLine != null)
+                              CustomText(title: ' · ', textSize: 11.sp, textColor: ConstColor.bodyColor),
+                          ],
                           if (addressLine != null)
-                            CustomText(title: ' · ', textSize: 11.sp, textColor: ConstColor.bodyColor),
+                            CustomText(title: addressLine, textSize: 11.sp, textColor: ConstColor.bodyColor),
                         ],
-                        if (addressLine != null)
-                          CustomText(title: addressLine, textSize: 11.sp, textColor: ConstColor.bodyColor),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
             actions: [
-              SizedBox(width: 8.w),
+              InkWell(
+                onTap: controller.onCall,
+                child: Container(
+                  width: 36.w,
+                  height: 36.w,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF1F5F9),
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Icon(Icons.call_outlined, size: 18.sp, color: ConstColor.titleColor),
+                ),
+              ),
+              SizedBox(width: 6.w),
               InkWell(
                 onTap: controller.onChatOptions,
                 child: Container(

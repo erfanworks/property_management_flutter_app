@@ -5,4 +5,5 @@ class ConstIcons {
   static const jobsTabIcon = 'assets/icons/jobs_icon.svg';
   static const messagesTabIcon = 'assets/icons/messages.svg';
   static const profileTabIcon = 'assets/icons/profile.svg';
+  static const notificationIcon = 'assets/icons/notification_icon.svg';
 }

@@ -61,4 +61,27 @@ class ConstString {
   static const contractorRole = 'Contractor';
   static const contractorRoleSubtitle = 'Receive & complete jobs';
   static const enterAs = 'Enter as';
+  static const homeAppTagline = 'Manage. Track. Grow.';
+  static const monthlyIncome = 'MONTHLY INCOME';
+  static const occupiedPropertiesSuffix = 'occupied properties';
+  static const properties = 'Properties';
+  static const tenants = 'Tenants';
+  static const occupied = 'Occupied';
+  static const financialOverview = 'Financial Overview';
+  static const collected = 'Collected';
+  static const paid = 'Paid';
+  static const pending = 'Pending';
+  static const overdue = 'Overdue';
+  static const announcement = 'Announcement';
+  static const maintenance = 'Maintenance';
+  static const finance = 'Finance';
+  static const needsAttention = 'Needs attention';
+  static const smartReminders = 'Smart Reminders';
+  static const viewAll = 'View all';
+  static const notifications = 'Notifications';
+  static const markAllRead = 'Mark all read';
+  static const all = 'All';
+  static const unread = 'Unread';
+  static const today = 'Today';
+  static const earlier = 'Earlier';
 }

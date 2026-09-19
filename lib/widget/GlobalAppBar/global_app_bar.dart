@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../constant/const_color.dart';
+import '../../constant/const_icons.dart';
 import '../text/custom_text.dart';
 
 //=========Global App Bar=========//
@@ -64,9 +66,11 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: leading ??
           (showBack
               ? Padding(
-            padding: EdgeInsets.only(left: 16.w),
-            child: _BackButton(onBack: onBack),
-          )
+                  padding: EdgeInsets.only(left: 16.w),
+                  child: Center(
+                    child: _BackButton(onBack: onBack),
+                  ),
+                )
               : null),
       leadingWidth: showBack || leading != null ? 56.w : 0,
 
@@ -168,8 +172,12 @@ class AppBarBell extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Icon(Icons.notifications_outlined,
-              size: 26.sp, color: ConstColor.titleColor),
+          SvgPicture.asset(
+            ConstIcons.notificationIcon,
+            width: 26.sp,
+            height: 26.sp,
+            colorFilter: ColorFilter.mode(ConstColor.titleColor, BlendMode.srcIn),
+          ),
           if (badgeCount > 0)
             Positioned(
               top: -2,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:imusa04_landlord_app/screens/UserScreen/LandlordAllScreen/HomeScreen/home_screen.dart';
 import '../../../../constant/const_icons.dart';
 import '../../../../utils/app_role.dart';
 import '../../../../utils/log_print.dart';
@@ -34,7 +35,7 @@ class NavbarController extends GetxController {
           ConstIcons.profileTabIcon,
         ];
         pages = const [
-          ComingSoonPlaceholder(label: 'Home'),
+          HomeScreen(),
           ComingSoonPlaceholder(label: 'Properties'),
           MessagesListScreen(),
           ProfileScreen(),
