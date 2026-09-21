@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../constant/const_color.dart';
-import '../../constant/const_icons.dart';
-import '../text/custom_text.dart';
+import '../../../../../constant/const_color.dart';
+import '../../../../../constant/const_icons.dart';
+import '../../../../../widget/text/custom_text.dart';
 
 /// GlobalAppBar centerWidget — reused across every role's main tab screens.
 class BrandHeader extends StatelessWidget {
