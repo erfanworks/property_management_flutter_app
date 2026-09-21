@@ -13,6 +13,7 @@ class CustomDropdownField<T> extends StatelessWidget {
     required this.items,
     required this.onChanged,
     this.hintText = 'Select',
+    this.backgroundColor,
   });
 
   final String? label;
@@ -21,6 +22,7 @@ class CustomDropdownField<T> extends StatelessWidget {
   final List<DropdownMenuItem<T>> items;
   final ValueChanged<T?> onChanged;
   final String hintText;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class CustomDropdownField<T> extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           decoration: BoxDecoration(
+            color: backgroundColor,
             border: Border.all(color: ConstColor.bodyColor),
             borderRadius: BorderRadius.circular(12.r),
           ),

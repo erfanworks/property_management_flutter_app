@@ -29,6 +29,7 @@ class CreateAnnouncementScreen extends GetView<AnnouncementController> {
             CustomDropdownField<PropertyModel>(
               label: ConstString.property,
               labelIcon: Icons.apartment_rounded,
+              backgroundColor: Colors.white,
               value: controller.selectedProperty.value,
               hintText: ConstString.selectProperty,
               items: controller.properties
@@ -101,11 +102,13 @@ class CreateAnnouncementScreen extends GetView<AnnouncementController> {
             SizedBox(height: 16.h),
             CustomTextFormField(
               fromTitle: ConstString.noticeTitle,
+              backgroundColor: Colors.white,
               textController: controller.titleController,
               hintText: CustomText(title: ConstString.noticeTitleHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
             ),
             CustomTextFormField(
               fromTitle: ConstString.message,
+              backgroundColor: Colors.white,
               textController: controller.messageController,
               hintText: CustomText(title: ConstString.messageHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
               maxLine: 4,
@@ -119,7 +122,10 @@ class CreateAnnouncementScreen extends GetView<AnnouncementController> {
               child: Container(
                 width: double.infinity,
                 height: 90.h,
-                decoration: BoxDecoration(border: Border.all(color: ConstColor.bodyColor), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(color: ConstColor.bodyColor),
+                    borderRadius: BorderRadius.circular(12.r)),
                 child: controller.pickedImagePath.value != null
                     ? ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
