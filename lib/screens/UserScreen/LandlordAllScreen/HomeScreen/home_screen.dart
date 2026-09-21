@@ -6,9 +6,9 @@ import '../../../../constant/const_color.dart';
 import '../../../../constant/const_icons.dart';
 import '../../../../constant/const_string.dart';
 import '../../../../routes/app_routes/app_routes.dart';
-import '../../../../widget/BrandHeader/brand_header.dart';
+import 'widget/brand_header.dart';
 import '../../../../widget/CustomIconBadge/custom_icon_badge.dart';
-import '../../../../widget/CustomSectionHeader/custom_section_header.dart';
+import 'widget/custom_section_header.dart';
 import '../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../widget/text/custom_text.dart';
 import 'controller/home_controller.dart';
@@ -389,7 +389,7 @@ class _QuickActionsRow extends StatelessWidget {
                 iconColor: ConstColor.contractorIconColor,
                 iconBg: ConstColor.contractorIconBg,
                 label: ConstString.maintenance,
-                onTap: () {},
+                onTap: () => Get.toNamed(AppRoutes.maintenanceListScreen),
               ),
             ),
             VerticalDivider(
