@@ -43,7 +43,7 @@ class MainApp extends StatelessWidget {
           defaultTransition: Transition.fadeIn,
           transitionDuration: const Duration(milliseconds: 200),
           getPages: appRouteFile,
-          initialRoute: AppRoutes.roleSelectScreen,
+          initialRoute: AppRoutes.navBar,
         );
       },
     );
