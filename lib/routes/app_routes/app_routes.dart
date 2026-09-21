@@ -17,4 +17,8 @@ class AppRoutes {
   static const announcementListScreen = '/announcementListScreen';
   static const announcementDetailScreen = '/announcementDetailScreen';
   static const createAnnouncementScreen = '/createAnnouncementScreen';
+  static const maintenanceListScreen = '/maintenanceListScreen';
+  static const maintenanceIssueDetailScreen = '/maintenanceIssueDetailScreen';
+  static const logIssueScreen = '/logIssueScreen';
+  static const assignContractorScreen = '/assignContractorScreen';
 }

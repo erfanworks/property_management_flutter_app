@@ -19,6 +19,11 @@ import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_det
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_list_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/controller/announcement_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/create_announcement_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Maintenance/assign_contractor_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Maintenance/controller/maintenance_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Maintenance/log_issue_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Maintenance/maintenance_issue_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Maintenance/maintenance_list_screen.dart';
 import '../bindings/authBindings.dart';
 import 'app_routes.dart';
 
@@ -70,4 +75,12 @@ List<GetPage> appRouteFile = <GetPage>[
   ),
   GetPage(name: AppRoutes.announcementDetailScreen, page: () => const AnnouncementDetailScreen()),
   GetPage(name: AppRoutes.createAnnouncementScreen, page: () => const CreateAnnouncementScreen()),
+  GetPage(
+    name: AppRoutes.maintenanceListScreen,
+    page: () => const MaintenanceListScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => MaintenanceController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.maintenanceIssueDetailScreen, page: () => const MaintenanceIssueDetailScreen()),
+  GetPage(name: AppRoutes.logIssueScreen, page: () => const LogIssueScreen()),
+  GetPage(name: AppRoutes.assignContractorScreen, page: () => const AssignContractorScreen()),
 ];
