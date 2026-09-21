@@ -14,5 +14,7 @@ class AppRoutes {
   static const signUpScreen = '/signUpScreen';
   static const chatDetailScreen = '/chatDetailScreen';
   static const notificationScreen = '/notificationScreen';
-
+  static const announcementListScreen = '/announcementListScreen';
+  static const announcementDetailScreen = '/announcementDetailScreen';
+  static const createAnnouncementScreen = '/createAnnouncementScreen';
 }

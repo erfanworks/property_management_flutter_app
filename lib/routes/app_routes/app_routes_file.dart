@@ -15,6 +15,10 @@ import '../../screens/BaseScreen/NotificationScreen/notification_screen.dart';
 import '../../screens/BaseScreen/OnboardScreen/onboarding_screen.dart';
 import '../../screens/BaseScreen/RoleSelectScreen/role_select_screen.dart';
 import '../../screens/BaseScreen/SplashScreen/splash_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_list_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Announcement/controller/announcement_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Announcement/create_announcement_screen.dart';
 import '../bindings/authBindings.dart';
 import 'app_routes.dart';
 
@@ -58,4 +62,12 @@ List<GetPage> appRouteFile = <GetPage>[
     page: () => const NotificationScreen(),
     binding: BindingsBuilder(() => Get.lazyPut(() => NotificationController())),
   ),
+  // app_routes_file.dart — GetPage list e add koro
+  GetPage(
+    name: AppRoutes.announcementListScreen,
+    page: () => const AnnouncementListScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => AnnouncementController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.announcementDetailScreen, page: () => const AnnouncementDetailScreen()),
+  GetPage(name: AppRoutes.createAnnouncementScreen, page: () => const CreateAnnouncementScreen()),
 ];
