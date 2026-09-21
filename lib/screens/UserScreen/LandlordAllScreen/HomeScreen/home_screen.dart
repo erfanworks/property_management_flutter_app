@@ -24,7 +24,11 @@ class HomeScreen extends GetView<HomeController> {
       appBar: GlobalAppBar(
         showBack: false,
         leading: IconButton(
-          icon: Icon(Icons.menu_rounded, color: ConstColor.titleColor, size: 24.sp),
+          icon: Icon(
+            Icons.menu_rounded,
+            color: ConstColor.titleColor,
+            size: 24.sp,
+          ),
           onPressed: () {}, // TODO: open drawer
         ),
         centerWidget: BrandHeader(
@@ -32,11 +36,14 @@ class HomeScreen extends GetView<HomeController> {
           tagline: ConstString.homeAppTagline,
         ),
         actions: [
-          AppBarBell(onTap: () => Get.toNamed(AppRoutes.notificationScreen), badgeCount: 0),
+          AppBarBell(
+            onTap: () => Get.toNamed(AppRoutes.notificationScreen),
+            badgeCount: 0,
+          ),
         ],
       ),
       body: Obx(
-            () => ListView(
+        () => ListView(
           padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 24.h),
           children: [
             _IncomeOverviewCard(data: controller.incomeOverview.value),
@@ -48,7 +55,7 @@ class HomeScreen extends GetView<HomeController> {
             CustomSectionHeader(title: ConstString.needsAttention),
             SizedBox(height: 10.h),
             ...controller.attentionItems.map(
-                  (item) => Padding(
+              (item) => Padding(
                 padding: EdgeInsets.only(bottom: 10.h),
                 child: _AttentionTile(data: item),
               ),
@@ -61,7 +68,7 @@ class HomeScreen extends GetView<HomeController> {
             ),
             SizedBox(height: 10.h),
             ...controller.reminders.map(
-                  (item) => Padding(
+              (item) => Padding(
                 padding: EdgeInsets.only(bottom: 10.h),
                 child: _ReminderTile(data: item),
               ),
@@ -75,6 +82,7 @@ class HomeScreen extends GetView<HomeController> {
 
 class _IncomeOverviewCard extends StatelessWidget {
   const _IncomeOverviewCard({required this.data});
+
   final IncomeOverviewModel data;
 
   @override
@@ -98,7 +106,10 @@ class _IncomeOverviewCard extends StatelessWidget {
             child: Container(
               width: 110.r,
               height: 110.r,
-              decoration: BoxDecoration(color: Colors.white.withAlpha(20), shape: BoxShape.circle),
+              decoration: BoxDecoration(
+                color: Colors.white.withAlpha(20),
+                shape: BoxShape.circle,
+              ),
             ),
           ),
           Positioned(
@@ -124,14 +135,16 @@ class _IncomeOverviewCard extends StatelessWidget {
                 ),
                 SizedBox(height: 6.h),
                 CustomText(
-                  title: '£${data.monthlyIncome.toStringAsFixed(0).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]},")}',
+                  title:
+                      '£${data.monthlyIncome.toStringAsFixed(0).replaceAllMapped(RegExp(r"(\d{1,3})(?=(\d{3})+(?!\d))"), (Match m) => "${m[1]},")}',
                   textSize: 30.sp,
                   fontWeight: FontWeight.w800,
                   textColor: Colors.white,
                 ),
                 SizedBox(height: 4.h),
                 CustomText(
-                  title: 'From ${data.occupiedPropertiesCount} ${ConstString.occupiedPropertiesSuffix}',
+                  title:
+                      'From ${data.occupiedPropertiesCount} ${ConstString.occupiedPropertiesSuffix}',
                   textSize: 12.sp,
                   textColor: Colors.white.withAlpha(200),
                 ),
@@ -141,11 +154,30 @@ class _IncomeOverviewCard extends StatelessWidget {
                 IntrinsicHeight(
                   child: Row(
                     children: [
-                      _StatColumn(value: '${data.totalProperties}', label: ConstString.properties),
-                      VerticalDivider(color: Colors.white.withAlpha(40), thickness: 1.w, indent: 4.h, endIndent: 4.h),
-                      _StatColumn(value: '${data.totalTenants}', label: ConstString.tenants),
-                      VerticalDivider(color: Colors.white.withAlpha(40), thickness: 1.w, indent: 4.h, endIndent: 4.h),
-                      _StatColumn(value: '${data.occupiedPercentage}%', label: ConstString.occupied),
+                      _StatColumn(
+                        value: '${data.totalProperties}',
+                        label: ConstString.properties,
+                      ),
+                      VerticalDivider(
+                        color: Colors.white.withAlpha(40),
+                        thickness: 1.w,
+                        indent: 4.h,
+                        endIndent: 4.h,
+                      ),
+                      _StatColumn(
+                        value: '${data.totalTenants}',
+                        label: ConstString.tenants,
+                      ),
+                      VerticalDivider(
+                        color: Colors.white.withAlpha(40),
+                        thickness: 1.w,
+                        indent: 4.h,
+                        endIndent: 4.h,
+                      ),
+                      _StatColumn(
+                        value: '${data.occupiedPercentage}%',
+                        label: ConstString.occupied,
+                      ),
                     ],
                   ),
                 ),
@@ -160,6 +192,7 @@ class _IncomeOverviewCard extends StatelessWidget {
 
 class _StatColumn extends StatelessWidget {
   const _StatColumn({required this.value, required this.label});
+
   final String value;
   final String label;
 
@@ -168,9 +201,18 @@ class _StatColumn extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          CustomText(title: value, textSize: 16.sp, fontWeight: FontWeight.w700, textColor: Colors.white),
+          CustomText(
+            title: value,
+            textSize: 16.sp,
+            fontWeight: FontWeight.w700,
+            textColor: Colors.white,
+          ),
           SizedBox(height: 3.h),
-          CustomText(title: label, textSize: 11.sp, textColor: Colors.white.withAlpha(200)),
+          CustomText(
+            title: label,
+            textSize: 11.sp,
+            textColor: Colors.white.withAlpha(200),
+          ),
         ],
       ),
     );
@@ -179,6 +221,7 @@ class _StatColumn extends StatelessWidget {
 
 class _FinancialOverviewCard extends StatelessWidget {
   const _FinancialOverviewCard({required this.data});
+
   final FinancialOverviewModel data;
 
   @override
@@ -216,14 +259,25 @@ class _FinancialOverviewCard extends StatelessWidget {
                         value: data.collectedPercentage / 100,
                         strokeWidth: 6.r,
                         backgroundColor: ConstColor.dividerColor,
-                        valueColor: AlwaysStoppedAnimation(ConstColor.tenantIconColor),
+                        valueColor: AlwaysStoppedAnimation(
+                          ConstColor.tenantIconColor,
+                        ),
                       ),
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        CustomText(title: '${data.collectedPercentage}%', textSize: 16.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
-                        CustomText(title: ConstString.collected, textSize: 10.sp, textColor: ConstColor.bodyColor),
+                        CustomText(
+                          title: '${data.collectedPercentage}%',
+                          textSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          textColor: ConstColor.titleColor,
+                        ),
+                        CustomText(
+                          title: ConstString.collected,
+                          textSize: 10.sp,
+                          textColor: ConstColor.bodyColor,
+                        ),
                       ],
                     ),
                   ],
@@ -233,11 +287,23 @@ class _FinancialOverviewCard extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
-                    _LegendRow(color: ConstColor.tenantIconColor, label: ConstString.paid, amount: data.paidAmount),
+                    _LegendRow(
+                      color: ConstColor.tenantIconColor,
+                      label: ConstString.paid,
+                      amount: data.paidAmount,
+                    ),
                     SizedBox(height: 8.h),
-                    _LegendRow(color: ConstColor.contractorIconColor, label: ConstString.pending, amount: data.pendingAmount),
+                    _LegendRow(
+                      color: ConstColor.contractorIconColor,
+                      label: ConstString.pending,
+                      amount: data.pendingAmount,
+                    ),
                     SizedBox(height: 8.h),
-                    _LegendRow(color: ConstColor.errorColor, label: ConstString.overdue, amount: data.overdueAmount),
+                    _LegendRow(
+                      color: ConstColor.errorColor,
+                      label: ConstString.overdue,
+                      amount: data.overdueAmount,
+                    ),
                   ],
                 ),
               ),
@@ -250,7 +316,12 @@ class _FinancialOverviewCard extends StatelessWidget {
 }
 
 class _LegendRow extends StatelessWidget {
-  const _LegendRow({required this.color, required this.label, required this.amount});
+  const _LegendRow({
+    required this.color,
+    required this.label,
+    required this.amount,
+  });
+
   final Color color;
   final String label;
   final double amount;
@@ -259,10 +330,25 @@ class _LegendRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(width: 8.r, height: 8.r, decoration: BoxDecoration(color: color, shape: BoxShape.circle)),
+        Container(
+          width: 8.r,
+          height: 8.r,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
         SizedBox(width: 8.w),
-        Expanded(child: CustomText(title: label, textSize: 13.sp, textColor: ConstColor.titleColor)),
-        CustomText(title: '£${amount.toStringAsFixed(0)}', textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor),
+        Expanded(
+          child: CustomText(
+            title: label,
+            textSize: 13.sp,
+            textColor: ConstColor.titleColor,
+          ),
+        ),
+        CustomText(
+          title: '£${amount.toStringAsFixed(0)}',
+          textSize: 13.sp,
+          fontWeight: FontWeight.w600,
+          textColor: ConstColor.titleColor,
+        ),
       ],
     );
   }
@@ -275,15 +361,52 @@ class _QuickActionsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.h),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
       child: IntrinsicHeight(
         child: Row(
           children: [
-            Expanded(child: _QuickActionItem(svgPath: ConstIcons.announcementIcon, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, label: ConstString.announcement, onTap: () {})),
-            VerticalDivider(color: ConstColor.dividerColor, thickness: 1.w, indent: 2.h, endIndent: 2.h),
-            Expanded(child: _QuickActionItem(svgPath: ConstIcons.issuesTabIcon, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, label: ConstString.maintenance, onTap: () {})),
-            VerticalDivider(color: ConstColor.dividerColor, thickness: 1.w, indent: 2.h, endIndent: 2.h),
-            Expanded(child: _QuickActionItem(svgPath: ConstIcons.financeIcon, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, label: ConstString.finance, onTap: () {})),
+            Expanded(
+              child: _QuickActionItem(
+                svgPath: ConstIcons.announcementIcon,
+                iconColor: ConstColor.purpleColor,
+                iconBg: ConstColor.purpleBg,
+                label: ConstString.announcement,
+                onTap: () => Get.toNamed(AppRoutes.announcementListScreen),
+              ),
+            ),
+            VerticalDivider(
+              color: ConstColor.dividerColor,
+              thickness: 1.w,
+              indent: 2.h,
+              endIndent: 2.h,
+            ),
+            Expanded(
+              child: _QuickActionItem(
+                svgPath: ConstIcons.issuesTabIcon,
+                iconColor: ConstColor.contractorIconColor,
+                iconBg: ConstColor.contractorIconBg,
+                label: ConstString.maintenance,
+                onTap: () {},
+              ),
+            ),
+            VerticalDivider(
+              color: ConstColor.dividerColor,
+              thickness: 1.w,
+              indent: 2.h,
+              endIndent: 2.h,
+            ),
+            Expanded(
+              child: _QuickActionItem(
+                svgPath: ConstIcons.financeIcon,
+                iconColor: ConstColor.primaryColor,
+                iconBg: ConstColor.infoBg,
+                label: ConstString.finance,
+                onTap: () {},
+              ),
+            ),
           ],
         ),
       ),
@@ -292,7 +415,14 @@ class _QuickActionsRow extends StatelessWidget {
 }
 
 class _QuickActionItem extends StatelessWidget {
-  const _QuickActionItem({required this.svgPath, required this.iconColor, required this.iconBg, required this.label, required this.onTap});
+  const _QuickActionItem({
+    required this.svgPath,
+    required this.iconColor,
+    required this.iconBg,
+    required this.label,
+    required this.onTap,
+  });
+
   final String svgPath;
   final Color iconColor;
   final Color iconBg;
@@ -305,9 +435,21 @@ class _QuickActionItem extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          CustomIconBadge(svgPath: svgPath, iconColor: iconColor, backgroundColor: iconBg, size: 52, isCircle: false, borderRadius: 14),
+          CustomIconBadge(
+            svgPath: svgPath,
+            iconColor: iconColor,
+            backgroundColor: iconBg,
+            size: 52,
+            isCircle: false,
+            borderRadius: 14,
+          ),
           SizedBox(height: 6.h),
-          CustomText(title: label, textSize: 12.sp, fontWeight: FontWeight.w500, textColor: ConstColor.titleColor),
+          CustomText(
+            title: label,
+            textSize: 12.sp,
+            fontWeight: FontWeight.w500,
+            textColor: ConstColor.titleColor,
+          ),
         ],
       ),
     );
@@ -316,28 +458,54 @@ class _QuickActionItem extends StatelessWidget {
 
 class _AttentionTile extends StatelessWidget {
   const _AttentionTile({required this.data});
+
   final AttentionItemModel data;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(12.r),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14.r),
+      ),
       child: Row(
         children: [
-          CustomIconBadge(icon: data.icon, iconColor: data.iconColor, backgroundColor: data.iconBg, size: 42, isCircle: false, borderRadius: 12),
+          CustomIconBadge(
+            icon: data.icon,
+            iconColor: data.iconColor,
+            backgroundColor: data.iconBg,
+            size: 42,
+            isCircle: false,
+            borderRadius: 12,
+          ),
           SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(title: data.title, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor, maxLine: 1),
+                CustomText(
+                  title: data.title,
+                  textSize: 13.sp,
+                  fontWeight: FontWeight.w600,
+                  textColor: ConstColor.titleColor,
+                  maxLine: 1,
+                ),
                 SizedBox(height: 2.h),
-                CustomText(title: data.subtitle, textSize: 12.sp, textColor: ConstColor.bodyColor, maxLine: 1),
+                CustomText(
+                  title: data.subtitle,
+                  textSize: 12.sp,
+                  textColor: ConstColor.bodyColor,
+                  maxLine: 1,
+                ),
               ],
             ),
           ),
-          Icon(Icons.chevron_right_rounded, color: ConstColor.bodyColor, size: 20.sp),
+          Icon(
+            Icons.chevron_right_rounded,
+            color: ConstColor.bodyColor,
+            size: 20.sp,
+          ),
         ],
       ),
     );
@@ -346,6 +514,7 @@ class _AttentionTile extends StatelessWidget {
 
 class _ReminderTile extends StatelessWidget {
   const _ReminderTile({required this.data});
+
   final ReminderItemModel data;
 
   @override
@@ -355,23 +524,45 @@ class _ReminderTile extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14.r),
-        border: Border(left: BorderSide(color: data.iconColor, width: 3.w)),
+        border: Border(
+          left: BorderSide(color: data.iconColor, width: 3.w),
+        ),
       ),
       child: Row(
         children: [
-          CustomIconBadge(icon: data.icon, iconColor: data.iconColor, backgroundColor: data.iconBg, size: 40),
+          CustomIconBadge(
+            icon: data.icon,
+            iconColor: data.iconColor,
+            backgroundColor: data.iconBg,
+            size: 40,
+          ),
           SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomText(title: data.title, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor, maxLine: 1),
+                CustomText(
+                  title: data.title,
+                  textSize: 13.sp,
+                  fontWeight: FontWeight.w600,
+                  textColor: ConstColor.titleColor,
+                  maxLine: 1,
+                ),
                 SizedBox(height: 2.h),
-                CustomText(title: data.subtitle, textSize: 12.sp, textColor: ConstColor.bodyColor, maxLine: 1),
+                CustomText(
+                  title: data.subtitle,
+                  textSize: 12.sp,
+                  textColor: ConstColor.bodyColor,
+                  maxLine: 1,
+                ),
               ],
             ),
           ),
-          Icon(Icons.chevron_right_rounded, color: ConstColor.bodyColor, size: 20.sp),
+          Icon(
+            Icons.chevron_right_rounded,
+            color: ConstColor.bodyColor,
+            size: 20.sp,
+          ),
         ],
       ),
     );
