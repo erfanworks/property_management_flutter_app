@@ -276,13 +276,16 @@ class _QuickActionsRow extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16.h),
       decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _QuickActionItem(svgPath: ConstIcons.announcementIcon, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, label: ConstString.announcement, onTap: () {}),
-          _QuickActionItem(svgPath: ConstIcons.issuesTabIcon, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, label: ConstString.maintenance, onTap: () {}),
-          _QuickActionItem(svgPath: ConstIcons.financeIcon, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, label: ConstString.finance, onTap: () {}),
-        ],
+      child: IntrinsicHeight(
+        child: Row(
+          children: [
+            Expanded(child: _QuickActionItem(svgPath: ConstIcons.announcementIcon, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, label: ConstString.announcement, onTap: () {})),
+            VerticalDivider(color: ConstColor.dividerColor, thickness: 1.w, indent: 2.h, endIndent: 2.h),
+            Expanded(child: _QuickActionItem(svgPath: ConstIcons.issuesTabIcon, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, label: ConstString.maintenance, onTap: () {})),
+            VerticalDivider(color: ConstColor.dividerColor, thickness: 1.w, indent: 2.h, endIndent: 2.h),
+            Expanded(child: _QuickActionItem(svgPath: ConstIcons.financeIcon, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, label: ConstString.finance, onTap: () {})),
+          ],
+        ),
       ),
     );
   }
