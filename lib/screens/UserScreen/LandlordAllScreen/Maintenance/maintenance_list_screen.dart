@@ -40,6 +40,7 @@ class MaintenanceListScreen extends GetView<MaintenanceController> {
         child: Column(
           children: [
             CustomTextFormField(
+              backgroundColor: Colors.white,
               hintText: CustomText(title: ConstString.searchIssuesHint, textColor: ConstColor.bodyColor, textSize: 13.sp),
               prefixIcon: Icon(Icons.search_rounded, color: ConstColor.bodyColor, size: 20.sp),
               onChanged: controller.applySearch,
@@ -50,6 +51,7 @@ class MaintenanceListScreen extends GetView<MaintenanceController> {
                 children: [
                   Expanded(
                     child: CustomDropdownField<MaintenancePropertyModel?>(
+                      backgroundColor: Colors.white,
                       value: controller.filterProperty.value,
                       hintText: ConstString.allProperties,
                       items: [
@@ -62,6 +64,7 @@ class MaintenanceListScreen extends GetView<MaintenanceController> {
                   SizedBox(width: 10.w),
                   Expanded(
                     child: CustomDropdownField<MaintenanceUnitModel?>(
+                      backgroundColor: Colors.white,
                       value: controller.filterUnit.value,
                       hintText: ConstString.allUnit,
                       items: [
