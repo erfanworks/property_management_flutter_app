@@ -29,6 +29,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
           padding: EdgeInsets.all(16.r),
           children: [
             CustomDropdownField<MaintenancePropertyModel>(
+              backgroundColor: Colors.white,
               label: ConstString.property,
               value: controller.formProperty.value,
               hintText: ConstString.selectProperty,
@@ -49,6 +50,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
             SizedBox(height: 16.h),
             if (controller.formLocationType.value == IssueLocationType.unit)
               CustomDropdownField<MaintenanceUnitModel>(
+                backgroundColor: Colors.white,
                 label: ConstString.unit,
                 value: controller.formUnit.value,
                 hintText: ConstString.selectProperty,
@@ -59,6 +61,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
               )
             else
               CustomDropdownField<String>(
+                backgroundColor: Colors.white,
                 label: ConstString.communalArea,
                 value: controller.formCommunalArea.value,
                 hintText: ConstString.communalArea,
@@ -67,11 +70,13 @@ class LogIssueScreen extends GetView<MaintenanceController> {
               ),
             SizedBox(height: 16.h),
             CustomTextFormField(
+              backgroundColor: Colors.white,
               fromTitle: ConstString.issueTitle,
               textController: controller.titleController,
               hintText: CustomText(title: ConstString.issueTitleHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
             ),
             CustomDropdownField<IssueTypeModel>(
+              backgroundColor: Colors.white,
               label: ConstString.issueType,
               value: controller.formIssueType.value,
               hintText: ConstString.issueType,
@@ -92,6 +97,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
             ),
             SizedBox(height: 16.h),
             CustomTextFormField(
+              backgroundColor: Colors.white,
               fromTitle: ConstString.description,
               textController: controller.descriptionController,
               hintText: CustomText(title: ConstString.descriptionHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
@@ -106,7 +112,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
               child: Container(
                 width: double.infinity,
                 height: 90.h,
-                decoration: BoxDecoration(border: Border.all(color: ConstColor.bodyColor), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: Colors.white, border: Border.all(color: ConstColor.bodyColor), borderRadius: BorderRadius.circular(12.r)),
                 child: controller.pickedMediaPath.value != null
                     ? ClipRRect(
                   borderRadius: BorderRadius.circular(12.r),
