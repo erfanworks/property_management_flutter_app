@@ -7,6 +7,7 @@ import '../../../../../routes/app_routes/app_routes.dart';
 import '../../../../../widget/ConfirmActionDialog/confirm_action_dialog.dart';
 import '../../../../../widget/ReceiptPdfGenerator/receipt_pdf_generator.dart';
 import '../../../../../widget/app_snack_bar/app_snack_bar.dart';
+import '../../../../../models/property_model.dart';
 import '../model/finance_reference_model.dart';
 import '../model/finance_summary_model.dart';
 import '../model/transaction_model.dart';
@@ -18,13 +19,13 @@ class FinanceController extends GetxController {
   final RxBool showPaidTab = false.obs; // false = Outstanding, true = Paid
   final Rx<TransactionModel?> selectedTransaction = Rx<TransactionModel?>(null);
 
-  final RxList<FinancePropertyModel> financeProperties = <FinancePropertyModel>[].obs;
+  final RxList<PropertyModel> financeProperties = <PropertyModel>[].obs;
 
   final Rx<ChargeType?> chargeType = Rx<ChargeType?>(null);
   final Rx<BilledTo> billedTo = BilledTo.allTenantsOnUnit.obs;
-  final Rx<FinancePropertyModel?> chargeProperty = Rx<FinancePropertyModel?>(null);
-  final Rx<UnitOptionModel?> chargeUnit = Rx<UnitOptionModel?>(null);
-  final Rx<TenantOptionModel?> chargeTenant = Rx<TenantOptionModel?>(null);
+  final Rx<PropertyModel?> chargeProperty = Rx<PropertyModel?>(null);
+  final Rx<UnitModel?> chargeUnit = Rx<UnitModel?>(null);
+  final Rx<TenantModel?> chargeTenant = Rx<TenantModel?>(null);
   final chargeAmountController = TextEditingController();
   final Rx<DateTime?> chargeDueDate = Rx<DateTime?>(null);
   final chargeDescriptionController = TextEditingController();
@@ -125,15 +126,15 @@ class FinanceController extends GetxController {
   // TODO: Replace with Dio API call once backend endpoint is ready.
   Future<void> fetchFinanceProperties() async {
     financeProperties.value = const [
-      FinancePropertyModel(id: 'p1', name: '12 Park Lane', units: [
-        UnitOptionModel(id: 'u1', label: 'Flat 1 · 1st Floor (occupied)', tenants: [TenantOptionModel(id: 't1', name: 'Sarah Johnson · Flat 2A')]),
-        UnitOptionModel(id: 'u2', label: 'Flat 2A · 2nd Floor (occupied)', tenants: [TenantOptionModel(id: 't2', name: 'Priya Sharma · Flat 2B')]),
-        UnitOptionModel(id: 'u3', label: 'Flat 2B · 2nd Floor (occupied)'),
-        UnitOptionModel(id: 'u4', label: 'Flat 3 · 3rd Floor (occupied)'),
+      PropertyModel(id: 'p1', name: '12 Park Lane', units: [
+        UnitModel(id: 'u1', label: 'Flat 1 · 1st Floor (occupied)', tenants: [TenantModel(id: 't1', name: 'Sarah Johnson · Flat 2A')]),
+        UnitModel(id: 'u2', label: 'Flat 2A · 2nd Floor (occupied)', tenants: [TenantModel(id: 't2', name: 'Priya Sharma · Flat 2B')]),
+        UnitModel(id: 'u3', label: 'Flat 2B · 2nd Floor (occupied)'),
+        UnitModel(id: 'u4', label: 'Flat 3 · 3rd Floor (occupied)'),
       ]),
-      FinancePropertyModel(id: 'p2', name: '88 King Street'),
-      FinancePropertyModel(id: 'p3', name: '45 Queens Road'),
-      FinancePropertyModel(id: 'p4', name: '15 Victoria Ave'),
+      PropertyModel(id: 'p2', name: '88 King Street'),
+      PropertyModel(id: 'p3', name: '45 Queens Road'),
+      PropertyModel(id: 'p4', name: '15 Victoria Ave'),
     ];
   }
 

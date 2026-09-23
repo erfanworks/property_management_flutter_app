@@ -11,9 +11,9 @@ import '../../../../widget/CustomDropdownField/custom_dropdown_field.dart';
 import '../../../../widget/CustomTextFormField/custom_text_form_field.dart';
 import '../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../widget/text/custom_text.dart';
+import '../../../../models/property_model.dart';
 import 'controller/maintenance_controller.dart';
 import 'model/maintenance_issue_model.dart';
-import 'model/maintenance_property_model.dart';
 
 class MaintenanceListScreen extends GetView<MaintenanceController> {
   const MaintenanceListScreen({super.key});
@@ -50,7 +50,7 @@ class MaintenanceListScreen extends GetView<MaintenanceController> {
                   () => Row(
                 children: [
                   Expanded(
-                    child: CustomDropdownField<MaintenancePropertyModel?>(
+                    child: CustomDropdownField<PropertyModel?>(
                       backgroundColor: Colors.white,
                       value: controller.filterProperty.value,
                       hintText: ConstString.allProperties,
@@ -63,7 +63,7 @@ class MaintenanceListScreen extends GetView<MaintenanceController> {
                   ),
                   SizedBox(width: 10.w),
                   Expanded(
-                    child: CustomDropdownField<MaintenanceUnitModel?>(
+                    child: CustomDropdownField<UnitModel?>(
                       backgroundColor: Colors.white,
                       value: controller.filterUnit.value,
                       hintText: ConstString.allUnit,

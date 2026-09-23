@@ -12,7 +12,7 @@ import '../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../widget/text/custom_text.dart';
 import 'controller/announcement_controller.dart';
 import 'model/announcement_model.dart';
-import 'model/property_model.dart';
+import '../../../../models/property_model.dart';
 
 class CreateAnnouncementScreen extends GetView<AnnouncementController> {
   const CreateAnnouncementScreen({super.key});
@@ -86,13 +86,13 @@ class CreateAnnouncementScreen extends GetView<AnnouncementController> {
                 ],
               ),
               SizedBox(height: 6.h),
-              ...controller.selectedProperty.value!.flats.map(
-                    (flat) => Padding(
+              ...controller.selectedProperty.value!.units.map(
+                (unit) => Padding(
                   padding: EdgeInsets.only(bottom: 8.h),
                   child: _FlatSelectableTile(
-                    data: flat,
-                    isSelected: controller.selectedFlatIds.contains(flat.id),
-                    onTap: () => controller.toggleFlat(flat.id),
+                    data: unit,
+                    isSelected: controller.selectedFlatIds.contains(unit.id),
+                    onTap: () => controller.toggleFlat(unit.id),
                   ),
                 ),
               ),
@@ -204,7 +204,7 @@ class _AudienceOptionCard extends StatelessWidget {
 
 class _FlatSelectableTile extends StatelessWidget {
   const _FlatSelectableTile({required this.data, required this.isSelected, required this.onTap});
-  final FlatModel data;
+  final UnitModel data;
   final bool isSelected;
   final VoidCallback onTap;
 
@@ -225,15 +225,15 @@ class _FlatSelectableTile extends StatelessWidget {
             SizedBox(width: 4.w),
             ClipRRect(
               borderRadius: BorderRadius.circular(20.r),
-              child: AppImage(url: data.tenantAvatarUrl, width: 32.r, height: 32.r, fit: BoxFit.cover),
+              child: AppImage(url: data.primaryTenantAvatar, width: 32.r, height: 32.r, fit: BoxFit.cover),
             ),
             SizedBox(width: 10.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(title: data.name, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor),
-                  CustomText(title: data.statusLabel, textSize: 11.sp, textColor: ConstColor.bodyColor),
+                  CustomText(title: data.label, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor),
+                  CustomText(title: data.occupancyLabel, textSize: 11.sp, textColor: ConstColor.bodyColor),
                 ],
               ),
             ),

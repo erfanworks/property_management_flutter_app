@@ -11,6 +11,7 @@ import '../../../../widget/CustomElevatedButton/custom_elevated_button.dart';
 import '../../../../widget/CustomTextFormField/custom_text_form_field.dart';
 import '../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../widget/text/custom_text.dart';
+import '../../../../models/property_model.dart';
 import 'controller/finance_controller.dart';
 import 'model/finance_reference_model.dart';
 
@@ -49,7 +50,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               },
             ),
             SizedBox(height: 14.h),
-            CustomDropdownField<FinancePropertyModel>(
+            CustomDropdownField<PropertyModel>(
               label: ConstString.property,
               value: controller.chargeProperty.value,
               hintText: ConstString.selectProperty,
@@ -62,7 +63,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               },
             ),
             SizedBox(height: 14.h),
-            CustomDropdownField<UnitOptionModel>(
+            CustomDropdownField<UnitModel>(
               label: ConstString.unit,
               value: controller.chargeUnit.value,
               hintText: ConstString.unit,
@@ -75,7 +76,7 @@ class AddChargeScreen extends GetView<FinanceController> {
             ),
             if (controller.billedTo.value == BilledTo.specificTenant) ...[
               SizedBox(height: 14.h),
-              CustomDropdownField<TenantOptionModel>(
+              CustomDropdownField<TenantModel>(
                 label: ConstString.tenant,
                 value: controller.chargeTenant.value,
                 hintText: ConstString.chooseOneTenant,

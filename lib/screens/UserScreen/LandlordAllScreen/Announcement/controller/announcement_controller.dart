@@ -6,7 +6,7 @@ import '../../../../../routes/app_routes/app_routes.dart';
 import '../../../../../widget/MediaPickerBottomSheet/media_picker_bottom_sheet.dart';
 import '../../../../../widget/app_snack_bar/app_snack_bar.dart';
 import '../model/announcement_model.dart';
-import '../model/property_model.dart';
+import '../../../../../models/property_model.dart';
 
 class AnnouncementController extends GetxController {
   // ── List ──
@@ -27,7 +27,7 @@ class AnnouncementController extends GetxController {
   final canSendRx = false.obs;
 
   bool get allFlatsSelected =>
-      selectedProperty.value != null && selectedFlatIds.length == selectedProperty.value!.flats.length;
+      selectedProperty.value != null && selectedFlatIds.length == selectedProperty.value!.units.length;
 
   @override
   void onInit() {
@@ -86,15 +86,15 @@ class AnnouncementController extends GetxController {
   // TODO: Replace with Dio API call once backend endpoint is ready.
   Future<void> fetchProperties() async {
     properties.value = const [
-      PropertyModel(id: 'p1', name: '12 Park Lane', flats: [
-        FlatModel(id: 'f1', name: 'Flat 1A', statusLabel: 'Vacant — no tenants notified'),
-        FlatModel(id: 'f2', name: 'Flat 1B', statusLabel: 'Vacant — no tenants notified'),
-        FlatModel(id: 'f3', name: 'Flat 2A', statusLabel: '1 active tenant'),
-        FlatModel(id: 'f4', name: 'Flat 2B', statusLabel: '1 active tenant'),
+      PropertyModel(id: 'p1', name: '12 Park Lane', units: [
+        UnitModel(id: 'f1', label: 'Flat 1A'),
+        UnitModel(id: 'f2', label: 'Flat 1B'),
+        UnitModel(id: 'f3', label: 'Flat 2A', tenants: [TenantModel(id: 't-f3', name: 'Tenant')]),
+        UnitModel(id: 'f4', label: 'Flat 2B', tenants: [TenantModel(id: 't-f4', name: 'Tenant')]),
       ]),
-      PropertyModel(id: 'p2', name: '45 Queens Road', flats: []),
-      PropertyModel(id: 'p3', name: '88 King Street', flats: []),
-      PropertyModel(id: 'p4', name: '15 Victoria Ave', flats: []),
+      PropertyModel(id: 'p2', name: '45 Queens Road'),
+      PropertyModel(id: 'p3', name: '88 King Street'),
+      PropertyModel(id: 'p4', name: '15 Victoria Ave'),
     ];
   }
 
@@ -123,8 +123,12 @@ class AnnouncementController extends GetxController {
   }
 
   void toggleAllFlats() {
-    final flats = selectedProperty.value?.flats ?? [];
-    selectedFlatIds.value = allFlatsSelected ? {} : flats.map((f) => f.id).toSet();
+    final units = selectedProperty.value?.units ?? [];
+    if (allFlatsSelected) {
+      selectedFlatIds.clear();
+    } else {
+      selectedFlatIds.assignAll(units.map((u) => u.id));
+    }
   }
 
   Future<void> pickImage() async {
@@ -150,10 +154,10 @@ class AnnouncementController extends GetxController {
 
     final sentToLabel = audience.value == AnnouncementAudience.entireProperty
         ? 'All flats in ${selectedProperty.value!.name}'
-        : selectedProperty.value!.flats
-        .where((f) => selectedFlatIds.contains(f.id))
-        .map((f) => f.name)
-        .join(', ');
+        : selectedProperty.value!.units
+            .where((u) => selectedFlatIds.contains(u.id))
+            .map((u) => u.label)
+            .join(', ');
 
     announcements.insert(
       0,

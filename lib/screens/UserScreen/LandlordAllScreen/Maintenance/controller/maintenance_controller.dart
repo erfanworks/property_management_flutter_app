@@ -8,6 +8,7 @@ import '../../../../../routes/app_routes/app_routes.dart';
 import '../../../../../widget/ConfirmActionDialog/confirm_action_dialog.dart';
 import '../../../../../widget/MediaPickerBottomSheet/media_picker_bottom_sheet.dart';
 import '../../../../../widget/app_snack_bar/app_snack_bar.dart';
+import '../../../../../models/property_model.dart';
 import '../model/contractor_model.dart';
 import '../model/maintenance_issue_model.dart';
 import '../model/maintenance_property_model.dart';
@@ -16,23 +17,23 @@ class MaintenanceController extends GetxController {
   // ── List ──
   final RxList<MaintenanceIssueModel> issues = <MaintenanceIssueModel>[].obs;
   final RxString searchQuery = ''.obs;
-  final Rx<MaintenancePropertyModel?> filterProperty = Rx<MaintenancePropertyModel?>(null);
-  final Rx<MaintenanceUnitModel?> filterUnit = Rx<MaintenanceUnitModel?>(null);
+  final Rx<PropertyModel?> filterProperty = Rx<PropertyModel?>(null);
+  final Rx<UnitModel?> filterUnit = Rx<UnitModel?>(null);
   final RxInt selectedFilterTabIndex = 0.obs;
 
   // ── Detail ──
   final Rx<MaintenanceIssueModel?> selectedIssue = Rx<MaintenanceIssueModel?>(null);
 
   // ── Reference data ──
-  final RxList<MaintenancePropertyModel> properties = <MaintenancePropertyModel>[].obs;
+  final RxList<PropertyModel> properties = <PropertyModel>[].obs;
   final RxList<IssueTypeModel> issueTypes = <IssueTypeModel>[].obs;
   final RxList<ContractorModel> contractors = <ContractorModel>[].obs;
   static const List<String> communalAreas = ['Hallway', 'Stairwell', 'Roof', 'Garden', 'Boiler room', 'Other'];
 
   // ── Log Issue form ──
-  final Rx<MaintenancePropertyModel?> formProperty = Rx<MaintenancePropertyModel?>(null);
+  final Rx<PropertyModel?> formProperty = Rx<PropertyModel?>(null);
   final Rx<IssueLocationType> formLocationType = IssueLocationType.unit.obs;
-  final Rx<MaintenanceUnitModel?> formUnit = Rx<MaintenanceUnitModel?>(null);
+  final Rx<UnitModel?> formUnit = Rx<UnitModel?>(null);
   final Rx<String?> formCommunalArea = Rx<String?>(null);
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
@@ -90,15 +91,15 @@ class MaintenanceController extends GetxController {
   // TODO: Replace with Dio API call once backend endpoint is ready.
   Future<void> fetchProperties() async {
     properties.value = const [
-      MaintenancePropertyModel(id: 'p1', name: '12 Park Lane', units: [
-        MaintenanceUnitModel(id: 'u1', label: 'Flat 1 · 1st Floor (occupied)'),
-        MaintenanceUnitModel(id: 'u2', label: 'Flat 2A · 2nd Floor (occupied)'),
-        MaintenanceUnitModel(id: 'u3', label: 'Flat 2B · 2nd Floor (occupied)'),
-        MaintenanceUnitModel(id: 'u4', label: 'Flat 3 · 3rd Floor (occupied)'),
+      PropertyModel(id: 'p1', name: '12 Park Lane', units: [
+        UnitModel(id: 'u1', label: 'Flat 1 · 1st Floor (occupied)'),
+        UnitModel(id: 'u2', label: 'Flat 2A · 2nd Floor (occupied)'),
+        UnitModel(id: 'u3', label: 'Flat 2B · 2nd Floor (occupied)'),
+        UnitModel(id: 'u4', label: 'Flat 3 · 3rd Floor (occupied)'),
       ]),
-      MaintenancePropertyModel(id: 'p2', name: '45 Queens Road', units: []),
-      MaintenancePropertyModel(id: 'p3', name: '88 King Street', units: []),
-      MaintenancePropertyModel(id: 'p4', name: '15 Victoria Ave', units: []),
+      PropertyModel(id: 'p2', name: '45 Queens Road'),
+      PropertyModel(id: 'p3', name: '88 King Street'),
+      PropertyModel(id: 'p4', name: '15 Victoria Ave'),
     ];
   }
 
@@ -168,11 +169,11 @@ class MaintenanceController extends GetxController {
   }
 
   void applySearch(String value) => searchQuery.value = value;
-  void selectFilterProperty(MaintenancePropertyModel? property) {
+  void selectFilterProperty(PropertyModel? property) {
     filterProperty.value = property;
     filterUnit.value = null;
   }
-  void selectFilterUnit(MaintenanceUnitModel? unit) => filterUnit.value = unit;
+  void selectFilterUnit(UnitModel? unit) => filterUnit.value = unit;
   void selectFilterTab(int index) => selectedFilterTabIndex.value = index;
 
   void openDetail(MaintenanceIssueModel issue) {

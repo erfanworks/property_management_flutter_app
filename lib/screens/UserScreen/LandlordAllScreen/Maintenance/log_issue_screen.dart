@@ -12,6 +12,7 @@ import '../../../../widget/CustomElevatedButton/custom_elevated_button.dart';
 import '../../../../widget/CustomTextFormField/custom_text_form_field.dart';
 import '../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../widget/text/custom_text.dart';
+import '../../../../models/property_model.dart';
 import 'controller/maintenance_controller.dart';
 import 'model/maintenance_issue_model.dart';
 import 'model/maintenance_property_model.dart';
@@ -28,7 +29,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
             () => ListView(
           padding: EdgeInsets.all(16.r),
           children: [
-            CustomDropdownField<MaintenancePropertyModel>(
+            CustomDropdownField<PropertyModel>(
               backgroundColor: Colors.white,
               label: ConstString.property,
               value: controller.formProperty.value,
@@ -49,7 +50,7 @@ class LogIssueScreen extends GetView<MaintenanceController> {
             ),
             SizedBox(height: 16.h),
             if (controller.formLocationType.value == IssueLocationType.unit)
-              CustomDropdownField<MaintenanceUnitModel>(
+              CustomDropdownField<UnitModel>(
                 backgroundColor: Colors.white,
                 label: ConstString.unit,
                 value: controller.formUnit.value,
