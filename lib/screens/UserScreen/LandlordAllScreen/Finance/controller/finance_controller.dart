@@ -196,12 +196,58 @@ class FinanceController extends GetxController {
   void clearReminderSelection() => selectedReminderIds.clear();
 
   Future<void> pickPaymentReceivedDate(BuildContext context) async {
-    final picked = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2020), lastDate: DateTime(2100));
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: ConstColor.primaryColor,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: ConstColor.titleColor,
+            ),
+            dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
+            datePickerTheme: const DatePickerThemeData(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
     if (picked != null) paymentReceivedOn.value = picked;
   }
 
   Future<void> pickChargeDueDate(BuildContext context) async {
-    final picked = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2020), lastDate: DateTime(2100));
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime(2100),
+      builder: (context, child) {
+        return Theme(
+          data: Theme.of(context).copyWith(
+            colorScheme: ColorScheme.light(
+              primary: ConstColor.primaryColor,
+              onPrimary: Colors.white,
+              surface: Colors.white,
+              onSurface: ConstColor.titleColor,
+            ),
+            dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
+            datePickerTheme: const DatePickerThemeData(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+            ),
+          ),
+          child: child!,
+        );
+      },
+    );
     if (picked != null) chargeDueDate.value = picked;
   }
 

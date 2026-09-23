@@ -33,22 +33,36 @@ class CustomDropdownField<T> extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 6.h),
             child: Row(
-              mainAxisSize: MainAxisSize.min,
               children: [
                 if (labelIcon != null) ...[
                   Icon(labelIcon, size: 15.sp, color: ConstColor.titleColor),
                   SizedBox(width: 6.w),
                 ],
-                CustomText(title: label!, textSize: 14.sp, fontWeight: FontWeight.w600),
+                Expanded(
+                  child: CustomText(
+                    title: label!,
+                    textSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                    maxLine: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
           ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12.w),
           decoration: BoxDecoration(
-            color: backgroundColor,
-            border: Border.all(color: ConstColor.bodyColor),
+            color: backgroundColor ?? Colors.white,
+            border: Border.all(color: ConstColor.dividerColor),
             borderRadius: BorderRadius.circular(12.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.02),
+                blurRadius: 4,
+                offset: const Offset(0, 1),
+              ),
+            ],
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<T>(

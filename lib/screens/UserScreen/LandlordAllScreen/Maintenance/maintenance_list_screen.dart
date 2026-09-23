@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:imusa04_landlord_app/screens/UserScreen/LandlordAllScreen/Maintenance/widget/custom_status_chip.dart';
+import 'package:imusa04_landlord_app/widget/CustomStatusChip/custom_status_chip.dart';
 import '../../../../constant/const_color.dart';
 import '../../../../constant/const_string.dart';
 import '../../../../routes/app_routes/app_routes.dart';

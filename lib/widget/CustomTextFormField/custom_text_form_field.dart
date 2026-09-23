@@ -6,6 +6,7 @@ import '../text/custom_text.dart';
 class CustomTextFormField extends StatelessWidget {
   final bool numeric;
   final String fromTitle;
+  final double? titleTextSize;
   final Widget? titleIcon;
   final Widget? hintText;
   final int maxLine;
@@ -33,6 +34,7 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     this.fromTitle = "",
+    this.titleTextSize,
     this.titleIcon,
     this.numeric = false,
     this.hintText,
@@ -71,19 +73,22 @@ class CustomTextFormField extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 6.h),
               child: Row(
-                mainAxisSize: MainAxisSize.min,
                 children: [
                   if (titleIcon != null) ...[
                     titleIcon!,
                     SizedBox(width: 8.w),
                   ],
                   if (fromTitle.isNotEmpty)
-                    CustomText(
-                      top: 0,
-                      bottom: 0,
-                      title: fromTitle,
-                      textSize: 14.sp,
-                      fontWeight: FontWeight.w600,
+                    Expanded(
+                      child: CustomText(
+                        top: 0,
+                        bottom: 0,
+                        title: fromTitle,
+                        textSize: titleTextSize?.sp ?? 13.sp,
+                        fontWeight: FontWeight.w600,
+                        maxLine: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                 ],
               ),
@@ -130,8 +135,8 @@ class CustomTextFormField extends StatelessWidget {
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
               ),
-              filled: backgroundColor != null,
-              fillColor: backgroundColor,
+              filled: true,
+              fillColor: backgroundColor ?? Colors.white,
               hoverColor: ConstColor.primaryColor,
               label: hintText,
               hintStyle: TextStyle(
@@ -147,27 +152,27 @@ class CustomTextFormField extends StatelessWidget {
 
               // --- Borders ---
               enabledBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: ConstColor.bodyColor),
+                borderSide: const BorderSide(color: ConstColor.dividerColor),
                 borderRadius: BorderRadius.circular((borderRadius ?? 12).r),
               ),
               border: OutlineInputBorder(
-                borderSide: const BorderSide(color: ConstColor.bodyColor),
+                borderSide: const BorderSide(color: ConstColor.dividerColor),
                 borderRadius: BorderRadius.circular((borderRadius ?? 12).r),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: ConstColor.titleColor),
+                borderSide: const BorderSide(color: ConstColor.primaryColor),
                 borderRadius: BorderRadius.circular((borderRadius ?? 12).r),
               ),
               errorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: ConstColor.bodyColor),
+                borderSide: const BorderSide(color: ConstColor.errorColor),
                 borderRadius: BorderRadius.circular((borderRadius ?? 12).r),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderSide: const BorderSide(color: ConstColor.bodyColor),
+                borderSide: const BorderSide(color: ConstColor.errorColor),
                 borderRadius: BorderRadius.circular((borderRadius ?? 12).r),
               ),
               errorStyle: TextStyle(
-                color: ConstColor.bodyColor,
+                color: ConstColor.errorColor,
                 fontSize: 11.sp,
               ),
             ),

@@ -21,4 +21,13 @@ class AppRoutes {
   static const maintenanceIssueDetailScreen = '/maintenanceIssueDetailScreen';
   static const logIssueScreen = '/logIssueScreen';
   static const assignContractorScreen = '/assignContractorScreen';
+  static const financeScreen = '/financeScreen';
+  static const transactionHistoryScreen = '/transactionHistoryScreen';
+  static const paymentRecordDetailScreen = '/paymentRecordDetailScreen';
+  static const rentDueDetailScreen = '/rentDueDetailScreen';
+  static const addChargeScreen = '/addChargeScreen';
+  static const paymentReminderScreen = '/paymentReminderScreen';
+  static const recordPaymentSelectScreen = '/recordPaymentSelectScreen';
+  static const recordPaymentDetailsScreen = '/recordPaymentDetailsScreen';
+  static const paymentSuccessScreen = '/paymentSuccessScreen';
 }

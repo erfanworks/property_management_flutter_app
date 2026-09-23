@@ -5,12 +5,13 @@ import '../../constant/const_color.dart';
 import '../text/custom_text.dart';
 
 class CustomDateField extends StatelessWidget {
-  const CustomDateField({super.key, this.label, required this.date, required this.onTap, this.hintText = 'mm/dd/yyyy'});
+  const CustomDateField({super.key, this.label, required this.date, required this.onTap, this.hintText = 'mm/dd/yyyy', this.backgroundColor});
 
   final String? label;
   final DateTime? date;
   final VoidCallback onTap;
   final String hintText;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,18 @@ class CustomDateField extends StatelessWidget {
           child: Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 14.h),
-            decoration: BoxDecoration(border: Border.all(color: ConstColor.bodyColor), borderRadius: BorderRadius.circular(12.r)),
+            decoration: BoxDecoration(
+              color: backgroundColor ?? Colors.white,
+              border: Border.all(color: ConstColor.dividerColor),
+              borderRadius: BorderRadius.circular(12.r),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.02),
+                  blurRadius: 4,
+                  offset: const Offset(0, 1),
+                ),
+              ],
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

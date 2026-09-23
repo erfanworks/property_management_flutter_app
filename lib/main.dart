@@ -39,7 +39,14 @@ class MainApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           themeMode: ThemeMode.light,
           navigatorKey: AppLoader.navigatorKey,
-          theme: ThemeData(scaffoldBackgroundColor: Colors.white),
+          theme: ThemeData(
+            scaffoldBackgroundColor: Colors.white,
+            dialogTheme: const DialogThemeData(backgroundColor: Colors.white),
+            datePickerTheme: const DatePickerThemeData(
+              backgroundColor: Colors.white,
+              surfaceTintColor: Colors.transparent,
+            ),
+          ),
           defaultTransition: Transition.fadeIn,
           transitionDuration: const Duration(milliseconds: 200),
           getPages: appRouteFile,

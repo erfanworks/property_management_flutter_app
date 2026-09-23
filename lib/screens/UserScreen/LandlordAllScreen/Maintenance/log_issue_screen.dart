@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:imusa04_landlord_app/screens/UserScreen/LandlordAllScreen/Maintenance/widget/custom_segmented_toggle.dart';
+import 'package:imusa04_landlord_app/widget/CustomSegmentedToggle/custom_segmented_toggle.dart';
 import '../../../../constant/const_color.dart';
 import '../../../../constant/const_string.dart';
 import '../../../../widget/AppImage/app_image.dart';

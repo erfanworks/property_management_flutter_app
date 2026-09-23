@@ -32,6 +32,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               label: ConstString.chargeType,
               value: controller.chargeType.value,
               hintText: ConstString.selectChargeType,
+              backgroundColor: Colors.white,
               items: ChargeType.values.map((c) => DropdownMenuItem(value: c, child: CustomText(title: c.label, textSize: 14.sp))).toList(),
               onChanged: (v) => controller.chargeType.value = v,
             ),
@@ -40,6 +41,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               label: ConstString.whoIsBilled,
               value: controller.billedTo.value,
               hintText: ConstString.whoIsBilled,
+              backgroundColor: Colors.white,
               items: BilledTo.values.map((b) => DropdownMenuItem(value: b, child: CustomText(title: b.label, textSize: 14.sp))).toList(),
               onChanged: (v) {
                 controller.billedTo.value = v!;
@@ -51,6 +53,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               label: ConstString.property,
               value: controller.chargeProperty.value,
               hintText: ConstString.selectProperty,
+              backgroundColor: Colors.white,
               items: controller.financeProperties.map((p) => DropdownMenuItem(value: p, child: CustomText(title: p.name, textSize: 14.sp))).toList(),
               onChanged: (p) {
                 controller.chargeProperty.value = p;
@@ -63,6 +66,7 @@ class AddChargeScreen extends GetView<FinanceController> {
               label: ConstString.unit,
               value: controller.chargeUnit.value,
               hintText: ConstString.unit,
+              backgroundColor: Colors.white,
               items: (controller.chargeProperty.value?.units ?? []).map((u) => DropdownMenuItem(value: u, child: CustomText(title: u.label, textSize: 14.sp, maxLine: 1))).toList(),
               onChanged: (u) {
                 controller.chargeUnit.value = u;
@@ -75,6 +79,7 @@ class AddChargeScreen extends GetView<FinanceController> {
                 label: ConstString.tenant,
                 value: controller.chargeTenant.value,
                 hintText: ConstString.chooseOneTenant,
+                backgroundColor: Colors.white,
                 items: (controller.chargeUnit.value?.tenants ?? []).map((t) => DropdownMenuItem(value: t, child: CustomText(title: t.name, textSize: 14.sp))).toList(),
                 onChanged: (t) => controller.chargeTenant.value = t,
               ),
@@ -85,13 +90,20 @@ class AddChargeScreen extends GetView<FinanceController> {
               textController: controller.chargeAmountController,
               keyboardType: TextInputType.number,
               numeric: true,
+              backgroundColor: Colors.white,
               hintText: CustomText(title: '150', textColor: ConstColor.bodyColor, textSize: 14.sp),
             ),
-            CustomDateField(label: ConstString.dueDate, date: controller.chargeDueDate.value, onTap: () => controller.pickChargeDueDate(context)),
+            CustomDateField(
+              label: ConstString.dueDate,
+              date: controller.chargeDueDate.value,
+              backgroundColor: Colors.white,
+              onTap: () => controller.pickChargeDueDate(context),
+            ),
             SizedBox(height: 14.h),
             CustomTextFormField(
               fromTitle: ConstString.descriptionNotes,
               textController: controller.chargeDescriptionController,
+              backgroundColor: Colors.white,
               hintText: CustomText(title: ConstString.chargeForHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
               maxLine: 4,
               minLines: 4,

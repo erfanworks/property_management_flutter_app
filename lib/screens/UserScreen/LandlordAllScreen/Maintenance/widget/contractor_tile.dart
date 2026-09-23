@@ -6,7 +6,7 @@ import '../../../../../constant/const_string.dart';
 import '../../../../../widget/AppImage/app_image.dart';
 import '../../../../../widget/text/custom_text.dart';
 import '../model/contractor_model.dart';
-import 'custom_status_chip.dart';
+import '../../../../../widget/CustomStatusChip/custom_status_chip.dart';
 
 class ContractorTile extends StatelessWidget {
   const ContractorTile({super.key, required this.data, this.trailing, this.subtitle});

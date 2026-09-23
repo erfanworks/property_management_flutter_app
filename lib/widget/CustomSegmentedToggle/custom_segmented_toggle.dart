@@ -1,8 +1,8 @@
 // lib/common_widget/toggle/custom_segmented_toggle.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../constant/const_color.dart';
-import '../../../../../widget/text/custom_text.dart';
+import '../../constant/const_color.dart';
+import '../text/custom_text.dart';
 
 class SegmentedOption {
   final String label;

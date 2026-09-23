@@ -404,7 +404,7 @@ class _QuickActionsRow extends StatelessWidget {
                 iconColor: ConstColor.primaryColor,
                 iconBg: ConstColor.infoBg,
                 label: ConstString.finance,
-                onTap: () {},
+                onTap: () => Get.toNamed(AppRoutes.financeScreen),
               ),
             ),
           ],

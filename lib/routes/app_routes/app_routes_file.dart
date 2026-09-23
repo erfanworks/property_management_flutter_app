@@ -19,6 +19,16 @@ import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_det
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/announcement_list_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/controller/announcement_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Announcement/create_announcement_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/add_charge_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/controller/finance_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/finance_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/payment_record_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/payment_reminder_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/payment_success_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/record_payment_details_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/record_payment_select_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/rent_due_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/Finance/transaction_history_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Maintenance/assign_contractor_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Maintenance/controller/maintenance_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/Maintenance/log_issue_screen.dart';
@@ -83,4 +93,18 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.maintenanceIssueDetailScreen, page: () => const MaintenanceIssueDetailScreen()),
   GetPage(name: AppRoutes.logIssueScreen, page: () => const LogIssueScreen()),
   GetPage(name: AppRoutes.assignContractorScreen, page: () => const AssignContractorScreen()),
+  // app_routes_file.dart
+  GetPage(
+    name: AppRoutes.financeScreen,
+    page: () => const FinanceScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => FinanceController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.transactionHistoryScreen, page: () => const TransactionHistoryScreen()),
+  GetPage(name: AppRoutes.paymentRecordDetailScreen, page: () => const PaymentRecordDetailScreen()),
+  GetPage(name: AppRoutes.rentDueDetailScreen, page: () => const RentDueDetailScreen()),
+  GetPage(name: AppRoutes.addChargeScreen, page: () => const AddChargeScreen()),
+  GetPage(name: AppRoutes.paymentReminderScreen, page: () => const PaymentReminderScreen()),
+  GetPage(name: AppRoutes.recordPaymentSelectScreen, page: () => const RecordPaymentSelectScreen()),
+  GetPage(name: AppRoutes.recordPaymentDetailsScreen, page: () => const RecordPaymentDetailsScreen()),
+  GetPage(name: AppRoutes.paymentSuccessScreen, page: () => const PaymentSuccessScreen()),
 ];
