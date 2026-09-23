@@ -113,12 +113,15 @@ class _PaymentSelectTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor),
+          color: isSelected ? ConstColor.primaryColor.withAlpha(12) : Colors.white,
+          border: Border.all(
+            color: isSelected ? ConstColor.primaryColor.withAlpha(180) : ConstColor.dividerColor,
+            width: 1.w,
+          ),
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.03),
+              color: Colors.black.withAlpha(8),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -138,7 +141,14 @@ class _PaymentSelectTile extends StatelessWidget {
             ),
             CustomText(title: '£${data.amount.toStringAsFixed(0)}', textSize: 14.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
             SizedBox(width: 8.w),
-            Checkbox(value: isSelected, onChanged: (_) => onTap(), activeColor: ConstColor.primaryColor, materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
+            Checkbox(
+              value: isSelected,
+              onChanged: (_) => onTap(),
+              activeColor: ConstColor.primaryColor,
+              side: BorderSide(color: ConstColor.dividerColor, width: 1.2.w),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.r)),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
           ],
         ),
       ),

@@ -147,12 +147,15 @@ class _ReminderTenantTile extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(10.r),
         decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor),
+          color: isSelected ? ConstColor.primaryColor.withAlpha(12) : Colors.white,
+          border: Border.all(
+            color: isSelected ? ConstColor.primaryColor.withAlpha(180) : ConstColor.dividerColor,
+            width: 1.w,
+          ),
           borderRadius: BorderRadius.circular(12.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.03),
+              color: Colors.black.withAlpha(8),
               blurRadius: 6,
               offset: const Offset(0, 2),
             ),
@@ -160,7 +163,14 @@ class _ReminderTenantTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Checkbox(value: isSelected, onChanged: (_) => onTap(), activeColor: ConstColor.primaryColor, materialTapTargetSize: MaterialTapTargetSize.shrinkWrap),
+            Checkbox(
+              value: isSelected,
+              onChanged: (_) => onTap(),
+              activeColor: ConstColor.primaryColor,
+              side: BorderSide(color: ConstColor.dividerColor, width: 1.2.w),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.r)),
+              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
             SizedBox(width: 4.w),
             ClipRRect(borderRadius: BorderRadius.circular(20.r), child: AppImage(url: data.tenantAvatarUrl, width: 36.r, height: 36.r, fit: BoxFit.cover)),
             SizedBox(width: 10.w),
