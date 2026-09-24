@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:imusa04_landlord_app/screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/widget/action_sheet.dart';
-import '../../../../../constant/const_color.dart';
-import '../../../../../constant/const_string.dart';
-import '../../../../../widget/AppImage/app_image.dart';
-import '../../../../../widget/GlobalAppBar/global_app_bar.dart';
-import 'controller/property_detail_controller.dart';
+import '../../../../../../constant/const_color.dart';
+import '../../../../../../constant/const_string.dart';
+import '../../../../../../widget/AppImage/app_image.dart';
+import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
+import '../controller/property_detail_controller.dart';
 
 class FloorPlansScreen extends GetView<PropertyDetailController> {
   const FloorPlansScreen({super.key});
