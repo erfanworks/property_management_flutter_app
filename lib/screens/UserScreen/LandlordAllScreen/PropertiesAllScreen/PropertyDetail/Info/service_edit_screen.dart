@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
-import '../../../../../constant/const_color.dart';
-import '../../../../../constant/const_string.dart';
-import '../../../../../widget/AppImage/app_image.dart';
-import '../../../../../widget/CustomDropdownField/custom_dropdown_field.dart';
-import '../../../../../widget/CustomElevatedButton/custom_elevated_button.dart';
-import '../../../../../widget/CustomTextFormField/custom_text_form_field.dart';
-import '../../../../../widget/GlobalAppBar/global_app_bar.dart';
-import '../../../../../widget/text/custom_text.dart';
-import 'controller/property_detail_controller.dart';
-import 'model/service_model.dart';
+import '../../../../../../constant/const_color.dart';
+import '../../../../../../constant/const_string.dart';
+import '../../../../../../widget/AppImage/app_image.dart';
+import '../../../../../../widget/CustomDropdownField/custom_dropdown_field.dart';
+import '../../../../../../widget/CustomElevatedButton/custom_elevated_button.dart';
+import '../../../../../../widget/CustomTextFormField/custom_text_form_field.dart';
+import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
+import '../../../../../../widget/text/custom_text.dart';
+import '../controller/property_detail_controller.dart';
+import '../model/service_model.dart';
 
 class ServiceEditScreen extends GetView<PropertyDetailController> {
   const ServiceEditScreen({super.key});
