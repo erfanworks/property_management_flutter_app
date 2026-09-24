@@ -146,7 +146,7 @@ class CustomTextFormField extends StatelessWidget {
                 fontFamily: 'Poppins',
               ),
               contentPadding: EdgeInsets.symmetric(
-                vertical: 14.h,
+                vertical: 12.h,
                 horizontal: 12.w,
               ),
 
