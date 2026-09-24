@@ -29,21 +29,48 @@ class NavListTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(12.r),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14.r),
+          border: Border.all(color: ConstColor.bodyColor.withAlpha(50)),
+        ),
         child: Row(
           children: [
-            CustomIconBadge(icon: icon, iconColor: iconColor, backgroundColor: iconBg, size: 38, isCircle: false, borderRadius: 10),
+            CustomIconBadge(
+              icon: icon,
+              iconColor: iconColor,
+              backgroundColor: iconBg,
+              size: 38,
+              isCircle: false,
+              borderRadius: 10,
+            ),
             SizedBox(width: 12.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(title: title, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor, maxLine: 1),
-                  if (subtitle != null) CustomText(title: subtitle!, textSize: 11.sp, textColor: ConstColor.bodyColor, maxLine: 1),
+                  CustomText(
+                    title: title,
+                    textSize: 13.sp,
+                    fontWeight: FontWeight.w600,
+                    textColor: ConstColor.titleColor,
+                    maxLine: 1,
+                  ),
+                  if (subtitle != null)
+                    CustomText(
+                      title: subtitle!,
+                      textSize: 11.sp,
+                      textColor: ConstColor.bodyColor,
+                      maxLine: 1,
+                    ),
                 ],
               ),
             ),
-            Icon(Icons.chevron_right_rounded, size: 18.sp, color: ConstColor.bodyColor),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 18.sp,
+              color: ConstColor.bodyColor,
+            ),
           ],
         ),
       ),
