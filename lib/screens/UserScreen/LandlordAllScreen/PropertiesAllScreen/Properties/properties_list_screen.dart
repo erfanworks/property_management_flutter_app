@@ -22,6 +22,7 @@ class PropertiesListScreen extends GetView<PropertiesController> {
       backgroundColor: ConstColor.screenBackground,
       appBar: GlobalAppBar(
         title: ConstString.properties,
+        showBack: false,
         actions: [AppBarTextAction(label: ConstString.addProperty, icon: Icons.add_rounded, onTap: controller.openAddProperty)],
       ),
       body: Obx(
@@ -145,9 +146,9 @@ class _PropertyFilterTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      (filter: PropertiesFilter.all, count: allCount),
-      (filter: PropertiesFilter.occupied, count: occupiedCount),
-      (filter: PropertiesFilter.vacant, count: vacantCount),
+      (filter: PropertiesFilter.all, count: allCount, icon: Icons.apartment_rounded),
+      (filter: PropertiesFilter.occupied, count: occupiedCount, icon: Icons.people_outline_rounded),
+      (filter: PropertiesFilter.vacant, count: vacantCount, icon: Icons.home_outlined),
     ];
     return Row(
       children: tabs.map((tab) {
@@ -157,17 +158,28 @@ class _PropertyFilterTabs extends StatelessWidget {
           child: GestureDetector(
             onTap: () => onChanged(tab.filter),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
               decoration: BoxDecoration(
-                color: isSelected ? ConstColor.primaryColor : Colors.white,
+                color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor.withAlpha(40),
                 borderRadius: BorderRadius.circular(20.r),
                 border: Border.all(color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor),
               ),
-              child: CustomText(
-                title: '${tab.filter.label} (${tab.count})',
-                textSize: 12.sp,
-                fontWeight: FontWeight.w600,
-                textColor: isSelected ? Colors.white : ConstColor.titleColor,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    tab.icon,
+                    size: 14.sp,
+                    color: isSelected ? Colors.white : ConstColor.titleColor,
+                  ),
+                  SizedBox(width: 4.w),
+                  CustomText(
+                    title: '${tab.filter.label} (${tab.count})',
+                    textSize: 12.sp,
+                    fontWeight: FontWeight.w600,
+                    textColor: isSelected ? Colors.white : ConstColor.titleColor,
+                  ),
+                ],
               ),
             ),
           ),
@@ -203,7 +215,7 @@ class _PropertyCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
                 child: data.photoUrls.isNotEmpty
                     ? AppImage(path: data.photoUrls.first, width: 56.r, height: 56.r, fit: BoxFit.cover)
-                    : Container(width: 56.r, height: 56.r, color: ConstColor.dividerColor, child: Icon(Icons.apartment_rounded, color: ConstColor.bodyColor)),
+                    : Container(width: 80.r, height: 86.r, color: ConstColor.dividerColor, child: Icon(Icons.apartment_rounded, color: ConstColor.bodyColor)),
               ),
               SizedBox(width: 12.w),
               Expanded(
