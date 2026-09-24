@@ -66,6 +66,7 @@ class CustomDropdownField<T> extends StatelessWidget {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton<T>(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
               value: value,
               isExpanded: true,
               dropdownColor: Colors.white,
