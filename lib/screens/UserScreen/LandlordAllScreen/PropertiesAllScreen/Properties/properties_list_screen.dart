@@ -214,7 +214,7 @@ class _PropertyCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.r),
                 child: data.photoUrls.isNotEmpty
-                    ? AppImage(path: data.photoUrls.first, width: 56.r, height: 56.r, fit: BoxFit.cover)
+                    ? AppImage(path: data.photoUrls.first, width: 80.r, height: 86.r, fit: BoxFit.cover)
                     : Container(width: 80.r, height: 86.r, color: ConstColor.dividerColor, child: Icon(Icons.apartment_rounded, color: ConstColor.bodyColor)),
               ),
               SizedBox(width: 12.w),

@@ -131,7 +131,11 @@ class _PropertyDetailHeaderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(12.r),
-      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: ConstColor.dividerColor),
+      ),
       child: Column(
         children: [
           Row(
@@ -201,7 +205,11 @@ class _FloorCard extends StatelessWidget {
     return Obx(() {
       final isExpanded = controller.expandedFloors.contains(floor.floorLabel);
       return Container(
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14.r),
+          border: Border.all(color: ConstColor.dividerColor),
+        ),
         child: Column(
           children: [
             GestureDetector(
