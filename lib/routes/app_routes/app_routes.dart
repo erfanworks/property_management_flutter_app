@@ -38,4 +38,21 @@ class AppRoutes {
   static const servicesMetersScreen = '/servicesMetersScreen';
   static const serviceDetailScreen = '/serviceDetailScreen';
   static const serviceEditScreen = '/serviceEditScreen';
+  static const complianceHubScreen = '/complianceHubScreen';
+  static const certificateListScreen = '/certificateListScreen';
+  static const gasCertificateDetailScreen = '/gasCertificateDetailScreen';
+  static const otherDocumentsScreen = '/otherDocumentsScreen';
+  // app_routes.dart
+  static const nidDocumentScreen = '/nidDocumentScreen';
+  static const leaseAgreementScreen = '/leaseAgreementScreen';
+  static const tenantDepositScreen = '/tenantDepositScreen';
+  static const tenantPaymentsHistoryScreen = '/tenantPaymentsHistoryScreen';
+  static const tenantKeysScreen = '/tenantKeysScreen';
+  static const tenantEditKeysScreen = '/tenantEditKeysScreen';
+  static const tenantNotesScreen = '/tenantNotesScreen';
+  static const tenantAddNoteScreen = '/tenantAddNoteScreen';
+  static const tenantDocumentsScreen = '/tenantDocumentsScreen';
+  static const inviteTenantStep1Screen = '/inviteTenantStep1Screen';
+  static const inviteTenantStep2Screen = '/inviteTenantStep2Screen';
+  static const inviteTenantStep3Screen = '/inviteTenantStep3Screen';
 }

@@ -35,14 +35,30 @@ import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/maintenance_issue_detail_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/maintenance_list_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/Properties/property_form_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step1_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step2_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step3_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/certificate_list_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/compliance_hub_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/gas_certificate_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/other_documents_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/lease_agreement_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/nid_document_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_add_note_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_deposit_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_documents_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_edit_keys_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_keys_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_notes_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_payments_history_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/controller/property_detail_controller.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/floor_plans_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/floor_plans_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/property_detail_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/property_photos_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/service_detail_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/service_edit_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/services_meters_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/tenant_details_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/property_photos_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/service_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/service_edit_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/services_meters_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_details_screen.dart';
 import '../bindings/authBindings.dart';
 import 'app_routes.dart';
 
@@ -176,4 +192,21 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.servicesMetersScreen, page: () => const ServicesMetersScreen()),
   GetPage(name: AppRoutes.serviceDetailScreen, page: () => const ServiceDetailScreen()),
   GetPage(name: AppRoutes.serviceEditScreen, page: () => const ServiceEditScreen()),
+  GetPage(name: AppRoutes.complianceHubScreen, page: () => const ComplianceHubScreen()),
+  GetPage(name: AppRoutes.certificateListScreen, page: () => const CertificateListScreen()),
+  GetPage(name: AppRoutes.gasCertificateDetailScreen, page: () => const GasCertificateDetailScreen()),
+  GetPage(name: AppRoutes.otherDocumentsScreen, page: () => const OtherDocumentsScreen()),
+  // app_routes_file.dart
+  GetPage(name: AppRoutes.nidDocumentScreen, page: () => const NidDocumentScreen()),
+  GetPage(name: AppRoutes.leaseAgreementScreen, page: () => const LeaseAgreementScreen()),
+  GetPage(name: AppRoutes.tenantDepositScreen, page: () => const TenantDepositScreen()),
+  GetPage(name: AppRoutes.tenantPaymentsHistoryScreen, page: () => const TenantPaymentsHistoryScreen()),
+  GetPage(name: AppRoutes.tenantKeysScreen, page: () => const TenantKeysScreen()),
+  GetPage(name: AppRoutes.tenantEditKeysScreen, page: () => const TenantEditKeysScreen()),
+  GetPage(name: AppRoutes.tenantNotesScreen, page: () => const TenantNotesScreen()),
+  GetPage(name: AppRoutes.tenantAddNoteScreen, page: () => const TenantAddNoteScreen()),
+  GetPage(name: AppRoutes.tenantDocumentsScreen, page: () => const TenantDocumentsScreen()),
+  GetPage(name: AppRoutes.inviteTenantStep1Screen, page: () => const InviteTenantStep1Screen()),
+  GetPage(name: AppRoutes.inviteTenantStep2Screen, page: () => const InviteTenantStep2Screen()),
+  GetPage(name: AppRoutes.inviteTenantStep3Screen, page: () => const InviteTenantStep3Screen()),
 ];
