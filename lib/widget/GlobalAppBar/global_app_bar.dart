@@ -83,7 +83,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               CustomText(
                 title: title!,
-                textSize: 20.sp,
+                textSize: 18.sp,
                 fontWeight: FontWeight.w700,
                 textColor: titleColor ?? ConstColor.titleColor,
                 maxLine: 1,
