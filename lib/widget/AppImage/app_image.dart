@@ -141,7 +141,7 @@ class _PlaceholderWidget extends StatelessWidget {
       child: const Center(
         child: Icon(
           Icons.image_not_supported_outlined,
-          size: 48,
+          size: 38,
           color: Colors.grey,
         ),
       ),
