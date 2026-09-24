@@ -65,7 +65,7 @@ class PropertyFormScreen extends GetView<PropertiesController> {
                 decoration: BoxDecoration(
                   border: Border.all(color: ConstColor.primaryColor.withAlpha(60)),
                   borderRadius: BorderRadius.circular(12.r),
-                  color: ConstColor.infoBg,
+                  color: ConstColor.infoBg.withAlpha(60),
                 ),
                 child: Column(
                   children: [
