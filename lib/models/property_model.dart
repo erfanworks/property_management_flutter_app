@@ -1,4 +1,3 @@
-// lib/models/property_model.dart — pura file replace koro
 class TenantModel {
   final String id;
   final String name;
@@ -67,6 +66,7 @@ class PropertyModel {
   final CouncilTaxBand? councilTaxBand;
   final String? notes;
   final List<String> photoUrls;
+  final List<String> floorPlanUrls;
   final double? monthlyRent;
   final int? unitsCountOverride;
   final int? occupiedUnitsCountOverride;
@@ -93,6 +93,7 @@ class PropertyModel {
     this.councilTaxBand,
     this.notes,
     this.photoUrls = const [],
+    this.floorPlanUrls = const [],
     this.monthlyRent,
     this.unitsCountOverride,
     this.occupiedUnitsCountOverride,
@@ -124,6 +125,7 @@ class PropertyModel {
     CouncilTaxBand? councilTaxBand,
     String? notes,
     List<String>? photoUrls,
+    List<String>? floorPlanUrls,
     double? monthlyRent,
     int? unitsCountOverride,
     int? occupiedUnitsCountOverride,
@@ -150,6 +152,7 @@ class PropertyModel {
       councilTaxBand: councilTaxBand ?? this.councilTaxBand,
       notes: notes ?? this.notes,
       photoUrls: photoUrls ?? this.photoUrls,
+      floorPlanUrls: floorPlanUrls ?? this.floorPlanUrls,
       monthlyRent: monthlyRent ?? this.monthlyRent,
       unitsCountOverride: unitsCountOverride ?? this.unitsCountOverride,
       occupiedUnitsCountOverride: occupiedUnitsCountOverride ?? this.occupiedUnitsCountOverride,

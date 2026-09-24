@@ -4,6 +4,7 @@ import 'package:imusa04_landlord_app/screens/UserScreen/LandlordAllScreen/HomeTa
 import '../../../../constant/const_icons.dart';
 import '../../../../utils/app_role.dart';
 import '../../../../utils/log_print.dart';
+import '../../../UserScreen/LandlordAllScreen/PropertiesAllScreen/Properties/properties_list_screen.dart';
 import '../../MessagesScreen/MessagesListScreen/messages_screen.dart';
 import '../../ProfileAllScreen/profile_screen.dart';
 import '../widgets/coming_soon_placeholder.dart';
@@ -36,7 +37,7 @@ class NavbarController extends GetxController {
         ];
         pages = const [
           HomeScreen(),
-          ComingSoonPlaceholder(label: 'Properties'),
+          PropertiesListScreen(),
           MessagesListScreen(),
           ProfileScreen(),
         ];

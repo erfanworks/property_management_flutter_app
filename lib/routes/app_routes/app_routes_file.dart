@@ -34,6 +34,15 @@ import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/log_issue_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/maintenance_issue_detail_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Maintenance/maintenance_list_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/Properties/property_form_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/controller/property_detail_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/floor_plans_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/property_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/property_photos_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/service_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/service_edit_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/services_meters_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/tenant_details_screen.dart';
 import '../bindings/authBindings.dart';
 import 'app_routes.dart';
 
@@ -81,30 +90,90 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(
     name: AppRoutes.announcementListScreen,
     page: () => const AnnouncementListScreen(),
-    binding: BindingsBuilder(() => Get.lazyPut(() => AnnouncementController(), fenix: true)),
+    binding: BindingsBuilder(
+      () => Get.lazyPut(() => AnnouncementController(), fenix: true),
+    ),
   ),
-  GetPage(name: AppRoutes.announcementDetailScreen, page: () => const AnnouncementDetailScreen()),
-  GetPage(name: AppRoutes.createAnnouncementScreen, page: () => const CreateAnnouncementScreen()),
+  GetPage(
+    name: AppRoutes.announcementDetailScreen,
+    page: () => const AnnouncementDetailScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.createAnnouncementScreen,
+    page: () => const CreateAnnouncementScreen(),
+  ),
   GetPage(
     name: AppRoutes.maintenanceListScreen,
     page: () => const MaintenanceListScreen(),
-    binding: BindingsBuilder(() => Get.lazyPut(() => MaintenanceController(), fenix: true)),
+    binding: BindingsBuilder(
+      () => Get.lazyPut(() => MaintenanceController(), fenix: true),
+    ),
   ),
-  GetPage(name: AppRoutes.maintenanceIssueDetailScreen, page: () => const MaintenanceIssueDetailScreen()),
+  GetPage(
+    name: AppRoutes.maintenanceIssueDetailScreen,
+    page: () => const MaintenanceIssueDetailScreen(),
+  ),
   GetPage(name: AppRoutes.logIssueScreen, page: () => const LogIssueScreen()),
-  GetPage(name: AppRoutes.assignContractorScreen, page: () => const AssignContractorScreen()),
+  GetPage(
+    name: AppRoutes.assignContractorScreen,
+    page: () => const AssignContractorScreen(),
+  ),
   // app_routes_file.dart
   GetPage(
     name: AppRoutes.financeScreen,
     page: () => const FinanceScreen(),
-    binding: BindingsBuilder(() => Get.lazyPut(() => FinanceController(), fenix: true)),
+    binding: BindingsBuilder(
+      () => Get.lazyPut(() => FinanceController(), fenix: true),
+    ),
   ),
-  GetPage(name: AppRoutes.transactionHistoryScreen, page: () => const TransactionHistoryScreen()),
-  GetPage(name: AppRoutes.paymentRecordDetailScreen, page: () => const PaymentRecordDetailScreen()),
-  GetPage(name: AppRoutes.rentDueDetailScreen, page: () => const RentDueDetailScreen()),
+  GetPage(
+    name: AppRoutes.transactionHistoryScreen,
+    page: () => const TransactionHistoryScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.paymentRecordDetailScreen,
+    page: () => const PaymentRecordDetailScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.rentDueDetailScreen,
+    page: () => const RentDueDetailScreen(),
+  ),
   GetPage(name: AppRoutes.addChargeScreen, page: () => const AddChargeScreen()),
-  GetPage(name: AppRoutes.paymentReminderScreen, page: () => const PaymentReminderScreen()),
-  GetPage(name: AppRoutes.recordPaymentSelectScreen, page: () => const RecordPaymentSelectScreen()),
-  GetPage(name: AppRoutes.recordPaymentDetailsScreen, page: () => const RecordPaymentDetailsScreen()),
-  GetPage(name: AppRoutes.paymentSuccessScreen, page: () => const PaymentSuccessScreen()),
+  GetPage(
+    name: AppRoutes.paymentReminderScreen,
+    page: () => const PaymentReminderScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.recordPaymentSelectScreen,
+    page: () => const RecordPaymentSelectScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.recordPaymentDetailsScreen,
+    page: () => const RecordPaymentDetailsScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.paymentSuccessScreen,
+    page: () => const PaymentSuccessScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.propertyFormScreen,
+    page: () => const PropertyFormScreen(),
+  ),
+  GetPage(
+    name: AppRoutes.propertyDetailScreen,
+    page: () => const PropertyDetailScreen(),
+    binding: BindingsBuilder(
+      () => Get.lazyPut(() => PropertyDetailController(), fenix: true),
+    ),
+  ),
+  GetPage(
+    name: AppRoutes.tenantDetailsScreen,
+    page: () => const TenantDetailsScreen(),
+  ),
+  // app_routes_file.dart
+  GetPage(name: AppRoutes.propertyPhotosScreen, page: () => const PropertyPhotosScreen()),
+  GetPage(name: AppRoutes.floorPlansScreen, page: () => const FloorPlansScreen()),
+  GetPage(name: AppRoutes.servicesMetersScreen, page: () => const ServicesMetersScreen()),
+  GetPage(name: AppRoutes.serviceDetailScreen, page: () => const ServiceDetailScreen()),
+  GetPage(name: AppRoutes.serviceEditScreen, page: () => const ServiceEditScreen()),
 ];

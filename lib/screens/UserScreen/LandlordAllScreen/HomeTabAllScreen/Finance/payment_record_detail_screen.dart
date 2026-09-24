@@ -1,4 +1,4 @@
-// lib/screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Finance/payment_record_detail_screen.dart
+// lib/screens/UserScreen/LandlordAllScreen/Finance/payment_record_detail_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';

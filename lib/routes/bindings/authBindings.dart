@@ -3,6 +3,7 @@ import 'package:get/get_instance/src/bindings_interface.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import '../../screens/BaseScreen/NavBar/controller/navbar_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/HomeScreen/controller/home_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/Properties/controller/properties_controller.dart';
 
 class AuthBindings extends Bindings {
   @override
@@ -10,6 +11,6 @@ class AuthBindings extends Bindings {
     //=========NavBar=========//
     Get.lazyPut(() => NavbarController(), fenix: true);
     Get.lazyPut(() => HomeController());
-
+    Get.lazyPut(() => PropertiesController());
   }
 }

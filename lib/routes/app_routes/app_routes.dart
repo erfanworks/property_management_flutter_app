@@ -30,4 +30,12 @@ class AppRoutes {
   static const recordPaymentSelectScreen = '/recordPaymentSelectScreen';
   static const recordPaymentDetailsScreen = '/recordPaymentDetailsScreen';
   static const paymentSuccessScreen = '/paymentSuccessScreen';
+  static const propertyFormScreen = '/propertyFormScreen';
+  static const propertyDetailScreen = '/propertyDetailScreen';
+  static const tenantDetailsScreen = '/tenantDetailsScreen';
+  static const propertyPhotosScreen = '/propertyPhotosScreen';
+  static const floorPlansScreen = '/floorPlansScreen';
+  static const servicesMetersScreen = '/servicesMetersScreen';
+  static const serviceDetailScreen = '/serviceDetailScreen';
+  static const serviceEditScreen = '/serviceEditScreen';
 }
