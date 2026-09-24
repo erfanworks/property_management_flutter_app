@@ -170,7 +170,7 @@ class PropertyDetailController extends GetxController {
         summaryLine: 'Band Band D · Westminster City Council',
         fields: [
           ServiceFieldModel(key: 'authority', label: 'Authority', value: 'Westminster City Council'),
-          ServiceFieldModel(key: 'tax_band', label: 'Tax band', value: 'Band D', dropdownOptions: ['Band A', 'Band B', 'Band C', 'Band D', 'Band E', 'Band F', 'Band G', 'Band H']),
+          ServiceFieldModel(key: 'tax_band', label: 'Tax band', value: 'Band D', dropdownOptions: ['Band A', 'Band B', 'Band C', 'Band D', 'Band E', 'Band F', 'Band G', 'Band H', 'Not applicable']),
           ServiceFieldModel(key: 'reference', label: 'Reference', value: 'WCC-8941029'),
           ServiceFieldModel(key: 'contact', label: 'Contact', value: '020 7641 6000'),
           ServiceFieldModel(key: 'bins', label: 'Bins', value: 'Waste Tue · Recycling Fri'),
