@@ -14,6 +14,7 @@ class CustomIconBadge extends StatelessWidget {
     this.iconSize = 20,
     this.isCircle = true,
     this.borderRadius = 12,
+    this.border,
   }) : assert(icon != null || svgPath != null, 'Provide either icon or svgPath');
 
   final IconData? icon;
@@ -24,6 +25,7 @@ class CustomIconBadge extends StatelessWidget {
   final double iconSize;
   final bool isCircle;
   final double borderRadius;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +36,7 @@ class CustomIconBadge extends StatelessWidget {
         color: backgroundColor,
         shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
         borderRadius: isCircle ? null : BorderRadius.circular(borderRadius.r),
+        border: border,
       ),
       child: Center(
         child: svgPath != null

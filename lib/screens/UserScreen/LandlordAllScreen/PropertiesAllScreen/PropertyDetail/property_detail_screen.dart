@@ -888,6 +888,7 @@ class _RecordsTab extends StatelessWidget {
                       size: 36,
                       isCircle: false,
                       borderRadius: 10,
+                        border: Border.all(color: ConstColor.titleColor.withAlpha(30))
                     ),
                     Icon(
                       Icons.chevron_right_rounded,
