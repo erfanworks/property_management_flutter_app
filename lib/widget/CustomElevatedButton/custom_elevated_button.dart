@@ -35,7 +35,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.height = 46,
     this.fontSize = 12,
     this.width,
-    this.top = 12,
+    this.top = 0,
     this.right = 0,
     this.left = 0,
     this.bottom = 0,
