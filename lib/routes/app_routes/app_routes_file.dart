@@ -38,10 +38,20 @@ import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/Propertie
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step1_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step2_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/InviteTenant/invite_tenant_step3_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/appliances_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/certificate_list_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/compliance_hub_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/conduct_inspection_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/controller/house_rules_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/controller/inspections_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/edit_house_rules_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/gas_certificate_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/house_rules_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inspection_report_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inspections_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/other_documents_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/safety_alarms_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/utilities_meters_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/lease_agreement_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/nid_document_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_add_note_screen.dart';
@@ -196,6 +206,11 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.certificateListScreen, page: () => const CertificateListScreen()),
   GetPage(name: AppRoutes.gasCertificateDetailScreen, page: () => const GasCertificateDetailScreen()),
   GetPage(name: AppRoutes.otherDocumentsScreen, page: () => const OtherDocumentsScreen()),
+  GetPage(name: AppRoutes.safetyAlarmsScreen, page: () => const SafetyAlarmsScreen()),
+  GetPage(name: AppRoutes.appliancesScreen, page: () => const AppliancesScreen()),
+  GetPage(name: AppRoutes.utilitiesMetersScreen, page: () => const UtilitiesMetersScreen()),
+  GetPage(name: AppRoutes.inspectionsScreen, page: () => const InspectionsScreen()),
+  GetPage(name: AppRoutes.houseRulesScreen, page: () => const HouseRulesScreen()),
   // app_routes_file.dart
   GetPage(name: AppRoutes.nidDocumentScreen, page: () => const NidDocumentScreen()),
   GetPage(name: AppRoutes.leaseAgreementScreen, page: () => const LeaseAgreementScreen()),
@@ -209,4 +224,21 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.inviteTenantStep1Screen, page: () => const InviteTenantStep1Screen()),
   GetPage(name: AppRoutes.inviteTenantStep2Screen, page: () => const InviteTenantStep2Screen()),
   GetPage(name: AppRoutes.inviteTenantStep3Screen, page: () => const InviteTenantStep3Screen()),
+  // app_routes_file.dart
+  GetPage(name: AppRoutes.safetyAlarmsScreen, page: () => const SafetyAlarmsScreen()),
+  GetPage(name: AppRoutes.appliancesScreen, page: () => const AppliancesScreen()),
+  GetPage(name: AppRoutes.utilitiesMetersScreen, page: () => const UtilitiesMetersScreen()),
+  GetPage(
+    name: AppRoutes.inspectionsScreen,
+    page: () => const InspectionsScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => InspectionsController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.conductInspectionScreen, page: () => const ConductInspectionScreen()),
+  GetPage(name: AppRoutes.inspectionReportScreen, page: () => const InspectionReportScreen()),
+  GetPage(
+    name: AppRoutes.houseRulesScreen,
+    page: () => const HouseRulesScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => HouseRulesController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.editHouseRulesScreen, page: () => const EditHouseRulesScreen()),
 ];

@@ -42,6 +42,11 @@ class AppRoutes {
   static const certificateListScreen = '/certificateListScreen';
   static const gasCertificateDetailScreen = '/gasCertificateDetailScreen';
   static const otherDocumentsScreen = '/otherDocumentsScreen';
+  static const safetyAlarmsScreen = '/safetyAlarmsScreen';
+  static const appliancesScreen = '/appliancesScreen';
+  static const utilitiesMetersScreen = '/utilitiesMetersScreen';
+  static const inspectionsScreen = '/inspectionsScreen';
+  static const houseRulesScreen = '/houseRulesScreen';
   // app_routes.dart
   static const nidDocumentScreen = '/nidDocumentScreen';
   static const leaseAgreementScreen = '/leaseAgreementScreen';
@@ -55,4 +60,7 @@ class AppRoutes {
   static const inviteTenantStep1Screen = '/inviteTenantStep1Screen';
   static const inviteTenantStep2Screen = '/inviteTenantStep2Screen';
   static const inviteTenantStep3Screen = '/inviteTenantStep3Screen';
+  static const conductInspectionScreen = '/conductInspectionScreen';
+  static const inspectionReportScreen = '/inspectionReportScreen';
+  static const editHouseRulesScreen = '/editHouseRulesScreen';
 }
