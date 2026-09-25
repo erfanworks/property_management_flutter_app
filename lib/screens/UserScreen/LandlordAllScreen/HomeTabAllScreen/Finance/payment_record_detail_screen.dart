@@ -194,11 +194,15 @@ class DetailRow extends StatelessWidget {
             textSize: 13.sp,
             textColor: ConstColor.bodyColor,
           ),
-          CustomText(
-            title: value,
-            textSize: 13.sp,
-            fontWeight: FontWeight.w600,
-            textColor: ConstColor.titleColor,
+          SizedBox(width: 12.w),
+          Expanded(
+            child: CustomText(
+              title: value,
+              textSize: 13.sp,
+              fontWeight: FontWeight.w600,
+              textColor: ConstColor.titleColor,
+              textAlign: TextAlign.right,
+            ),
           ),
         ],
       ),
