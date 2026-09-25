@@ -20,11 +20,33 @@ class OtherDocumentsScreen extends StatelessWidget {
       appBar: GlobalAppBar(
         title: ConstString.otherDocuments,
         actions: [
-          AppBarTextAction(
-            label: ConstString.upload,
-            icon: Icons.upload_rounded,
+          GestureDetector(
             onTap: () => controller.pickAndUploadOtherDocument(
               categoryLabel: 'Custom Document',
+            ),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+              decoration: BoxDecoration(
+                color: ConstColor.primaryColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.upload_rounded,
+                    size: 16.sp,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 4.w),
+                  CustomText(
+                    title: ConstString.upload,
+                    textSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    textColor: Colors.white,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -53,19 +75,28 @@ class _OtherDocTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(12.r),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14.r),
+        borderRadius: BorderRadius.circular(16.r),
+        border: Border.all(color: ConstColor.titleColor.withAlpha(20)),
       ),
       child: Row(
         children: [
-          Icon(
-            Icons.description_outlined,
-            color: ConstColor.primaryColor,
-            size: 22.sp,
+          Container(
+            width: 40.r,
+            height: 40.r,
+            decoration: BoxDecoration(
+              color: ConstColor.primaryColor.withAlpha(20),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.description_outlined,
+              color: ConstColor.primaryColor,
+              size: 18.sp,
+            ),
           ),
-          SizedBox(width: 10.w),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,25 +104,38 @@ class _OtherDocTile extends StatelessWidget {
                 CustomText(
                   title: data.fileName,
                   textSize: 13.sp,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w700,
                   textColor: ConstColor.titleColor,
                   maxLine: 1,
                 ),
+                SizedBox(height: 3.h),
                 Row(
                   children: [
-                    CustomText(
-                      title: '${data.dateLabel} · ${data.categoryLabel}',
-                      textSize: 11.sp,
-                      textColor: ConstColor.bodyColor,
-                      maxLine: 1,
+                    Flexible(
+                      child: CustomText(
+                        title: '${data.dateLabel}  •  ${data.categoryLabel}',
+                        textSize: 11.sp,
+                        textColor: ConstColor.bodyColor,
+                        maxLine: 2,
+                      ),
                     ),
                     if (data.isShared) ...[
-                      SizedBox(width: 6.w),
-                      CustomText(
-                        title: ConstString.shared,
-                        textSize: 10.sp,
-                        fontWeight: FontWeight.w600,
-                        textColor: ConstColor.primaryColor,
+                      SizedBox(width: 8.w),
+                      Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 8.w,
+                          vertical: 2.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color: ConstColor.primaryColor.withAlpha(25),
+                          borderRadius: BorderRadius.circular(12.r),
+                        ),
+                        child: CustomText(
+                          title: ConstString.shared,
+                          textSize: 10.sp,
+                          fontWeight: FontWeight.w600,
+                          textColor: ConstColor.primaryColor,
+                        ),
                       ),
                     ],
                   ],
@@ -99,20 +143,28 @@ class _OtherDocTile extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(
-            onPressed: () => controller.shareDocument(data.fileName),
-            icon: Icon(
-              Icons.ios_share_rounded,
-              size: 18.sp,
-              color: ConstColor.bodyColor,
+          SizedBox(width: 8.w),
+          GestureDetector(
+            onTap: () => controller.shareDocument(data.fileName),
+            child: Padding(
+              padding: EdgeInsets.all(4.r),
+              child: Icon(
+                Icons.share_outlined,
+                size: 18.sp,
+                color: ConstColor.bodyColor,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () => controller.deleteOtherDocument(data.id),
-            icon: Icon(
-              Icons.delete_outline_rounded,
-              size: 18.sp,
-              color: ConstColor.errorColor,
+          SizedBox(width: 6.w),
+          GestureDetector(
+            onTap: () => controller.deleteOtherDocument(data.id),
+            child: Padding(
+              padding: EdgeInsets.all(4.r),
+              child: Icon(
+                Icons.delete_outline_rounded,
+                size: 18.sp,
+                color: ConstColor.bodyColor,
+              ),
             ),
           ),
         ],
