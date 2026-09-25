@@ -1,8 +1,7 @@
 // lib/screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/conduct_inspection_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import '../../../../../../constant/const_color.dart';
 import '../../../../../../widget/CustomDropdownField/custom_dropdown_field.dart';
 import '../../../../../../widget/CustomElevatedButton/custom_elevated_button.dart';
@@ -12,11 +11,12 @@ import '../../../../../../widget/text/custom_text.dart';
 import 'controller/inspections_controller.dart';
 import 'model/inspection_model.dart';
 
-class ConductInspectionScreen extends GetView<InspectionsController> {
+class ConductInspectionScreen extends StatelessWidget {
   const ConductInspectionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(InspectionsController());
     return Scaffold(
       backgroundColor: ConstColor.screenBackground,
       appBar: GlobalAppBar(title: 'Conduct Inspection'),
