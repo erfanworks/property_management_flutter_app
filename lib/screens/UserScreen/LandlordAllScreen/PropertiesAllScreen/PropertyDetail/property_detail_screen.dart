@@ -39,7 +39,7 @@ class PropertyDetailScreen extends GetView<PropertyDetailController> {
                   AppBarTextAction(
                     label: ConstString.invite,
                     icon: Icons.person_add_alt_1_rounded,
-                      onTap: controller.openInviteTenant
+                    onTap: controller.openInviteTenant,
                   ),
                 ]
               : null,
@@ -509,7 +509,7 @@ class _TenantListTile extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14.r),
-          border: Border.all(color: ConstColor.bodyColor.withAlpha(50))
+          border: Border.all(color: ConstColor.bodyColor.withAlpha(50)),
         ),
         child: Row(
           children: [
@@ -787,37 +787,129 @@ class _RecordsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(RecordsController(), tag: 'records');
     final categories = [
-      RecordCategoryModel(id: 'compliance', icon: Icons.shield_outlined, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, title: ConstString.compliance, subtitle: ConstString.complianceSubtitle),
-      RecordCategoryModel(id: 'safety', icon: Icons.notifications_active_outlined, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, title: ConstString.safetyAlarms, subtitle: ConstString.safetyAlarmsSubtitle),
-      RecordCategoryModel(id: 'appliances', icon: Icons.local_fire_department_outlined, iconColor: ConstColor.errorColor, iconBg: ConstColor.errorBg, title: ConstString.appliances, subtitle: ConstString.appliancesSubtitle),
-      RecordCategoryModel(id: 'utilities', icon: Icons.bolt_outlined, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, title: ConstString.utilitiesMeters, subtitle: ConstString.utilitiesMetersSubtitle),
-      RecordCategoryModel(id: 'inspections', icon: Icons.fact_check_outlined, iconColor: ConstColor.tenantIconColor, iconBg: ConstColor.tenantIconBg, title: ConstString.inspections, subtitle: ConstString.inspectionsSubtitle),
-      RecordCategoryModel(id: 'inventories', icon: Icons.inventory_2_outlined, iconColor: ConstColor.purpleColor, iconBg: ConstColor.purpleBg, title: ConstString.inventories, subtitle: ConstString.inventoriesSubtitle),
-      RecordCategoryModel(id: 'house_rules', icon: Icons.menu_book_outlined, iconColor: ConstColor.primaryColor, iconBg: ConstColor.infoBg, title: ConstString.houseRules, subtitle: ConstString.houseRulesSubtitle),
-      RecordCategoryModel(id: 'vault', icon: Icons.folder_shared_outlined, iconColor: ConstColor.contractorIconColor, iconBg: ConstColor.contractorIconBg, title: ConstString.documentVault, subtitle: ConstString.documentVaultSubtitle),
+      RecordCategoryModel(
+        id: 'compliance',
+        icon: Icons.shield_outlined,
+        iconColor: ConstColor.primaryColor,
+        iconBg: ConstColor.infoBg,
+        title: ConstString.compliance,
+        subtitle: ConstString.complianceSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'safety',
+        icon: Icons.notifications_active_outlined,
+        iconColor: ConstColor.contractorIconColor,
+        iconBg: ConstColor.contractorIconBg,
+        title: ConstString.safetyAlarms,
+        subtitle: ConstString.safetyAlarmsSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'appliances',
+        icon: Icons.local_fire_department_outlined,
+        iconColor: ConstColor.errorColor,
+        iconBg: ConstColor.errorBg,
+        title: ConstString.appliances,
+        subtitle: ConstString.appliancesSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'utilities',
+        icon: Icons.bolt_outlined,
+        iconColor: ConstColor.primaryColor,
+        iconBg: ConstColor.infoBg,
+        title: ConstString.utilitiesMeters,
+        subtitle: ConstString.utilitiesMetersSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'inspections',
+        icon: Icons.fact_check_outlined,
+        iconColor: ConstColor.tenantIconColor,
+        iconBg: ConstColor.tenantIconBg,
+        title: ConstString.inspections,
+        subtitle: ConstString.inspectionsSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'inventories',
+        icon: Icons.inventory_2_outlined,
+        iconColor: ConstColor.purpleColor,
+        iconBg: ConstColor.purpleBg,
+        title: ConstString.inventories,
+        subtitle: ConstString.inventoriesSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'house_rules',
+        icon: Icons.menu_book_outlined,
+        iconColor: ConstColor.primaryColor,
+        iconBg: ConstColor.infoBg,
+        title: ConstString.houseRules,
+        subtitle: ConstString.houseRulesSubtitle,
+      ),
+      RecordCategoryModel(
+        id: 'vault',
+        icon: Icons.folder_shared_outlined,
+        iconColor: ConstColor.contractorIconColor,
+        iconBg: ConstColor.contractorIconBg,
+        title: ConstString.documentVault,
+        subtitle: ConstString.documentVaultSubtitle,
+      ),
     ];
 
     return GridView.builder(
       padding: EdgeInsets.all(16.r),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 12.h, crossAxisSpacing: 12.w, childAspectRatio: 1.05),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 12.h,
+        crossAxisSpacing: 12.w,
+        childAspectRatio: 1.45,
+      ),
       itemCount: categories.length,
       itemBuilder: (context, index) {
         final c = categories[index];
         return GestureDetector(
           onTap: () {
             if (c.id == 'compliance') controller.openComplianceHub();
-            // baki category-gula porer part-e wire kora hobe
           },
           child: Container(
             padding: EdgeInsets.all(12.r),
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14.r),
+              border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomIconBadge(icon: c.icon, iconColor: c.iconColor, backgroundColor: c.iconBg, size: 36, isCircle: false, borderRadius: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomIconBadge(
+                      icon: c.icon,
+                      iconColor: c.iconColor,
+                      backgroundColor: c.iconBg,
+                      size: 36,
+                      isCircle: false,
+                      borderRadius: 10,
+                    ),
+                    Icon(
+                      Icons.chevron_right_rounded,
+                      size: 18.sp,
+                      color: ConstColor.bodyColor,
+                    ),
+                  ],
+                ),
                 const Spacer(),
-                CustomText(title: c.title, textSize: 13.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor, maxLine: 1),
-                CustomText(title: c.subtitle, textSize: 10.sp, textColor: ConstColor.bodyColor, maxLine: 1),
+                CustomText(
+                  title: c.title,
+                  textSize: 13.sp,
+                  fontWeight: FontWeight.w700,
+                  textColor: ConstColor.titleColor,
+                  maxLine: 1,
+                ),
+                CustomText(
+                  title: c.subtitle,
+                  textSize: 10.sp,
+                  textColor: ConstColor.bodyColor,
+                  maxLine: 1,
+                ),
               ],
             ),
           ),
