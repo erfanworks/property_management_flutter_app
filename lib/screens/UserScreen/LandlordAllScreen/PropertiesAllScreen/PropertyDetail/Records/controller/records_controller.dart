@@ -59,13 +59,13 @@ class RecordsController extends GetxController {
 
   // TODO: Replace with Dio API call once backend endpoint is ready.
   Future<void> fetchOtherDocuments() async {
-    otherDocuments.value = const [
-      OtherDocumentModel(id: 'od1', fileName: 'Lease Agreement Flat 2A.pdf', dateLabel: 'Jan 15, 2024', categoryLabel: 'Tenancy Agreement', isShared: true),
-      OtherDocumentModel(id: 'od2', fileName: 'EICR Report 2020.pdf', dateLabel: 'Aug 2020', categoryLabel: 'Electrical Certificate', isShared: true),
-      OtherDocumentModel(id: 'od3', fileName: 'Selective Licensing Certificate.pdf', dateLabel: 'Sep 2024', categoryLabel: 'Property Licence', isShared: true),
-      OtherDocumentModel(id: 'od4', fileName: 'Legionella Risk Assessment.pdf', dateLabel: 'Nov 2024', categoryLabel: 'Custom Document', isShared: true),
-      OtherDocumentModel(id: 'od5', fileName: 'Land Registry Title Deed.pdf', dateLabel: 'Oct 2023', categoryLabel: 'Custom Document'),
-      OtherDocumentModel(id: 'od6', fileName: 'Building Warranty Certificate.pdf', dateLabel: 'Dec 2023', categoryLabel: 'Custom Document', isShared: true),
+    otherDocuments.value = [
+      const OtherDocumentModel(id: 'od1', fileName: 'Lease Agreement Flat 2A.pdf', dateLabel: 'Jan 15, 2024', categoryLabel: 'Tenancy Agreement', isShared: true),
+      const OtherDocumentModel(id: 'od2', fileName: 'EICR Report 2020.pdf', dateLabel: 'Aug 2020', categoryLabel: 'Electrical Certificate', isShared: true),
+      const OtherDocumentModel(id: 'od3', fileName: 'Selective Licensing Certificate.pdf', dateLabel: 'Sep 2024', categoryLabel: 'Property Licence', isShared: true),
+      const OtherDocumentModel(id: 'od4', fileName: 'Legionella Risk Assessment.pdf', dateLabel: 'Nov 2024', categoryLabel: 'Custom Document', isShared: true),
+      const OtherDocumentModel(id: 'od5', fileName: 'Land Registry Title Deed.pdf', dateLabel: 'Oct 2023', categoryLabel: 'Custom Document'),
+      const OtherDocumentModel(id: 'od6', fileName: 'Building Warranty Certificate.pdf', dateLabel: 'Dec 2023', categoryLabel: 'Custom Document', isShared: true),
     ];
   }
 
@@ -112,12 +112,14 @@ class RecordsController extends GetxController {
     if (file == null) return;
 
     // TODO: Replace with Dio API upload call once backend endpoint is ready.
-    otherDocuments.insert(0, OtherDocumentModel(id: DateTime.now().millisecondsSinceEpoch.toString(), fileName: file.name, dateLabel: 'Just now', categoryLabel: categoryLabel));
+    final list = List<OtherDocumentModel>.of(otherDocuments);
+    list.insert(0, OtherDocumentModel(id: DateTime.now().millisecondsSinceEpoch.toString(), fileName: file.name, dateLabel: 'Just now', categoryLabel: categoryLabel));
+    otherDocuments.value = list;
     AppSnackBar.success('Document uploaded');
   }
 
   void deleteOtherDocument(String id) {
-    otherDocuments.removeWhere((d) => d.id == id);
+    otherDocuments.value = otherDocuments.where((d) => d.id != id).toList();
     AppSnackBar.success('Document removed');
   }
 
