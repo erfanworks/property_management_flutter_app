@@ -135,6 +135,7 @@ class _BackButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.r),
+          border: Border.all(color: Color(0xFFE2E8F0)),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withAlpha(18),

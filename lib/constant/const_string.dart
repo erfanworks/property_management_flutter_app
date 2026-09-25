@@ -472,4 +472,25 @@ class ConstString {
   static const inspectorNotes = 'INSPECTOR NOTES';
   static const inspectionPhotos = 'Inspection Photos';
   static const communalAreasLabel = 'Communal Areas';
+  static const inventory = 'Inventory';
+  static const roomChecklists = 'Room Checklists';
+  static const addRoom = 'Add Room';
+  static const addRoomSubtitle = 'Add a new room to the inventory checklist';
+  static const roomNameLabel = 'ROOM NAME';
+  static const roomNameHint = 'e.g. Master Bedroom, Balcony, Garage';
+  static const roomSizeOptional = 'ROOM SIZE (OPTIONAL)';
+  static const roomSizeHint = 'e.g. 140';
+  static const editRoom = 'Edit Room';
+  static const itemsAndFixtures = 'ITEMS & FIXTURES';
+  static const addItem = 'Add Item';
+  static const addItemSubtitle = 'Name the fixture and attach condition photo';
+  static const itemFixtureNameLabel = 'ITEM / FIXTURE NAME';
+  static const itemFixtureNameHint = 'e.g. Sofa, Microwave, Bed';
+  static const photoLabel = 'PHOTO';
+  static const tapToAddPhoto = 'Tap to add photo';
+  static const editItem = 'Edit Item';
+  static const editItemSubtitle = 'Update item name or photo';
+  static const itemNameLabel = 'ITEM NAME';
+  static const itemsSuffix = 'items';
+  static const sqFtSuffix = 'sq ft';
 }

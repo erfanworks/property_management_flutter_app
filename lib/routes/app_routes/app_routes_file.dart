@@ -44,12 +44,15 @@ import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyD
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/conduct_inspection_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/controller/house_rules_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/controller/inspections_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/controller/inventory_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/edit_house_rules_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/gas_certificate_detail_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/house_rules_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inspection_report_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inspections_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inventory_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/other_documents_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/room_items_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/safety_alarms_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/utilities_meters_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/lease_agreement_screen.dart';
@@ -241,4 +244,10 @@ List<GetPage> appRouteFile = <GetPage>[
     binding: BindingsBuilder(() => Get.lazyPut(() => HouseRulesController(), fenix: true)),
   ),
   GetPage(name: AppRoutes.editHouseRulesScreen, page: () => const EditHouseRulesScreen()),
+  GetPage(
+    name: AppRoutes.inventoryScreen,
+    page: () => const InventoryScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => InventoryController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.roomItemsScreen, page: () => const RoomItemsScreen()),
 ];
