@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../../../constant/const_color.dart';
 import '../../../../../constant/const_string.dart';
 import '../../../../../models/property_model.dart';
+import '../../../../../routes/app_routes/app_routes.dart';
 import '../../../../../widget/AppImage/app_image.dart';
 import '../../../../../widget/CustomIconBadge/custom_icon_badge.dart';
 import '../../../../../widget/CustomSegmentedToggle/custom_segmented_toggle.dart';
@@ -866,7 +867,30 @@ class _RecordsTab extends StatelessWidget {
         final c = categories[index];
         return GestureDetector(
           onTap: () {
-            if (c.id == 'compliance') controller.openComplianceHub();
+            switch (c.id) {
+              case 'compliance':
+                controller.openComplianceHub();
+                break;
+              case 'safety':
+                Get.toNamed(AppRoutes.safetyAlarmsScreen);
+                break;
+              case 'appliances':
+                Get.toNamed(AppRoutes.appliancesScreen);
+                break;
+              case 'utilities':
+                Get.toNamed(AppRoutes.utilitiesMetersScreen);
+                break;
+              case 'inspections':
+                Get.toNamed(AppRoutes.inspectionsScreen);
+                break;
+              case 'house_rules':
+                Get.toNamed(AppRoutes.houseRulesScreen);
+                break;
+              case 'inventories':
+              case 'vault':
+                controller.notifyComingSoon(c.title);
+                break;
+            }
           },
           child: Container(
             padding: EdgeInsets.all(12.r),
