@@ -33,32 +33,92 @@ class CertificateListScreen extends StatelessWidget {
               Container(
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(vertical: 32.h),
-                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16.r),
+                  border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+                ),
                 child: Column(
                   children: [
-                    Icon(Icons.description_outlined, size: 36.sp, color: ConstColor.bodyColor),
+                    Icon(
+                      Icons.description_outlined,
+                      size: 36.sp,
+                      color: ConstColor.bodyColor,
+                    ),
                     SizedBox(height: 10.h),
-                    CustomText(title: ConstString.noFilesUploaded, textSize: 14.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor),
+                    CustomText(
+                      title: ConstString.noFilesUploaded,
+                      textSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      textColor: ConstColor.titleColor,
+                    ),
                     SizedBox(height: 4.h),
-                    Padding(padding: EdgeInsets.symmetric(horizontal: 24.w), child: CustomText(title: ConstString.uploadGasCertHint, textSize: 12.sp, textColor: ConstColor.bodyColor, textAlign: TextAlign.center, maxLine: 2)),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: CustomText(
+                        title: ConstString.uploadGasCertHint,
+                        textSize: 12.sp,
+                        textColor: ConstColor.bodyColor,
+                        textAlign: TextAlign.center,
+                        maxLine: 2,
+                      ),
+                    ),
                   ],
                 ),
               ),
               SizedBox(height: 16.h),
               CustomElevatedButton(
                 onPressed: () => controller.pickAndUploadCertificate(type),
-                icon: Icon(Icons.upload_rounded, color: Colors.white, size: 18.sp),
-                child: CustomText(title: ConstString.uploadCertificate, textColor: Colors.white, textSize: 14.sp, fontWeight: FontWeight.w600),
+                icon: Icon(
+                  Icons.upload_rounded,
+                  color: Colors.white,
+                  size: 18.sp,
+                ),
+                child: CustomText(
+                  title: ConstString.uploadCertificate,
+                  textColor: Colors.white,
+                  textSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ] else ...[
-              CustomText(title: ConstString.currentCertificate, textSize: 11.sp, fontWeight: FontWeight.w600, textColor: ConstColor.bodyColor, letterSpacing: 0.5),
+              CustomText(
+                title: ConstString.currentCertificate,
+                textSize: 11.sp,
+                fontWeight: FontWeight.w600,
+                textColor: ConstColor.bodyColor,
+                letterSpacing: 0.5,
+              ),
               SizedBox(height: 8.h),
-              _CertTile(cert: current, type: type, onTap: () => type == ComplianceType.gasSafety ? controller.openCertificateDetail(current) : controller.downloadDocument(current.fileName)),
+              _CertTile(
+                cert: current,
+                type: type,
+                onTap: () => type == ComplianceType.gasSafety
+                    ? controller.openCertificateDetail(current)
+                    : controller.downloadDocument(current.fileName),
+              ),
               if (history.isNotEmpty) ...[
                 SizedBox(height: 16.h),
-                CustomText(title: '${ConstString.historyLabel} (${history.length})', textSize: 11.sp, fontWeight: FontWeight.w600, textColor: ConstColor.bodyColor, letterSpacing: 0.5),
+                CustomText(
+                  title: '${ConstString.historyLabel} (${history.length})',
+                  textSize: 11.sp,
+                  fontWeight: FontWeight.w600,
+                  textColor: ConstColor.bodyColor,
+                  letterSpacing: 0.5,
+                ),
                 SizedBox(height: 8.h),
-                ...history.map((c) => Padding(padding: EdgeInsets.only(bottom: 8.h), child: _CertTile(cert: c, type: type, onTap: () => type == ComplianceType.gasSafety ? controller.openCertificateDetail(c) : controller.downloadDocument(c.fileName)))),
+                ...history.map(
+                  (c) => Padding(
+                    padding: EdgeInsets.only(bottom: 8.h),
+                    child: _CertTile(
+                      cert: c,
+                      type: type,
+                      onTap: () => type == ComplianceType.gasSafety
+                          ? controller.openCertificateDetail(c)
+                          : controller.downloadDocument(c.fileName),
+                    ),
+                  ),
+                ),
               ],
             ],
           ],
@@ -69,7 +129,12 @@ class CertificateListScreen extends StatelessWidget {
 }
 
 class _CertTile extends StatelessWidget {
-  const _CertTile({required this.cert, required this.type, required this.onTap});
+  const _CertTile({
+    required this.cert,
+    required this.type,
+    required this.onTap,
+  });
+
   final CertificateFileModel cert;
   final ComplianceType type;
   final VoidCallback onTap;
@@ -80,10 +145,21 @@ class _CertTile extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: EdgeInsets.all(12.r),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14.r),
+            border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+        ),
         child: Row(
           children: [
-            CustomIconBadge(icon: type.icon, iconColor: type.iconColor, backgroundColor: type.iconColor.withAlpha(30), size: 38, isCircle: false, borderRadius: 10),
+            CustomIconBadge(
+              icon: type.icon,
+              iconColor: type.iconColor,
+              backgroundColor: type.iconColor.withAlpha(30),
+              size: 38,
+              isCircle: false,
+              borderRadius: 10,
+            ),
             SizedBox(width: 12.w),
             Expanded(
               child: Row(
@@ -92,21 +168,46 @@ class _CertTile extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(title: cert.fileName, textSize: 13.sp, fontWeight: FontWeight.w600, textColor: ConstColor.titleColor, maxLine: 1),
-                        CustomText(title: '${cert.sizeLabel} · ${cert.dateLabel}', textSize: 11.sp, textColor: ConstColor.bodyColor),
+                        CustomText(
+                          title: cert.fileName,
+                          textSize: 13.sp,
+                          fontWeight: FontWeight.w600,
+                          textColor: ConstColor.titleColor,
+                          maxLine: 1,
+                        ),
+                        CustomText(
+                          title: '${cert.sizeLabel} · ${cert.dateLabel}',
+                          textSize: 11.sp,
+                          textColor: ConstColor.bodyColor,
+                        ),
                       ],
                     ),
                   ),
                   if (cert.isCurrent)
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
-                      decoration: BoxDecoration(color: ConstColor.infoBg, borderRadius: BorderRadius.circular(20.r)),
-                      child: CustomText(title: ConstString.current, textSize: 10.sp, fontWeight: FontWeight.w600, textColor: ConstColor.primaryColor),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 8.w,
+                        vertical: 3.h,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ConstColor.infoBg,
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: CustomText(
+                        title: ConstString.current,
+                        textSize: 10.sp,
+                        fontWeight: FontWeight.w600,
+                        textColor: ConstColor.primaryColor,
+                      ),
                     ),
                 ],
               ),
             ),
-            Icon(Icons.chevron_right_rounded, size: 18.sp, color: ConstColor.bodyColor),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 18.sp,
+              color: ConstColor.bodyColor,
+            ),
           ],
         ),
       ),
