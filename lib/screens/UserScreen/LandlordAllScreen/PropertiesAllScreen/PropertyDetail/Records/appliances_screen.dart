@@ -25,10 +25,32 @@ class AppliancesScreen extends StatelessWidget {
       appBar: GlobalAppBar(
         title: 'Appliances',
         actions: [
-          AppBarTextAction(
-            label: 'Add',
-            icon: Icons.add_rounded,
+          GestureDetector(
             onTap: () => AssetRecordDialogs.showEdit(null, controller),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+              decoration: BoxDecoration(
+                color: ConstColor.primaryColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.add_rounded,
+                    size: 16.sp,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 4.w),
+                  CustomText(
+                    title: 'Add',
+                    textSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    textColor: Colors.white,
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
@@ -36,19 +58,49 @@ class AppliancesScreen extends StatelessWidget {
         () => ListView(
           padding: EdgeInsets.all(16.r),
           children: [
-            CustomDropdownField<FlatFilterModel>(
-              value: controller.selectedFlatFilter.value,
-              items: controller.flatFilters
-                  .map(
-                    (f) => DropdownMenuItem(
-                      value: f,
-                      child: CustomText(title: f.label, textSize: 14.sp),
-                    ),
-                  )
-                  .toList(),
-              onChanged: controller.selectFlatFilter,
+            Container(
+              padding: EdgeInsets.all(12.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14.r),
+                border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.apartment_rounded,
+                        size: 16.sp,
+                        color: ConstColor.titleColor,
+                      ),
+                      SizedBox(width: 6.w),
+                      CustomText(
+                        title: 'Select Flat',
+                        textSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        textColor: ConstColor.titleColor,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8.h),
+                  CustomDropdownField<FlatFilterModel>(
+                    value: controller.selectedFlatFilter.value,
+                    items: controller.flatFilters
+                        .map(
+                          (f) => DropdownMenuItem(
+                            value: f,
+                            child: CustomText(title: f.label, textSize: 14.sp),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: controller.selectFlatFilter,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 8.h),
+            SizedBox(height: 14.h),
             CustomText(
               title: 'FLAT 1 APPLIANCES (${controller.filteredRecords.length})',
               textSize: 10.sp,
