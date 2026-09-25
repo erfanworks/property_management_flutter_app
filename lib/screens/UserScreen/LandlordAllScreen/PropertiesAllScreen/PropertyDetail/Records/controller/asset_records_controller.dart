@@ -52,17 +52,17 @@ class AssetRecordsController extends GetxController {
   Future<void> fetchRecords() async {
     if (type.isAppliance) {
       records.value = [
-        AssetRecordModel(id: 'a1', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Boiler', secondaryLabel: 'Worcester Bosch Greenstar 30i', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', modelType: 'Combi Boiler 30kW', warranty: 'Until Mar 2027'),
-        AssetRecordModel(id: 'a2', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Oven & Hob', secondaryLabel: 'Bosch Serie 6', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027'),
-        AssetRecordModel(id: 'a3', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Fridge Freezer', secondaryLabel: 'Samsung SpaceMax', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027'),
-        AssetRecordModel(id: 'a4', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Dishwasher', secondaryLabel: 'Bosch Serie 4', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027'),
-        AssetRecordModel(id: 'a5', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Washing Machine', secondaryLabel: 'LG AI DirectDrive 9kg', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027'),
+        AssetRecordModel(id: 'a1', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Boiler', secondaryLabel: 'Worcester Bosch Greenstar 30i', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', modelType: 'Combi Boiler 30kW', warranty: 'Until Mar 2027', photoPath: 'https://picsum.photos/id/1060/400/300'),
+        AssetRecordModel(id: 'a2', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Oven & Hob', secondaryLabel: 'Bosch Serie 6', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027', photoPath: 'https://picsum.photos/id/1062/400/300'),
+        AssetRecordModel(id: 'a3', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Fridge Freezer', secondaryLabel: 'Samsung SpaceMax', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027', photoPath: 'https://picsum.photos/id/1069/400/300'),
+        AssetRecordModel(id: 'a4', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Dishwasher', secondaryLabel: 'Bosch Serie 4', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027', photoPath: 'https://picsum.photos/id/1070/400/300'),
+        AssetRecordModel(id: 'a5', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1', name: 'Washing Machine', secondaryLabel: 'LG AI DirectDrive 9kg', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', warranty: 'Until Mar 2027', photoPath: 'https://picsum.photos/id/1071/400/300'),
       ];
     } else {
       records.value = [
-        AssetRecordModel(id: 's1', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'Smoke Alarm', secondaryLabel: 'Hallway / Landing', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026'),
-        AssetRecordModel(id: 's2', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'Heat Alarm', secondaryLabel: 'Kitchen Ceiling', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026'),
-        AssetRecordModel(id: 's3', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'CO Alarm', secondaryLabel: 'Boiler Room / Bedroom', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026'),
+        AssetRecordModel(id: 's1', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'Smoke Alarm', secondaryLabel: 'Hallway / Landing', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', photoPath: 'https://picsum.photos/id/1060/400/300'),
+        AssetRecordModel(id: 's2', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'Heat Alarm', secondaryLabel: 'Kitchen Ceiling', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', photoPath: 'https://picsum.photos/id/1062/400/300'),
+        AssetRecordModel(id: 's3', flatGroupId: 'f1_2', flatGroupLabel: 'Flat 1 · 2', name: 'CO Alarm', secondaryLabel: 'Boiler Room / Bedroom', expiryOrWarrantyLabel: 'Exp: 15 Jan 2026', photoPath: 'https://picsum.photos/id/1069/400/300'),
       ];
     }
   }
