@@ -133,4 +133,6 @@ class RecordsController extends GetxController {
   void downloadDocument(String fileName) => AppSnackBar.message('Downloading $fileName...');
 
   void shareDocument(String fileName) => AppSnackBar.message('Sharing $fileName...');
+
+  void notifyComingSoon(String feature) => AppSnackBar.message('$feature is coming soon!');
 }
