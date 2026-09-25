@@ -1,19 +1,19 @@
 // lib/screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/inspection_report_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 import '../../../../../../constant/const_color.dart';
 import '../../../../../../widget/AppImage/app_image.dart';
 import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../../../widget/text/custom_text.dart';
 import 'controller/inspections_controller.dart';
 
-class InspectionReportScreen extends GetView<InspectionsController> {
+class InspectionReportScreen extends StatelessWidget {
   const InspectionReportScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(InspectionsController());
     return Obx(() {
       final r = controller.selectedReport.value;
       if (r == null) return const Scaffold(body: SizedBox.shrink());
