@@ -1,10 +1,10 @@
-// lib/screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/compliance_hub_screen.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../../../constant/const_color.dart';
 import '../../../../../../constant/const_string.dart';
 import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
+import '../../../../../../widget/text/custom_text.dart';
 import '../widget/action_sheet.dart';
 import '../widget/nav_list_tile.dart';
 import 'controller/records_controller.dart';
@@ -19,8 +19,36 @@ class ComplianceHubScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: ConstColor.screenBackground,
       appBar: GlobalAppBar(
-        title: ConstString.certificatesAndCompliance,
-        actions: [AppBarTextAction(label: ConstString.upload, icon: Icons.upload_rounded, onTap: () => _showUploadPicker(controller))],
+        title: ConstString.compliance,
+        actions: [
+          GestureDetector(
+            onTap: () => _showUploadPicker(controller),
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+              decoration: BoxDecoration(
+                color: ConstColor.primaryColor,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.upload_rounded,
+                    size: 16.sp,
+                    color: Colors.white,
+                  ),
+                  SizedBox(width: 4.w),
+                  CustomText(
+                    title: ConstString.upload,
+                    textSize: 14.sp,
+                    fontWeight: FontWeight.w500,
+                    textColor: Colors.white,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
       body: ListView(
         padding: EdgeInsets.all(16.r),
