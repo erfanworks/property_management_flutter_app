@@ -43,23 +43,23 @@ extension ComplianceTypeX on ComplianceType {
   };
 
   IconData get icon => switch (this) {
-    ComplianceType.gasSafety => Icons.local_fire_department_outlined,
+    ComplianceType.gasSafety => Icons.water_drop_outlined,
     ComplianceType.electricalEicr => Icons.bolt_outlined,
     ComplianceType.energyPerformance => Icons.eco_outlined,
     ComplianceType.landlordInsurance => Icons.shield_outlined,
-    ComplianceType.depositProtection => Icons.privacy_tip_outlined,
-    ComplianceType.propertyLicence => Icons.verified_outlined,
-    ComplianceType.otherDocuments => Icons.description_outlined,
+    ComplianceType.depositProtection => Icons.shield_outlined,
+    ComplianceType.propertyLicence => Icons.verified_user_outlined,
+    ComplianceType.otherDocuments => Icons.file_copy_outlined,
   };
 
   Color get iconColor => switch (this) {
-    ComplianceType.gasSafety => Colors.orange,
-    ComplianceType.electricalEicr => Colors.amber,
-    ComplianceType.energyPerformance => Colors.green,
-    ComplianceType.landlordInsurance => Colors.indigo,
-    ComplianceType.depositProtection => Colors.blue,
-    ComplianceType.propertyLicence => Colors.teal,
-    ComplianceType.otherDocuments => Colors.blueGrey,
+    ComplianceType.gasSafety => const Color(0xFF0288D1),
+    ComplianceType.electricalEicr => const Color(0xFFF57C00),
+    ComplianceType.energyPerformance => const Color(0xFF2E7D32),
+    ComplianceType.landlordInsurance => const Color(0xFF6A1B9A),
+    ComplianceType.depositProtection => const Color(0xFF1565C0),
+    ComplianceType.propertyLicence => const Color(0xFF37474F),
+    ComplianceType.otherDocuments => const Color(0xFF1976D2),
   };
 }
 

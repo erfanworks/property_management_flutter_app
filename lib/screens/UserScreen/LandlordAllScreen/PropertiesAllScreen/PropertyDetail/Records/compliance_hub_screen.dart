@@ -65,8 +65,15 @@ class ComplianceHubScreen extends StatelessWidget {
   void _showUploadPicker(RecordsController controller) {
     CustomActionSheet.show(
       ComplianceType.values
-          .map((type) => ActionSheetItem(label: type.label, icon: type.icon, onTap: () => controller.pickAndUploadCertificate(type)))
+          .map((type) => ActionSheetItem(
+                label: type.label,
+                icon: type.icon,
+                color: type.iconColor,
+                iconBg: type.iconColor.withAlpha(25),
+                onTap: () => controller.pickAndUploadCertificate(type),
+              ))
           .toList(),
+      title: ConstString.uploadDocumentTitle,
     );
   }
 }
