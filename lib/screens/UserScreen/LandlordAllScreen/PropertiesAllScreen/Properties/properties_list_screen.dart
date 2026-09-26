@@ -10,6 +10,7 @@ import '../../../../../widget/AppImage/app_image.dart';
 import '../../../../../widget/CustomStatusChip/custom_status_chip.dart';
 import '../../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../../widget/text/custom_text.dart';
+import '../PropertyDetail/UnitDetail/controller/unit_detail_controller.dart';
 import 'controller/properties_controller.dart';
 import 'model/properties_filter.dart';
 
@@ -319,7 +320,11 @@ class _PropertyCard extends StatelessWidget {
                     if (value == 'edit') controller.openEditProperty(data);
                     if (value == 'delete')
                       controller.confirmDeleteProperty(data);
-                    // 'add_unit' — feature-e porer dey dibo
+                    if (value == 'add_unit') {
+                      final unitController = Get.put(UnitDetailController());
+                      unitController.resetAddUnitForm();
+                      Get.toNamed(AppRoutes.addUnitScreen);
+                    }
                   },
                   itemBuilder: (context) => [
                     PopupMenuItem(

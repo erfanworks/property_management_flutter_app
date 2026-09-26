@@ -63,4 +63,9 @@ class AppRoutes {
   static const editHouseRulesScreen = '/editHouseRulesScreen';
   static const inventoryScreen = '/inventoryScreen';
   static const roomItemsScreen = '/roomItemsScreen';
+  static const unitDetailScreen = '/unitDetailScreen';
+  static const addUnitScreen = '/addUnitScreen';
+  static const keysAccessScreen = '/keysAccessScreen';
+  static const addKeySetScreen = '/addKeySetScreen';
+  static const editKeySetScreen = '/editKeySetScreen';
 }

@@ -1,8 +1,8 @@
 // lib/common_widget/detail_row/detail_row.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../../constant/const_color.dart';
-import '../../../../../../widget/text/custom_text.dart';
+import '../../constant/const_color.dart';
+import '../text/custom_text.dart';
 
 class DetailRow extends StatelessWidget {
   const DetailRow({super.key, required this.label, required this.value, this.isLast = false, this.icon});

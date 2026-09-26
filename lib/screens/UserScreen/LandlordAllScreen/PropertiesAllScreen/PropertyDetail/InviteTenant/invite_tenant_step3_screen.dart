@@ -10,7 +10,7 @@ import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
 import '../../../../../../widget/text/custom_text.dart';
 import '../controller/property_detail_controller.dart';
 import '../model/property_detail_model.dart';
-import '../widget/detail_row.dart';
+import '../../../../../../widget/DetailRow/detail_row.dart';
 import 'invite_tenant_step1_screen.dart';
 
 class InviteTenantStep3Screen extends GetView<PropertyDetailController> {

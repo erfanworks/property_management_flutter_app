@@ -11,6 +11,7 @@ import '../../../../../../widget/MediaPickerBottomSheet/media_picker_bottom_shee
 import '../../../../../../widget/app_snack_bar/app_snack_bar.dart';
 import '../../Properties/model/properties_filter.dart';
 import '../Tenant/widget/upload_document_bottom_sheet.dart';
+import '../UnitDetail/controller/unit_detail_controller.dart';
 import '../model/property_detail_model.dart';
 import '../model/service_model.dart';
 
@@ -597,4 +598,10 @@ class PropertyDetailController extends GetxController {
 
   void notifyComingSoon(String feature) => Get.toNamed(AppRoutes.chatDetailScreen);
   void viewRent(String feature) => Get.toNamed("");
+
+  void openUnitDetail(UnitDetailModel unitSummary) {
+    final unitController = Get.put(UnitDetailController());
+    unitController.loadUnit(propertyName: property.value?.name ?? '', unitSummary: unitSummary);
+    Get.toNamed(AppRoutes.unitDetailScreen);
+  }
 }

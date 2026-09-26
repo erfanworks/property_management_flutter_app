@@ -495,4 +495,5 @@ class ConstString {
   static const itemNameLabel = 'ITEM NAME';
   static const itemsSuffix = 'items';
   static const sqFtSuffix = 'sq ft';
+  static const payments = 'Payments';
 }

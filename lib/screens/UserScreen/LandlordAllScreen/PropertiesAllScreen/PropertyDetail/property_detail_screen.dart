@@ -19,7 +19,7 @@ import 'Records/controller/records_controller.dart';
 import 'Records/model/records_model.dart';
 import 'controller/property_detail_controller.dart';
 import 'model/property_detail_model.dart';
-import 'widget/detail_row.dart';
+import '../../../../../widget/DetailRow/detail_row.dart';
 import 'widget/nav_list_tile.dart';
 
 class PropertyDetailScreen extends GetView<PropertyDetailController> {
@@ -387,77 +387,80 @@ class _UnitRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8.r),
-      decoration: BoxDecoration(
-        color: ConstColor.screenBackground,
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.r),
-            child: unit.photoUrl != null
-                ? AppImage(
-                    filePath: unit.photoUrl,
-                    width: 40.r,
-                    height: 40.r,
-                    fit: BoxFit.cover,
-                  )
-                : Container(
-                    width: 40.r,
-                    height: 40.r,
-                    color: ConstColor.dividerColor,
+    return GestureDetector(
+      onTap: () => Get.find<PropertyDetailController>().openUnitDetail(unit),
+      child: Container(
+        padding: EdgeInsets.all(8.r),
+        decoration: BoxDecoration(
+          color: ConstColor.screenBackground,
+          borderRadius: BorderRadius.circular(10.r),
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.r),
+              child: unit.photoUrl != null
+                  ? AppImage(
+                      filePath: unit.photoUrl,
+                      width: 40.r,
+                      height: 40.r,
+                      fit: BoxFit.cover,
+                    )
+                  : Container(
+                      width: 40.r,
+                      height: 40.r,
+                      color: ConstColor.dividerColor,
+                    ),
+            ),
+            SizedBox(width: 10.w),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    title: unit.label,
+                    textSize: 13.sp,
+                    fontWeight: FontWeight.w600,
+                    textColor: ConstColor.titleColor,
                   ),
-          ),
-          SizedBox(width: 10.w),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+                  CustomText(
+                    title: unit.bedBathLabel,
+                    textSize: 11.sp,
+                    textColor: ConstColor.bodyColor,
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
+                CustomStatusChip(
+                  label: unit.isOccupied
+                      ? ConstString.occupied
+                      : ConstString.vacant,
+                  color: unit.isOccupied
+                      ? ConstColor.tenantIconColor
+                      : ConstColor.contractorIconColor,
+                  backgroundColor: unit.isOccupied
+                      ? ConstColor.tenantIconBg
+                      : ConstColor.contractorIconBg,
+                ),
+                SizedBox(height: 3.h),
                 CustomText(
-                  title: unit.label,
-                  textSize: 13.sp,
+                  title: '£${unit.rent.toStringAsFixed(0)}/mo',
+                  textSize: 12.sp,
                   fontWeight: FontWeight.w600,
                   textColor: ConstColor.titleColor,
                 ),
-                CustomText(
-                  title: unit.bedBathLabel,
-                  textSize: 11.sp,
-                  textColor: ConstColor.bodyColor,
-                ),
               ],
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              CustomStatusChip(
-                label: unit.isOccupied
-                    ? ConstString.occupied
-                    : ConstString.vacant,
-                color: unit.isOccupied
-                    ? ConstColor.tenantIconColor
-                    : ConstColor.contractorIconColor,
-                backgroundColor: unit.isOccupied
-                    ? ConstColor.tenantIconBg
-                    : ConstColor.contractorIconBg,
-              ),
-              SizedBox(height: 3.h),
-              CustomText(
-                title: '£${unit.rent.toStringAsFixed(0)}/mo',
-                textSize: 12.sp,
-                fontWeight: FontWeight.w600,
-                textColor: ConstColor.titleColor,
-              ),
-            ],
-          ),
-          Icon(
-            Icons.chevron_right_rounded,
-            size: 18.sp,
-            color: ConstColor.bodyColor,
-          ),
-        ],
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 18.sp,
+              color: ConstColor.bodyColor,
+            ),
+          ],
+        ),
       ),
     );
   }

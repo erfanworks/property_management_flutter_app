@@ -63,6 +63,11 @@ import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyD
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_keys_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_notes_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_payments_history_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/UnitDetail/add_unit_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/UnitDetail/controller/unit_detail_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/UnitDetail/key_set_form_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/UnitDetail/keys_access_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/UnitDetail/unit_detail_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/controller/property_detail_controller.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Info/floor_plans_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/property_detail_screen.dart';
@@ -247,4 +252,14 @@ List<GetPage> appRouteFile = <GetPage>[
     binding: BindingsBuilder(() => Get.lazyPut(() => InventoryController(), fenix: true)),
   ),
   GetPage(name: AppRoutes.roomItemsScreen, page: () => const RoomItemsScreen()),
+  // app_routes_file.dar
+  GetPage(name: AppRoutes.unitDetailScreen, page: () => const UnitDetailScreen()),
+  GetPage(
+    name: AppRoutes.addUnitScreen,
+    page: () => const AddUnitScreen(),
+    binding: BindingsBuilder(() => Get.put(UnitDetailController())),
+  ),
+  GetPage(name: AppRoutes.keysAccessScreen, page: () => const KeysAccessScreen()),
+  GetPage(name: AppRoutes.addKeySetScreen, page: () => const KeySetFormScreen()),
+  GetPage(name: AppRoutes.editKeySetScreen, page: () => const KeySetFormScreen()),
 ];
