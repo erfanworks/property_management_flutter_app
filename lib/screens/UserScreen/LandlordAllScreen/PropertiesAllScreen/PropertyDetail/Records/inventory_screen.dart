@@ -20,31 +20,90 @@ class InventoryScreen extends GetView<InventoryController> {
       backgroundColor: ConstColor.screenBackground,
       appBar: GlobalAppBar(
         title: ConstString.inventory,
-        actions: [AppBarTextAction(label: ConstString.addRoom, icon: Icons.add_rounded, onTap: () => InventoryDialogs.showRoomForm(controller))],
       ),
       body: Obx(
-            () => ListView(
-          padding: EdgeInsets.all(16.r),
+        () => ListView(
+          padding: EdgeInsets.all(10.r),
           children: [
-            CustomDropdownField<FlatFilterModel>(
-              label: ConstString.selectFlatArea,
-              value: controller.selectedFlatFilter.value,
-              items: controller.flatFilters.map((f) => DropdownMenuItem(value: f, child: CustomText(title: f.label, textSize: 14.sp))).toList(),
-              onChanged: controller.selectFlatFilter,
+            Container(
+              padding: EdgeInsets.all(12.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(14.r),
+                border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.apartment_rounded,
+                        size: 16.sp,
+                        color: ConstColor.titleColor,
+                      ),
+                      SizedBox(width: 6.w),
+                      CustomText(
+                        title: ConstString.selectFlatArea,
+                        textSize: 12.sp,
+                        fontWeight: FontWeight.w600,
+                        textColor: ConstColor.titleColor,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8.h),
+                  CustomDropdownField<FlatFilterModel>(
+                    value: controller.selectedFlatFilter.value,
+                    items: controller.flatFilters
+                        .map(
+                          (f) => DropdownMenuItem(
+                            value: f,
+                            child: CustomText(title: f.label, textSize: 14.sp),
+                          ),
+                        )
+                        .toList(),
+                    onChanged: controller.selectFlatFilter,
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 14.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomText(title: '${controller.selectedFlatFilter.value?.label.split(' · ').first ?? ''} ${ConstString.roomChecklists}', textSize: 13.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor, maxLine: 1),
-                GestureDetector(
-                  onTap: () => InventoryDialogs.showRoomForm(controller),
-                  child: CustomText(title: '+ ${ConstString.addRoom}', textSize: 12.sp, fontWeight: FontWeight.w500, textColor: ConstColor.primaryColor),
+                CustomText(
+                  title:
+                      '${controller.selectedFlatFilter.value?.label.split(' · ').first ?? ''} ${ConstString.roomChecklists}',
+                  textSize: 13.sp,
+                  fontWeight: FontWeight.w700,
+                  textColor: ConstColor.titleColor,
+                  maxLine: 1,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                  decoration: BoxDecoration(
+                    color: ConstColor.primaryColor.withAlpha(30),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: GestureDetector(
+                    onTap: () => InventoryDialogs.showRoomForm(controller),
+                    child: CustomText(
+                      title: '+ ${ConstString.addRoom}',
+                      textSize: 12.sp,
+                      fontWeight: FontWeight.w700,
+                      textColor: ConstColor.primaryColor,
+                    ),
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 10.h),
-            ...controller.rooms.map((r) => Padding(padding: EdgeInsets.only(bottom: 10.h), child: _RoomTile(room: r))),
+            ...controller.rooms.map(
+              (r) => Padding(
+                padding: EdgeInsets.only(bottom: 10.h),
+                child: _RoomTile(room: r),
+              ),
+            ),
           ],
         ),
       ),
@@ -54,6 +113,7 @@ class InventoryScreen extends GetView<InventoryController> {
 
 class _RoomTile extends StatelessWidget {
   const _RoomTile({required this.room});
+
   final RoomModel room;
 
   @override
@@ -63,18 +123,34 @@ class _RoomTile extends StatelessWidget {
       onTap: () => controller.openRoomItems(room),
       child: Container(
         padding: EdgeInsets.all(12.r),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(14.r)),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(14.r),
+          border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
+        ),
         child: Row(
           children: [
-            Icon(_roomIcon(room.name), size: 20.sp, color: ConstColor.primaryColor),
+            Icon(
+              _roomIcon(room.name),
+              size: 20.sp,
+              color: ConstColor.primaryColor,
+            ),
             SizedBox(width: 10.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText(title: room.name, textSize: 13.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
                   CustomText(
-                    title: [if (room.sizeLabel.isNotEmpty) room.sizeLabel, '${room.items.length} ${ConstString.itemsSuffix}'].join(' · '),
+                    title: room.name,
+                    textSize: 13.sp,
+                    fontWeight: FontWeight.w700,
+                    textColor: ConstColor.titleColor,
+                  ),
+                  CustomText(
+                    title: [
+                      if (room.sizeLabel.isNotEmpty) room.sizeLabel,
+                      '${room.items.length} ${ConstString.itemsSuffix}',
+                    ].join(' · '),
                     textSize: 11.sp,
                     textColor: ConstColor.bodyColor,
                   ),
@@ -82,17 +158,60 @@ class _RoomTile extends StatelessWidget {
               ),
             ),
             PopupMenuButton<String>(
-              icon: Icon(Icons.more_vert_rounded, size: 18.sp, color: ConstColor.bodyColor),
+              color: Colors.white,
+              icon: Icon(
+                Icons.more_vert_rounded,
+                size: 18.sp,
+                color: ConstColor.bodyColor,
+              ),
               onSelected: (v) {
-                if (v == 'edit') InventoryDialogs.showRoomForm(controller, room: room);
-                if (v == 'delete') InventoryDialogs.confirmDeleteRoom(controller, room.id);
+                if (v == 'edit') {
+                  InventoryDialogs.showRoomForm(controller, room: room);
+                }
+                if (v == 'delete') {
+                  InventoryDialogs.confirmDeleteRoom(controller, room.id);
+                }
               },
               itemBuilder: (context) => [
-                PopupMenuItem(value: 'edit', child: Row(children: [Icon(Icons.edit_outlined, size: 16.sp, color: ConstColor.titleColor), SizedBox(width: 8.w), CustomText(title: ConstString.edit, textSize: 13.sp)])),
-                PopupMenuItem(value: 'delete', child: Row(children: [Icon(Icons.delete_outline_rounded, size: 16.sp, color: ConstColor.errorColor), SizedBox(width: 8.w), CustomText(title: ConstString.delete, textSize: 13.sp, textColor: ConstColor.errorColor)])),
+                PopupMenuItem(
+                  value: 'edit',
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.edit_outlined,
+                        size: 16.sp,
+                        color: ConstColor.titleColor,
+                      ),
+                      SizedBox(width: 8.w),
+                      CustomText(title: ConstString.edit, textSize: 13.sp),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 'delete',
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.delete_outline_rounded,
+                        size: 16.sp,
+                        color: ConstColor.errorColor,
+                      ),
+                      SizedBox(width: 8.w),
+                      CustomText(
+                        title: ConstString.delete,
+                        textSize: 13.sp,
+                        textColor: ConstColor.errorColor,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-            Icon(Icons.chevron_right_rounded, size: 18.sp, color: ConstColor.bodyColor),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 18.sp,
+              color: ConstColor.bodyColor,
+            ),
           ],
         ),
       ),
