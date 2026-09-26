@@ -199,7 +199,7 @@ class _PropertyDetailHeaderCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10.r),
                 child: property.photoUrls.isNotEmpty
                     ? AppImage(
-                        path: property.photoUrls.first,
+                        filePath: property.photoUrls.first,
                         width: 66.r,
                         height: 66.r,
                         fit: BoxFit.cover,
@@ -290,12 +290,12 @@ class _HeaderStat extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, size: 13.sp, color: ConstColor.titleColor),
+            Icon(icon, size: 18.sp, color: ConstColor.titleColor),
             SizedBox(width: 3.w),
             CustomText(
               title: value,
-              textSize: 13.sp,
-              fontWeight: FontWeight.w700,
+              textSize: 18.sp,
+              fontWeight: FontWeight.w800,
               textColor: ConstColor.titleColor,
             ),
           ],
@@ -304,7 +304,7 @@ class _HeaderStat extends StatelessWidget {
         CustomText(
           title: label,
           textSize: 10.sp,
-          textColor: ConstColor.bodyColor,
+          textColor: ConstColor.titleColor.withAlpha(160),
         ),
       ],
     );
@@ -399,7 +399,7 @@ class _UnitRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(8.r),
             child: unit.photoUrl != null
                 ? AppImage(
-                    path: unit.photoUrl,
+                    filePath: unit.photoUrl,
                     width: 40.r,
                     height: 40.r,
                     fit: BoxFit.cover,
@@ -573,38 +573,59 @@ class _InfoTab extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
             ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: _HeaderStat(
-                    icon: Icons.people_outline_rounded,
-                    value: '${controller.occupiedUnits}',
-                    label: ConstString.occupied,
+            child: IntrinsicHeight(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: _HeaderStat(
+                      icon: Icons.people_outline_rounded,
+                      value: '${controller.occupiedUnits}',
+                      label: ConstString.occupied,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: _HeaderStat(
-                    icon: Icons.door_back_door_outlined,
-                    value: '${controller.vacantUnits}',
-                    label: ConstString.vacant,
+                  VerticalDivider(
+                    color: ConstColor.dividerColor,
+                    thickness: 1.w,
+                    indent: 2.h,
+                    endIndent: 2.h,
                   ),
-                ),
-                Expanded(
-                  child: _HeaderStat(
-                    icon: Icons.door_front_door_outlined,
-                    value: '${controller.totalUnits}',
-                    label: ConstString.units,
+                  Expanded(
+                    child: _HeaderStat(
+                      icon: Icons.door_back_door_outlined,
+                      value: '${controller.vacantUnits}',
+                      label: ConstString.vacant,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: _HeaderStat(
-                    icon: Icons.layers_outlined,
-                    value: '${controller.totalFloors}',
-                    label: ConstString.floors,
+                  VerticalDivider(
+                    color: ConstColor.dividerColor,
+                    thickness: 1.w,
+                    indent: 2.h,
+                    endIndent: 2.h,
                   ),
-                ),
-              ],
+                  Expanded(
+                    child: _HeaderStat(
+                      icon: Icons.door_front_door_outlined,
+                      value: '${controller.totalUnits}',
+                      label: ConstString.units,
+                    ),
+                  ),
+                  VerticalDivider(
+                    color: ConstColor.dividerColor,
+                    thickness: 1.w,
+                    indent: 2.h,
+                    endIndent: 2.h,
+                  ),
+                  Expanded(
+                    child: _HeaderStat(
+                      icon: Icons.layers_outlined,
+                      value: '${controller.totalFloors}',
+                      label: ConstString.floors,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(height: 14.h),
@@ -638,7 +659,7 @@ class _InfoTab extends StatelessWidget {
               itemBuilder: (context, index) => ClipRRect(
                 borderRadius: BorderRadius.circular(10.r),
                 child: AppImage(
-                  path: p.photoUrls[index],
+                  filePath: p.photoUrls[index],
                   width: 70.w,
                   height: 70.h,
                   fit: BoxFit.cover,
@@ -888,7 +909,7 @@ class _RecordsTab extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(14.r),
-              border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+              border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -903,7 +924,9 @@ class _RecordsTab extends StatelessWidget {
                       size: 36,
                       isCircle: false,
                       borderRadius: 10,
-                        border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+                      border: Border.all(
+                        color: ConstColor.titleColor.withAlpha(30),
+                      ),
                     ),
                     Icon(
                       Icons.chevron_right_rounded,

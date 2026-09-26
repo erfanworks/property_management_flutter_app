@@ -32,7 +32,7 @@ class PropertyPhotosScreen extends GetView<PropertyDetailController> {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                AppImage(path: photos[index], fit: BoxFit.cover),
+                AppImage(filePath: photos[index], fit: BoxFit.cover),
                 Positioned(
                   top: 6.h,
                   right: 6.w,
