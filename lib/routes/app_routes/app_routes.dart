@@ -44,7 +44,6 @@ class AppRoutes {
   static const otherDocumentsScreen = '/otherDocumentsScreen';
   static const safetyAlarmsScreen = '/safetyAlarmsScreen';
   static const appliancesScreen = '/appliancesScreen';
-  static const utilitiesMetersScreen = '/utilitiesMetersScreen';
   static const inspectionsScreen = '/inspectionsScreen';
   static const houseRulesScreen = '/houseRulesScreen';
   static const nidDocumentScreen = '/nidDocumentScreen';

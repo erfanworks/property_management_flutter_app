@@ -54,7 +54,6 @@ import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyD
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/other_documents_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/room_items_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/safety_alarms_screen.dart';
-import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Records/utilities_meters_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/lease_agreement_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/nid_document_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/PropertiesAllScreen/PropertyDetail/Tenant/tenant_add_note_screen.dart';
@@ -211,7 +210,6 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.otherDocumentsScreen, page: () => const OtherDocumentsScreen()),
   GetPage(name: AppRoutes.safetyAlarmsScreen, page: () => const SafetyAlarmsScreen()),
   GetPage(name: AppRoutes.appliancesScreen, page: () => const AppliancesScreen()),
-  GetPage(name: AppRoutes.utilitiesMetersScreen, page: () => const UtilitiesMetersScreen()),
   GetPage(name: AppRoutes.inspectionsScreen, page: () => const InspectionsScreen()),
   GetPage(name: AppRoutes.houseRulesScreen, page: () => const HouseRulesScreen()),
   // app_routes_file.dart
@@ -230,7 +228,6 @@ List<GetPage> appRouteFile = <GetPage>[
   // app_routes_file.dart
   GetPage(name: AppRoutes.safetyAlarmsScreen, page: () => const SafetyAlarmsScreen()),
   GetPage(name: AppRoutes.appliancesScreen, page: () => const AppliancesScreen()),
-  GetPage(name: AppRoutes.utilitiesMetersScreen, page: () => const UtilitiesMetersScreen()),
   GetPage(
     name: AppRoutes.inspectionsScreen,
     page: () => const InspectionsScreen(),

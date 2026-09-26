@@ -813,14 +813,6 @@ class _RecordsTab extends StatelessWidget {
         subtitle: ConstString.appliancesSubtitle,
       ),
       RecordCategoryModel(
-        id: 'utilities',
-        icon: Icons.bolt_outlined,
-        iconColor: ConstColor.primaryColor,
-        iconBg: ConstColor.infoBg,
-        title: ConstString.utilitiesMeters,
-        subtitle: ConstString.utilitiesMetersSubtitle,
-      ),
-      RecordCategoryModel(
         id: 'inspections',
         icon: Icons.fact_check_outlined,
         iconColor: ConstColor.tenantIconColor,
@@ -877,9 +869,6 @@ class _RecordsTab extends StatelessWidget {
               case 'appliances':
                 Get.toNamed(AppRoutes.appliancesScreen);
                 break;
-              case 'utilities':
-                Get.toNamed(AppRoutes.utilitiesMetersScreen);
-                break;
               case 'inspections':
                 Get.toNamed(AppRoutes.inspectionsScreen);
                 break;
@@ -890,7 +879,7 @@ class _RecordsTab extends StatelessWidget {
                 Get.toNamed(AppRoutes.inventoryScreen);
                 break;
               case 'vault':
-                controller.notifyComingSoon(c.title);
+                Get.toNamed(AppRoutes.otherDocumentsScreen);
                 break;
             }
           },
