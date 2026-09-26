@@ -29,7 +29,22 @@ class ServiceEditScreen extends GetView<PropertyDetailController> {
         body: ListView(
           padding: EdgeInsets.all(16.r),
           children: [
-            Row(children: [Icon(service.type.icon, size: 18.sp, color: ConstColor.primaryColor), SizedBox(width: 8.w), CustomText(title: service.type.label, textSize: 15.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor)]),
+            Row(
+              children: [
+                Icon(
+                  service.type.icon,
+                  size: 18.sp,
+                  color: ConstColor.primaryColor,
+                ),
+                SizedBox(width: 8.w),
+                CustomText(
+                  title: service.type.label,
+                  textSize: 15.sp,
+                  fontWeight: FontWeight.w700,
+                  textColor: ConstColor.titleColor,
+                ),
+              ],
+            ),
             SizedBox(height: 16.h),
             ...controller.editingFields.map((field) {
               if (field.dropdownOptions != null) {
@@ -39,42 +54,97 @@ class ServiceEditScreen extends GetView<PropertyDetailController> {
                     label: field.label,
                     value: field.value.isEmpty ? null : field.value,
                     hintText: field.label,
-                    items: field.dropdownOptions!.map((o) => DropdownMenuItem(value: o, child: CustomText(title: o, textSize: 14.sp))).toList(),
+                    items: field.dropdownOptions!
+                        .map(
+                          (o) => DropdownMenuItem(
+                            value: o,
+                            child: CustomText(title: o, textSize: 14.sp),
+                          ),
+                        )
+                        .toList(),
                     onChanged: (v) => field.value = v ?? '',
                   ),
                 );
               }
               return CustomTextFormField(
                 fromTitle: field.label,
-                textController: TextEditingController(text: field.value)..selection = TextSelection.collapsed(offset: field.value.length),
+                textController: TextEditingController(text: field.value)
+                  ..selection = TextSelection.collapsed(
+                    offset: field.value.length,
+                  ),
                 maxLine: field.isMultiline ? 3 : 1,
                 minLines: field.isMultiline ? 3 : null,
                 onChanged: (v) => field.value = v,
               );
             }),
-            SizedBox(height: 6.h),
-            CustomText(title: ConstString.changePhoto, textSize: 14.sp, fontWeight: FontWeight.w600),
-            SizedBox(height: 8.h),
-            controller.editingPhotoPath.value != null
-                ? ClipRRect(
-              borderRadius: BorderRadius.circular(12.r),
-              child: AppImage(filePath: controller.editingPhotoPath.value, width: double.infinity, height: 140.h, fit: BoxFit.cover),
-            )
-                : const SizedBox.shrink(),
-            SizedBox(height: 8.h),
-            CustomElevatedButton(
-              onPressed: controller.pickServicePhoto,
-              isOutLined: true,
-              outLineColour: ConstColor.dividerColor,
-              icon: Icon(Icons.edit_outlined, color: ConstColor.titleColor, size: 16.sp),
-              child: CustomText(title: ConstString.changePhoto, textColor: ConstColor.titleColor, textSize: 13.sp, fontWeight: FontWeight.w600),
+            SizedBox(height: 12.h),
+            Container(
+              padding: EdgeInsets.all(12.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16.r),
+                border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CustomText(
+                    title: ConstString.changePhoto,
+                    textSize: 14.sp,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  SizedBox(height: 8.h),
+                  if (controller.editingPhotoPath.value != null) ...[
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(12.r),
+                      child: AppImage(
+                        filePath: controller.editingPhotoPath.value,
+                        width: double.infinity,
+                        height: 140.h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    SizedBox(height: 8.h),
+                  ],
+                  CustomElevatedButton(
+                    onPressed: controller.pickServicePhoto,
+                    color: ConstColor.infoBg,
+                    elevation: 0,
+                    icon: Icon(
+                      Icons.edit_outlined,
+                      color: ConstColor.primaryColor,
+                      size: 18.sp,
+                    ),
+                    child: CustomText(
+                      title: ConstString.changePhoto,
+                      textColor: ConstColor.primaryColor,
+                      textSize: 13.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 6.h),
+                  CustomText(
+                    title: ConstString.uploadPhotoHint,
+                    textSize: 11.sp,
+                    textColor: ConstColor.bodyColor,
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: 4.h),
-            CustomText(title: ConstString.uploadPhotoHint, textSize: 11.sp, textColor: ConstColor.bodyColor, textAlign: TextAlign.center),
             SizedBox(height: 20.h),
             CustomElevatedButton(
-              onPressed: controller.isSavingService.value ? null : controller.saveServiceEdit,
-              child: CustomText(title: controller.isSavingService.value ? ConstString.saving : ConstString.saveChanges, textColor: Colors.white, textSize: 14.sp, fontWeight: FontWeight.w600),
+              onPressed: controller.isSavingService.value
+                  ? null
+                  : controller.saveServiceEdit,
+              child: CustomText(
+                title: controller.isSavingService.value
+                    ? ConstString.saving
+                    : ConstString.saveChanges,
+                textColor: Colors.white,
+                textSize: 14.sp,
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ],
         ),
