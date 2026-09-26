@@ -23,10 +23,16 @@ class PropertiesListScreen extends GetView<PropertiesController> {
       appBar: GlobalAppBar(
         title: ConstString.properties,
         showBack: false,
-        actions: [AppBarTextAction(label: ConstString.addProperty, icon: Icons.add_rounded, onTap: controller.openAddProperty)],
+        actions: [
+          AppBarTextAction(
+            label: ConstString.addProperty,
+            icon: Icons.add_rounded,
+            onTap: controller.openAddProperty,
+          ),
+        ],
       ),
       body: Obx(
-            () => ListView(
+        () => ListView(
           padding: EdgeInsets.all(16.r),
           children: [
             Container(
@@ -79,7 +85,10 @@ class PropertiesListScreen extends GetView<PropertiesController> {
             ),
             SizedBox(height: 14.h),
             ...controller.filteredProperties.map(
-                  (p) => Padding(padding: EdgeInsets.only(bottom: 12.h), child: _PropertyCard(data: p)),
+              (p) => Padding(
+                padding: EdgeInsets.only(bottom: 12.h),
+                child: _PropertyCard(data: p),
+              ),
             ),
           ],
         ),
@@ -89,7 +98,14 @@ class PropertiesListScreen extends GetView<PropertiesController> {
 }
 
 class _PortfolioStat extends StatelessWidget {
-  const _PortfolioStat({required this.icon, required this.iconColor, required this.iconBg, required this.value, required this.label});
+  const _PortfolioStat({
+    required this.icon,
+    required this.iconColor,
+    required this.iconBg,
+    required this.value,
+    required this.label,
+  });
+
   final IconData icon;
   final Color iconColor;
   final Color iconBg;
@@ -136,7 +152,14 @@ class _PortfolioStat extends StatelessWidget {
 }
 
 class _PropertyFilterTabs extends StatelessWidget {
-  const _PropertyFilterTabs({required this.selectedFilter, required this.allCount, required this.occupiedCount, required this.vacantCount, required this.onChanged});
+  const _PropertyFilterTabs({
+    required this.selectedFilter,
+    required this.allCount,
+    required this.occupiedCount,
+    required this.vacantCount,
+    required this.onChanged,
+  });
+
   final PropertiesFilter selectedFilter;
   final int allCount;
   final int occupiedCount;
@@ -146,9 +169,21 @@ class _PropertyFilterTabs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      (filter: PropertiesFilter.all, count: allCount, icon: Icons.apartment_rounded),
-      (filter: PropertiesFilter.occupied, count: occupiedCount, icon: Icons.people_outline_rounded),
-      (filter: PropertiesFilter.vacant, count: vacantCount, icon: Icons.home_outlined),
+      (
+        filter: PropertiesFilter.all,
+        count: allCount,
+        icon: Icons.apartment_rounded,
+      ),
+      (
+        filter: PropertiesFilter.occupied,
+        count: occupiedCount,
+        icon: Icons.people_outline_rounded,
+      ),
+      (
+        filter: PropertiesFilter.vacant,
+        count: vacantCount,
+        icon: Icons.home_outlined,
+      ),
     ];
     return Row(
       children: tabs.map((tab) {
@@ -160,9 +195,15 @@ class _PropertyFilterTabs extends StatelessWidget {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 7.h),
               decoration: BoxDecoration(
-                color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor.withAlpha(40),
+                color: isSelected
+                    ? ConstColor.primaryColor
+                    : ConstColor.dividerColor.withAlpha(40),
                 borderRadius: BorderRadius.circular(20.r),
-                border: Border.all(color: isSelected ? ConstColor.primaryColor : ConstColor.dividerColor),
+                border: Border.all(
+                  color: isSelected
+                      ? ConstColor.primaryColor
+                      : ConstColor.dividerColor,
+                ),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
@@ -177,7 +218,9 @@ class _PropertyFilterTabs extends StatelessWidget {
                     title: '${tab.filter.label} (${tab.count})',
                     textSize: 12.sp,
                     fontWeight: FontWeight.w600,
-                    textColor: isSelected ? Colors.white : ConstColor.titleColor,
+                    textColor: isSelected
+                        ? Colors.white
+                        : ConstColor.titleColor,
                   ),
                 ],
               ),
@@ -191,6 +234,7 @@ class _PropertyFilterTabs extends StatelessWidget {
 
 class _PropertyCard extends StatelessWidget {
   const _PropertyCard({required this.data});
+
   final PropertyModel data;
 
   @override
@@ -204,67 +248,178 @@ class _PropertyCard extends StatelessWidget {
         border: Border.all(color: ConstColor.dividerColor),
       ),
       child: GestureDetector(
-          onTap: () => Get.toNamed(AppRoutes.propertyDetailScreen, arguments: data),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: data.photoUrls.isNotEmpty
-                    ? AppImage(filePath: data.photoUrls.first, width: 80.r, height: 86.r, fit: BoxFit.cover)
-                    : Container(width: 80.r, height: 86.r, color: ConstColor.dividerColor, child: Icon(Icons.apartment_rounded, color: ConstColor.bodyColor)),
-              ),
-              SizedBox(width: 12.w),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomText(title: data.name, textSize: 14.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor, maxLine: 1),
-                    CustomText(title: data.address ?? '', textSize: 12.sp, textColor: ConstColor.bodyColor, maxLine: 1),
-                    SizedBox(height: 4.h),
-                    data.isFullyVacant
-                        ? CustomStatusChip(label: ConstString.vacant, color: ConstColor.contractorIconColor, backgroundColor: ConstColor.contractorIconBg)
-                        : CustomStatusChip(label: '${data.occupiedUnitsCount}/${data.totalUnitsCount} occupied', color: ConstColor.primaryColor, backgroundColor: ConstColor.infoBg),
+        onTap: () =>
+            Get.toNamed(AppRoutes.propertyDetailScreen, arguments: data),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10.r),
+                  child: data.photoUrls.isNotEmpty
+                      ? AppImage(
+                          filePath: data.photoUrls.first,
+                          width: 80.r,
+                          height: 86.r,
+                          fit: BoxFit.cover,
+                        )
+                      : Container(
+                          width: 80.r,
+                          height: 86.r,
+                          color: ConstColor.dividerColor,
+                          child: Icon(
+                            Icons.apartment_rounded,
+                            color: ConstColor.bodyColor,
+                          ),
+                        ),
+                ),
+                SizedBox(width: 12.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CustomText(
+                        title: data.name,
+                        textSize: 14.sp,
+                        fontWeight: FontWeight.w700,
+                        textColor: ConstColor.titleColor,
+                        maxLine: 1,
+                      ),
+                      CustomText(
+                        title: data.address ?? '',
+                        textSize: 12.sp,
+                        textColor: ConstColor.bodyColor,
+                        maxLine: 1,
+                      ),
+                      SizedBox(height: 4.h),
+                      data.isFullyVacant
+                          ? CustomStatusChip(
+                              label: ConstString.vacant,
+                              color: ConstColor.contractorIconColor,
+                              backgroundColor: ConstColor.contractorIconBg,
+                            )
+                          : CustomStatusChip(
+                              label:
+                                  '${data.occupiedUnitsCount}/${data.totalUnitsCount} occupied',
+                              color: ConstColor.primaryColor,
+                              backgroundColor: ConstColor.infoBg,
+                            ),
+                    ],
+                  ),
+                ),
+                PopupMenuButton<String>(
+                  color: Colors.white,
+                  icon: Icon(
+                    Icons.more_vert_rounded,
+                    color: ConstColor.bodyColor,
+                  ),
+                  onSelected: (value) {
+                    if (value == 'edit') controller.openEditProperty(data);
+                    if (value == 'delete')
+                      controller.confirmDeleteProperty(data);
+                    // 'add_unit' — feature-e porer dey dibo
+                  },
+                  itemBuilder: (context) => [
+                    PopupMenuItem(
+                      value: 'edit',
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.edit_outlined,
+                            size: 18.sp,
+                            color: ConstColor.titleColor,
+                          ),
+                          SizedBox(width: 8.w),
+                          CustomText(
+                            title: ConstString.editPropertyAction,
+                            textSize: 13.sp,
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'add_unit',
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.add_rounded,
+                            size: 18.sp,
+                            color: ConstColor.titleColor,
+                          ),
+                          SizedBox(width: 8.w),
+                          CustomText(
+                            title: ConstString.addUnit,
+                            textSize: 13.sp,
+                          ),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'delete',
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.delete_outline_rounded,
+                            size: 18.sp,
+                            color: ConstColor.errorColor,
+                          ),
+                          SizedBox(width: 8.w),
+                          CustomText(
+                            title: ConstString.deleteProperty,
+                            textSize: 13.sp,
+                            textColor: ConstColor.errorColor,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              PopupMenuButton<String>(
-                color: Colors.white,
-                icon: Icon(Icons.more_vert_rounded, color: ConstColor.bodyColor),
-                onSelected: (value) {
-                  if (value == 'edit') controller.openEditProperty(data);
-                  if (value == 'delete') controller.confirmDeleteProperty(data);
-                  // 'add_unit' — feature-e porer dey dibo
-                },
-                itemBuilder: (context) => [
-                  PopupMenuItem(value: 'edit', child: Row(children: [Icon(Icons.edit_outlined, size: 18.sp, color: ConstColor.titleColor), SizedBox(width: 8.w), CustomText(title: ConstString.editPropertyAction, textSize: 13.sp)])),
-                  PopupMenuItem(value: 'add_unit', child: Row(children: [Icon(Icons.add_rounded, size: 18.sp, color: ConstColor.titleColor), SizedBox(width: 8.w), CustomText(title: ConstString.addUnit, textSize: 13.sp)])),
-                  PopupMenuItem(value: 'delete', child: Row(children: [Icon(Icons.delete_outline_rounded, size: 18.sp, color: ConstColor.errorColor), SizedBox(width: 8.w), CustomText(title: ConstString.deleteProperty, textSize: 13.sp, textColor: ConstColor.errorColor)])),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 10.h),
-          Divider(color: ConstColor.dividerColor, height: 1),
-          SizedBox(height: 10.h),
-          Row(
-            children: [
-              Expanded(child: _PropertyStatColumn(icon: Icons.payments_outlined, label: ConstString.monthlyRentLabel, value: '£${(data.monthlyRent ?? 0).toStringAsFixed(0)}')),
-              Expanded(child: _PropertyStatColumn(icon: Icons.door_front_door_outlined, label: ConstString.totalUnitsShort, value: '${data.totalUnitsCount}')),
-              Expanded(child: _PropertyStatColumn(icon: Icons.trending_up_rounded, label: ConstString.occupancyRate, value: '${data.occupancyPercentage}%')),
-            ],
-          ),
-        ],
+              ],
+            ),
+            SizedBox(height: 10.h),
+            Divider(color: ConstColor.dividerColor, height: 1),
+            SizedBox(height: 10.h),
+            Row(
+              children: [
+                Expanded(
+                  child: _PropertyStatColumn(
+                    icon: Icons.payments_outlined,
+                    label: ConstString.monthlyRentLabel,
+                    value: '£${(data.monthlyRent ?? 0).toStringAsFixed(0)}',
+                  ),
+                ),
+                Expanded(
+                  child: _PropertyStatColumn(
+                    icon: Icons.door_front_door_outlined,
+                    label: ConstString.totalUnitsShort,
+                    value: '${data.totalUnitsCount}',
+                  ),
+                ),
+                Expanded(
+                  child: _PropertyStatColumn(
+                    icon: Icons.trending_up_rounded,
+                    label: ConstString.occupancyRate,
+                    value: '${data.occupancyPercentage}%',
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
 
 class _PropertyStatColumn extends StatelessWidget {
-  const _PropertyStatColumn({required this.icon, required this.label, required this.value});
+  const _PropertyStatColumn({
+    required this.icon,
+    required this.label,
+    required this.value,
+  });
+
   final IconData icon;
   final String label;
   final String value;
@@ -274,9 +429,24 @@ class _PropertyStatColumn extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(children: [Icon(icon, size: 12.sp, color: ConstColor.bodyColor), SizedBox(width: 4.w), CustomText(title: label, textSize: 10.sp, textColor: ConstColor.bodyColor)]),
+        Row(
+          children: [
+            Icon(icon, size: 12.sp, color: ConstColor.bodyColor),
+            SizedBox(width: 4.w),
+            CustomText(
+              title: label,
+              textSize: 10.sp,
+              textColor: ConstColor.bodyColor,
+            ),
+          ],
+        ),
         SizedBox(height: 2.h),
-        CustomText(title: value, textSize: 13.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
+        CustomText(
+          title: value,
+          textSize: 13.sp,
+          fontWeight: FontWeight.w700,
+          textColor: ConstColor.titleColor,
+        ),
       ],
     );
   }
