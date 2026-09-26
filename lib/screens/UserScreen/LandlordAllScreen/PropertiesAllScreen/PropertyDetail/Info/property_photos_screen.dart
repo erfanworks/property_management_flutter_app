@@ -8,6 +8,7 @@ import '../../../../../../constant/const_color.dart';
 import '../../../../../../constant/const_string.dart';
 import '../../../../../../widget/AppImage/app_image.dart';
 import '../../../../../../widget/GlobalAppBar/global_app_bar.dart';
+import '../../../../../../widget/text/custom_text.dart';
 import '../controller/property_detail_controller.dart';
 
 class PropertyPhotosScreen extends GetView<PropertyDetailController> {
@@ -19,7 +20,38 @@ class PropertyPhotosScreen extends GetView<PropertyDetailController> {
       backgroundColor: ConstColor.screenBackground,
       appBar: GlobalAppBar(
         title: ConstString.propertyPhotos,
-        actions: [AppBarTextAction(label: ConstString.addPhoto, icon: Icons.add_rounded, onTap: controller.addPropertyPhoto)],
+        actions: [
+          Center(
+            child: GestureDetector(
+              onTap: controller.addPropertyPhoto,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                decoration: BoxDecoration(
+                  color: ConstColor.primaryColor,
+                  borderRadius: BorderRadius.circular(8.r),
+                  border: Border.all(color: Colors.white.withAlpha(80)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.add_rounded,
+                      size: 16.sp,
+                      color: Colors.white,
+                    ),
+                    SizedBox(width: 4.w),
+                    CustomText(
+                      title: ConstString.addPhoto,
+                      textSize: 12.sp,
+                      fontWeight: FontWeight.w600,
+                      textColor: Colors.white,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Obx(() {
         final photos = controller.property.value?.photoUrls ?? [];
