@@ -101,10 +101,26 @@ class PropertyFormScreen extends GetView<PropertiesController> {
               textController: controller.addressController,
               hintText: CustomText(title: ConstString.streetAddressHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
             ),
-            CustomTextFormField(
-              fromTitle: ConstString.postcode,
-              textController: controller.postcodeController,
-              hintText: CustomText(title: ConstString.postcodeHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextFormField(
+                    fromTitle: ConstString.postcode,
+                    textController: controller.postcodeController,
+                    hintText: CustomText(title: ConstString.postcodeHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
+                  ),
+                ),
+                SizedBox(width: 12.w),
+                Expanded(
+                  child: CustomTextFormField(
+                    fromTitle: ConstString.floorsInBuilding,
+                    textController: controller.floorsController,
+                    keyboardType: TextInputType.number,
+                    numeric: true,
+                    hintText: CustomText(title: ConstString.floorsInBuildingHint, textColor: ConstColor.bodyColor, textSize: 14.sp),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 6.h),
             CustomDropdownField<PropertyType>(

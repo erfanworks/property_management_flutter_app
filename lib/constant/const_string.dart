@@ -227,6 +227,8 @@ class ConstString {
   static const streetAddressHint = 'Street and town';
   static const postcode = 'Postcode';
   static const postcodeHint = 'e.g. SW1A 1AA';
+  static const floorsInBuilding = 'Floors in building';
+  static const floorsInBuildingHint = '2';
   static const propertyTypeLabel = 'Property type';
   static const selectType = 'Select type';
   static const selectTypeOptional = 'Select type (optional)';

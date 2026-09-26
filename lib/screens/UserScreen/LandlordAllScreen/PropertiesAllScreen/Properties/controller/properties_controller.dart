@@ -22,6 +22,7 @@ class PropertiesController extends GetxController {
   final nameController = TextEditingController();
   final addressController = TextEditingController();
   final postcodeController = TextEditingController();
+  final floorsController = TextEditingController();
   final Rx<PropertyType?> formPropertyType = Rx<PropertyType?>(null);
   final isHmo = false.obs;
   final yearBuiltController = TextEditingController();
@@ -134,6 +135,7 @@ class PropertiesController extends GetxController {
     nameController.clear();
     addressController.clear();
     postcodeController.clear();
+    floorsController.clear();
     formPropertyType.value = null;
     isHmo.value = false;
     yearBuiltController.clear();
