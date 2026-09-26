@@ -887,6 +887,8 @@ class _RecordsTab extends StatelessWidget {
                 Get.toNamed(AppRoutes.houseRulesScreen);
                 break;
               case 'inventories':
+                Get.toNamed(AppRoutes.inventoryScreen);
+                break;
               case 'vault':
                 controller.notifyComingSoon(c.title);
                 break;
