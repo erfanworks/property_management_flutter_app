@@ -34,11 +34,7 @@ class PropertyPhotosScreen extends GetView<PropertyDetailController> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      Icons.add_rounded,
-                      size: 16.sp,
-                      color: Colors.white,
-                    ),
+                    Icon(Icons.add_rounded, size: 16.sp, color: Colors.white),
                     SizedBox(width: 4.w),
                     CustomText(
                       title: ConstString.addPhoto,
@@ -57,7 +53,12 @@ class PropertyPhotosScreen extends GetView<PropertyDetailController> {
         final photos = controller.property.value?.photoUrls ?? [];
         return GridView.builder(
           padding: EdgeInsets.all(16.r),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, mainAxisSpacing: 12.h, crossAxisSpacing: 12.w, childAspectRatio: 1.2),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 12.h,
+            crossAxisSpacing: 12.w,
+            childAspectRatio: 1.2,
+          ),
           itemCount: photos.length,
           itemBuilder: (context, index) => ClipRRect(
             borderRadius: BorderRadius.circular(14.r),
@@ -70,10 +71,27 @@ class PropertyPhotosScreen extends GetView<PropertyDetailController> {
                   right: 6.w,
                   child: GestureDetector(
                     onTap: () => CustomActionSheet.show([
-                      ActionSheetItem(label: ConstString.setAsCover, icon: Icons.star_outline_rounded, onTap: () => controller.setPhotoAsCover(index)),
-                      ActionSheetItem(label: ConstString.removePhoto, icon: Icons.delete_outline_rounded, color: ConstColor.errorColor, onTap: () => controller.removePropertyPhoto(index)),
+                      ActionSheetItem(
+                        label: ConstString.setAsCover,
+                        icon: Icons.star_outline_rounded,
+                        onTap: () => controller.setPhotoAsCover(index),
+                      ),
+                      ActionSheetItem(
+                        label: ConstString.removePhoto,
+                        icon: Icons.delete_outline_rounded,
+                        color: ConstColor.errorColor,
+                        onTap: () => controller.removePropertyPhoto(index),
+                      ),
                     ]),
-                    child: CircleAvatar(radius: 14.r, backgroundColor: Colors.white, child: Icon(Icons.more_horiz_rounded, size: 16.sp, color: ConstColor.titleColor)),
+                    child: CircleAvatar(
+                      radius: 14.r,
+                      backgroundColor: Colors.white,
+                      child: Icon(
+                        Icons.more_horiz_rounded,
+                        size: 16.sp,
+                        color: ConstColor.titleColor,
+                      ),
+                    ),
                   ),
                 ),
               ],
