@@ -58,7 +58,7 @@ class ServiceEditScreen extends GetView<PropertyDetailController> {
             controller.editingPhotoPath.value != null
                 ? ClipRRect(
               borderRadius: BorderRadius.circular(12.r),
-              child: AppImage(path: controller.editingPhotoPath.value, width: double.infinity, height: 140.h, fit: BoxFit.cover),
+              child: AppImage(filePath: controller.editingPhotoPath.value, width: double.infinity, height: 140.h, fit: BoxFit.cover),
             )
                 : const SizedBox.shrink(),
             SizedBox(height: 8.h),
