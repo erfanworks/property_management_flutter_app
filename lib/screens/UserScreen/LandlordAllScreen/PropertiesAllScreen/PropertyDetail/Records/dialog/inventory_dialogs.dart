@@ -75,7 +75,7 @@ class InventoryDialogs {
                 hintText: CustomText(
                   title: ConstString.roomNameHint,
                   textColor: ConstColor.bodyColor,
-                  textSize: 14.sp,
+                  textSize: 12.sp,
                 ),
               ),
               SizedBox(height: 12.h),
@@ -87,15 +87,12 @@ class InventoryDialogs {
                 hintText: CustomText(
                   title: ConstString.roomSizeHint,
                   textColor: ConstColor.bodyColor,
-                  textSize: 14.sp,
+                  textSize: 12.sp,
                 ),
               ),
               SizedBox(height: 20.h),
               CustomElevatedButton(
-                onPressed: () {
-                  controller.saveRoom();
-                  Get.back();
-                },
+                onPressed: controller.saveRoom,
                 child: CustomText(
                   title: room != null
                       ? ConstString.saveChanges
@@ -253,10 +250,7 @@ class InventoryDialogs {
                 ],
                 SizedBox(height: 20.h),
                 CustomElevatedButton(
-                  onPressed: () {
-                    controller.saveItem();
-                    Get.back();
-                  },
+                  onPressed: controller.saveItem,
                   icon: item == null
                       ? Icon(
                           Icons.add_rounded,

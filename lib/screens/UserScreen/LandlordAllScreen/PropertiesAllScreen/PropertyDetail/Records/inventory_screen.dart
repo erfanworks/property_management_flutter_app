@@ -130,12 +130,20 @@ class _RoomTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              _roomIcon(room.name),
-              size: 20.sp,
-              color: ConstColor.primaryColor,
+            Container(
+              width: 38.r,
+              height: 38.r,
+              decoration: BoxDecoration(
+                color: ConstColor.primaryColor.withAlpha(25),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                _roomIcon(room.name),
+                size: 18.sp,
+                color: ConstColor.primaryColor,
+              ),
             ),
-            SizedBox(width: 10.w),
+            SizedBox(width: 12.w),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

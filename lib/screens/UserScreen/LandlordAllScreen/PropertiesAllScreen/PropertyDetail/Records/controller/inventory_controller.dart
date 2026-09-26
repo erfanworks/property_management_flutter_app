@@ -90,6 +90,7 @@ class InventoryController extends GetxController {
     } else {
       rooms.add(RoomModel(id: DateTime.now().millisecondsSinceEpoch.toString(), name: roomNameController.text.trim(), sizeLabel: sizeLabel, items: []));
     }
+    Get.back();
     AppSnackBar.success('Room saved');
   }
 
@@ -136,6 +137,7 @@ class InventoryController extends GetxController {
       room.items.add(InventoryItemModel(id: DateTime.now().millisecondsSinceEpoch.toString(), name: itemNameController.text.trim(), photoPath: itemPhotoPath.value));
     }
     rooms.refresh();
+    Get.back();
     AppSnackBar.success('Item saved');
   }
 
