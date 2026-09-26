@@ -30,7 +30,10 @@ class ServiceDetailScreen extends GetView<PropertyDetailController> {
               child: GestureDetector(
                 onTap: controller.openServiceEdit,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 6.h,
+                  ),
                   decoration: BoxDecoration(
                     color: ConstColor.primaryColor,
                     borderRadius: BorderRadius.circular(8.r),
@@ -62,15 +65,31 @@ class ServiceDetailScreen extends GetView<PropertyDetailController> {
           padding: EdgeInsets.all(16.r),
           children: [
             if (data.photoPath != null) ...[
-              ClipRRect(borderRadius: BorderRadius.circular(16.r), child: AppImage(filePath: data.photoPath, width: double.infinity, height: 150.h, fit: BoxFit.cover)),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16.r),
+                child: AppImage(
+                  filePath: data.photoPath,
+                  width: double.infinity,
+                  height: 150.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
               SizedBox(height: 14.h),
             ],
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16.r),
-              decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16.r),
+                border: Border.all(color: ConstColor.titleColor.withAlpha(30))
+              ),
               child: Column(
                 children: data.fields.asMap().entries.map((e) {
-                  return DetailRow(label: e.value.label, value: e.value.value.isEmpty ? '-' : e.value.value, isLast: e.key == data.fields.length - 1);
+                  return DetailRow(
+                    label: e.value.label,
+                    value: e.value.value.isEmpty ? '-' : e.value.value,
+                    isLast: e.key == data.fields.length - 1,
+                  );
                 }).toList(),
               ),
             ),
