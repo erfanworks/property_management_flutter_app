@@ -629,42 +629,55 @@ class _InfoTab extends StatelessWidget {
             ),
           ),
           SizedBox(height: 14.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CustomText(
-                title: ConstString.propertyPhotos,
-                textSize: 14.sp,
-                fontWeight: FontWeight.w700,
-                textColor: ConstColor.titleColor,
-              ),
-              GestureDetector(
-                onTap: controller.openPropertyPhotos,
-                child: CustomText(
-                  title: ConstString.viewAllLabel,
-                  textSize: 12.sp,
-                  fontWeight: FontWeight.w500,
-                  textColor: ConstColor.primaryColor,
+          Container(
+            padding: EdgeInsets.all(12.r),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(color: ConstColor.titleColor.withAlpha(30)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CustomText(
+                      title: ConstString.propertyPhotos,
+                      textSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                      textColor: ConstColor.titleColor,
+                    ),
+                    GestureDetector(
+                      onTap: controller.openPropertyPhotos,
+                      child: CustomText(
+                        title: ConstString.viewAllLabel,
+                        textSize: 12.sp,
+                        fontWeight: FontWeight.w500,
+                        textColor: ConstColor.primaryColor,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8.h),
-          SizedBox(
-            height: 70.h,
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: p.photoUrls.length,
-              separatorBuilder: (_, index) => SizedBox(width: 8.w),
-              itemBuilder: (context, index) => ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: AppImage(
-                  filePath: p.photoUrls[index],
-                  width: 70.w,
+                SizedBox(height: 10.h),
+                SizedBox(
                   height: 70.h,
-                  fit: BoxFit.cover,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: p.photoUrls.length,
+                    separatorBuilder: (_, index) => SizedBox(width: 8.w),
+                    itemBuilder: (context, index) => ClipRRect(
+                      borderRadius: BorderRadius.circular(10.r),
+                      child: AppImage(
+                        filePath: p.photoUrls[index],
+                        width: 100.w,
+                        height: 111.h,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
           ),
           SizedBox(height: 16.h),
@@ -680,6 +693,7 @@ class _InfoTab extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(color: ConstColor.titleColor.withAlpha(30))
             ),
             child: Column(
               children: [
