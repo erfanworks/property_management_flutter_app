@@ -23,17 +23,66 @@ class KeySetFormScreen extends GetView<UnitDetailController> {
         body: ListView(
           padding: EdgeInsets.all(16.r),
           children: [
-            CustomText(title: 'KEY SET #1', textSize: 11.sp, fontWeight: FontWeight.w600, textColor: ConstColor.bodyColor, letterSpacing: 0.4),
-            SizedBox(height: 10.h),
-            CustomTextFormField(fromTitle: 'Key Type', textController: controller.keyTypeController),
-            Row(children: [
-              Expanded(child: CustomTextFormField(fromTitle: 'Quantity', textController: controller.keyQuantityController, keyboardType: TextInputType.number, numeric: true)),
-              SizedBox(width: 12.w),
-              Expanded(child: CustomTextFormField(fromTitle: 'Location / Tag', textController: controller.keyLocationController)),
-            ]),
-            CustomTextFormField(fromTitle: 'Held By', textController: controller.keyHeldByController),
+            Container(
+              padding: EdgeInsets.all(16.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16.r),
+                border: Border.all(
+                  color: ConstColor.titleColor.withAlpha(30),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomText(
+                    title: 'KEY SET #1',
+                    textSize: 11.sp,
+                    fontWeight: FontWeight.w600,
+                    textColor: ConstColor.bodyColor,
+                    letterSpacing: 0.4,
+                  ),
+                  SizedBox(height: 10.h),
+                  CustomTextFormField(
+                    fromTitle: 'Key Type',
+                    textController: controller.keyTypeController,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextFormField(
+                          fromTitle: 'Quantity',
+                          textController: controller.keyQuantityController,
+                          keyboardType: TextInputType.number,
+                          numeric: true,
+                        ),
+                      ),
+                      SizedBox(width: 12.w),
+                      Expanded(
+                        child: CustomTextFormField(
+                          fromTitle: 'Location / Tag',
+                          textController: controller.keyLocationController,
+                        ),
+                      ),
+                    ],
+                  ),
+                  CustomTextFormField(
+                    fromTitle: 'Held By',
+                    textController: controller.keyHeldByController,
+                  ),
+                ],
+              ),
+            ),
             SizedBox(height: 20.h),
-            CustomElevatedButton(onPressed: controller.saveKeySet, child: CustomText(title: isEdit ? 'Save Changes' : 'Save Key Register', textColor: Colors.white, textSize: 14.sp, fontWeight: FontWeight.w600)),
+            CustomElevatedButton(
+              onPressed: controller.saveKeySet,
+              child: CustomText(
+                title: isEdit ? 'Save Changes' : 'Save Key Register',
+                textColor: Colors.white,
+                textSize: 14.sp,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
           ],
         ),
       );
