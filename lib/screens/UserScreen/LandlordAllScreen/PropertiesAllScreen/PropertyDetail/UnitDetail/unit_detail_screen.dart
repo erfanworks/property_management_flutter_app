@@ -50,7 +50,7 @@ class _UnitTabBar extends StatelessWidget {
 
   static final _tabs = [
     (icon: Icons.grid_view_rounded, label: ConstString.overview),
-    (icon: Icons.person_outline_rounded, label: ConstString.tenant),
+    (icon: Icons.group, label: ConstString.tenant),
     (icon: Icons.payments_outlined, label: ConstString.payments),
     (icon: Icons.photo_library_outlined, label: ConstString.photos),
   ];
@@ -58,7 +58,16 @@ class _UnitTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withAlpha(18),
+            offset: Offset(0, 2.h),
+            blurRadius: 4.r,
+          ),
+        ],
+      ),
       child: Row(
         children: List.generate(_tabs.length, (index) {
           final isSelected = index == selectedIndex;
@@ -67,13 +76,20 @@ class _UnitTabBar extends StatelessWidget {
             child: GestureDetector(
               onTap: () => onChanged(index),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10.h),
-                decoration: BoxDecoration(border: Border(bottom: BorderSide(color: isSelected ? ConstColor.primaryColor : Colors.transparent, width: 2))),
+                padding: EdgeInsets.only(top: 10.h),
                 child: Column(
                   children: [
                     Icon(tab.icon, size: 18.sp, color: isSelected ? ConstColor.primaryColor : ConstColor.bodyColor),
                     SizedBox(height: 2.h),
                     CustomText(title: tab.label, textSize: 10.sp, fontWeight: FontWeight.w600, textColor: isSelected ? ConstColor.primaryColor : ConstColor.bodyColor),
+                    SizedBox(height: 6.h),
+                    Container(
+                      height: 3.5.h,
+                      decoration: BoxDecoration(
+                        color: isSelected ? ConstColor.primaryColor : Colors.transparent,
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(4.r)),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -95,40 +111,57 @@ class _OverviewTab extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.all(16.r),
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(16.r),
-          child: Stack(
-            children: [
-              unit.photoUrls.isNotEmpty
-                  ? AppImage(filePath: unit.photoUrls[unit.coverPhotoIndex], width: double.infinity, height: 160.h, fit: BoxFit.cover)
-                  : Container(width: double.infinity, height: 160.h, color: ConstColor.dividerColor, child: Icon(Icons.image_outlined, color: ConstColor.bodyColor, size: 32.sp)),
-              Positioned(
-                top: 10.h,
-                right: 10.w,
-                child: CustomStatusChip(
-                  label: unit.isOccupied ? ConstString.occupied : ConstString.vacant,
-                  color: unit.isOccupied ? ConstColor.tenantIconColor : ConstColor.contractorIconColor,
-                  backgroundColor: Colors.white,
-                ),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(16.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(12),
+                blurRadius: 8.r,
+                offset: Offset(0, 2.h),
               ),
             ],
           ),
-        ),
-        SizedBox(height: 14.h),
-        CustomText(title: unit.name, textSize: 18.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
-        SizedBox(height: 2.h),
-        CustomText(title: '${unit.floorLabel} · ${unit.beds} Bed · ${unit.baths} Bath · ${unit.sqft} sq ft · ${unit.furnished.label}', textSize: 12.sp, textColor: ConstColor.bodyColor),
-        SizedBox(height: 14.h),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 16.r),
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(16.r)),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              DetailRow(icon: Icons.credit_card_outlined, label: ConstString.monthlyRentLabel, value: '£${unit.monthlyRent.toStringAsFixed(0)}/mo'),
-              DetailRow(icon: Icons.shield_outlined, label: ConstString.depositHeld, value: '£${unit.depositHeld.toStringAsFixed(0)} · ${unit.depositScheme}'),
-              DetailRow(icon: Icons.event_note_outlined, label: 'Lease term', value: '${unit.leaseStartLabel} – ${unit.leaseEndLabel}'),
-              DetailRow(icon: Icons.description_outlined, label: 'Agreement', value: unit.agreementType),
-              DetailRow(icon: Icons.schedule_outlined, label: 'Payment schedule', value: unit.paymentScheduleLabel, isLast: true),
+              ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
+                child: Stack(
+                  children: [
+                    unit.photoUrls.isNotEmpty
+                        ? AppImage(filePath: unit.photoUrls[unit.coverPhotoIndex], width: double.infinity, height: 160.h, fit: BoxFit.cover)
+                        : Container(width: double.infinity, height: 160.h, color: ConstColor.dividerColor, child: Icon(Icons.image_outlined, color: ConstColor.bodyColor, size: 32.sp)),
+                    Positioned(
+                      top: 10.h,
+                      right: 10.w,
+                      child: CustomStatusChip(
+                        label: unit.isOccupied ? ConstString.occupied : ConstString.vacant,
+                        color: unit.isOccupied ? ConstColor.tenantIconColor : ConstColor.contractorIconColor,
+                        backgroundColor: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(16.r),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(title: unit.name, textSize: 18.sp, fontWeight: FontWeight.w700, textColor: ConstColor.titleColor),
+                    SizedBox(height: 2.h),
+                    CustomText(title: '${unit.floorLabel} · ${unit.beds} Bed · ${unit.baths} Bath · ${unit.sqft} sq ft · ${unit.furnished.label}', textSize: 12.sp, textColor: ConstColor.bodyColor),
+                    SizedBox(height: 14.h),
+                    DetailRow(icon: Icons.credit_card_outlined, label: ConstString.monthlyRentLabel, value: '£${unit.monthlyRent.toStringAsFixed(0)}/mo'),
+                    DetailRow(icon: Icons.shield_outlined, label: ConstString.depositHeld, value: '£${unit.depositHeld.toStringAsFixed(0)} · ${unit.depositScheme}'),
+                    DetailRow(icon: Icons.event_note_outlined, label: 'Lease term', value: '${unit.leaseStartLabel} – ${unit.leaseEndLabel}'),
+                    DetailRow(icon: Icons.description_outlined, label: 'Agreement', value: unit.agreementType),
+                    DetailRow(icon: Icons.schedule_outlined, label: 'Payment schedule', value: unit.paymentScheduleLabel, isLast: true),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
