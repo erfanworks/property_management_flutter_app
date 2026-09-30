@@ -524,6 +524,7 @@ class _PaymentsTab extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(14.r),
+                  border: Border.all(color: ConstColor.titleColor.withAlpha(30))
               ),
               child: Row(
                 children: [
