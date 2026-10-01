@@ -6,6 +6,7 @@ import '../../../../../../constant/const_color.dart';
 import '../../../../../../constant/const_icons.dart';
 import '../../../../../../constant/const_string.dart';
 import '../../../../../../routes/app_routes/app_routes.dart';
+import '../../DrawerAllScreen/Drawer/app_drawer.dart';
 import 'widget/brand_header.dart';
 import '../../../../../../widget/CustomIconBadge/custom_icon_badge.dart';
 import 'widget/custom_section_header.dart';
@@ -21,15 +22,14 @@ class HomeScreen extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ConstColor.screenBackground,
+      drawer: const AppDrawer(),
       appBar: GlobalAppBar(
         showBack: false,
-        leading: IconButton(
-          icon: Icon(
-            Icons.menu_rounded,
-            color: ConstColor.titleColor,
-            size: 24.sp,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu_rounded, color: ConstColor.titleColor, size: 24.sp),
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
-          onPressed: () {}, // TODO: open drawer
         ),
         centerWidget: BrandHeader(
           title: ConstString.splashTitle,

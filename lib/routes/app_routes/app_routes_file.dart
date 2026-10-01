@@ -15,6 +15,17 @@ import '../../screens/BaseScreen/NotificationScreen/notification_screen.dart';
 import '../../screens/BaseScreen/OnboardScreen/onboarding_screen.dart';
 import '../../screens/BaseScreen/RoleSelectScreen/role_select_screen.dart';
 import '../../screens/BaseScreen/SplashScreen/splash_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/Contractors/contractor_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/Contractors/contractor_reviews_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/Contractors/contractors_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/Contractors/controller/contractors_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/Contractors/invite_contractor_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/SmartReminders/add_smart_reminder_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/SmartReminders/controller/smart_reminders_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/SmartReminders/smart_reminder_detail_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/SmartReminders/smart_reminders_screen.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/TenantsDirectory/controller/tenants_directory_controller.dart';
+import '../../screens/UserScreen/LandlordAllScreen/DrawerAllScreen/TenantsDirectory/tenants_directory_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Announcement/announcement_detail_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Announcement/announcement_list_screen.dart';
 import '../../screens/UserScreen/LandlordAllScreen/HomeTabAllScreen/Announcement/controller/announcement_controller.dart';
@@ -262,4 +273,25 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(name: AppRoutes.keysAccessScreen, page: () => const KeysAccessScreen()),
   GetPage(name: AppRoutes.addKeySetScreen, page: () => const KeySetFormScreen()),
   GetPage(name: AppRoutes.editKeySetScreen, page: () => const KeySetFormScreen()),
+  // app_routes_file.dart
+  GetPage(
+    name: AppRoutes.smartRemindersScreen,
+    page: () => const SmartRemindersScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => SmartRemindersController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.smartReminderDetailScreen, page: () => const SmartReminderDetailScreen()),
+  GetPage(name: AppRoutes.addSmartReminderScreen, page: () => const AddSmartReminderScreen()),
+  GetPage(
+    name: AppRoutes.tenantsDirectoryScreen,
+    page: () => const TenantsDirectoryScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => TenantsDirectoryController(), fenix: true)),
+  ),
+  GetPage(
+    name: AppRoutes.contractorsScreen,
+    page: () => const ContractorsScreen(),
+    binding: BindingsBuilder(() => Get.lazyPut(() => ContractorsController(), fenix: true)),
+  ),
+  GetPage(name: AppRoutes.inviteContractorScreen, page: () => const InviteContractorScreen()),
+  GetPage(name: AppRoutes.contractorDetailScreen, page: () => const ContractorDetailScreen()),
+  GetPage(name: AppRoutes.contractorReviewsScreen, page: () => const ContractorReviewsScreen()),
 ];

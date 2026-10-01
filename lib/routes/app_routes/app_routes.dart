@@ -68,4 +68,12 @@ class AppRoutes {
   static const keysAccessScreen = '/keysAccessScreen';
   static const addKeySetScreen = '/addKeySetScreen';
   static const editKeySetScreen = '/editKeySetScreen';
+  static const smartRemindersScreen = '/smartRemindersScreen';
+  static const smartReminderDetailScreen = '/smartReminderDetailScreen';
+  static const addSmartReminderScreen = '/addSmartReminderScreen';
+  static const tenantsDirectoryScreen = '/tenantsDirectoryScreen';
+  static const contractorsScreen = '/contractorsScreen';
+  static const inviteContractorScreen = '/inviteContractorScreen';
+  static const contractorDetailScreen = '/contractorDetailScreen';
+  static const contractorReviewsScreen = '/contractorReviewsScreen';
 }
