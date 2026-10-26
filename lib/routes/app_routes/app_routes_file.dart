@@ -268,7 +268,7 @@ List<GetPage> appRouteFile = <GetPage>[
   GetPage(
     name: AppRoutes.addUnitScreen,
     page: () => const AddUnitScreen(),
-    binding: BindingsBuilder(() => Get.put(UnitDetailController())),
+    binding: BindingsBuilder(() => Get.lazyPut(() => UnitDetailController())),
   ),
   GetPage(name: AppRoutes.keysAccessScreen, page: () => const KeysAccessScreen()),
   GetPage(name: AppRoutes.addKeySetScreen, page: () => const KeySetFormScreen()),
